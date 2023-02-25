@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact{% endblock %}
+
+
+{% block content %}
+<!-- catg header banner section -->
+<section id="aa-catg-head-banner">
+    <img src="{% static 'img/fashion/fashion-header-bg-8.jpg' %}" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>Contact</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'main:home' %}">Uy</a></li>
+                    <li class="active">Aloqa</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / catg header banner section -->
+
+<section id="aa-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-contact-area">
+                    <div class="aa-contact-top">
+                        <h2>Sizga yordam berishni kutamiz..</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, quos.</p>
+                    </div>
+                    <!-- contact map -->
+                    <div class="aa-contact-map">
+                        <iframe src="{{ contact.location }}"
+                                width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                    <!-- Contact address -->
+                    <div class="aa-contact-address">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="aa-contact-address-left">
+                                    <form class="comments-form contact-form" method="post">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    {{ form.full_name }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    {{ form.email }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    {{ form.phone }}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    {{ form.company }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            {{ form.description }}
+                                        </div>
+                                        <button class="aa-secondary-btn">Send</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="aa-contact-address-right">
+                                    <address>
+                                        <h4>{{ contact.name }}</h4>
+                                        <p>{{ contact.subject }}</p>
+                                        <p><span class="fa fa-home"></span>{{ contact.address }}</p>
+                                        <p><span class="fa fa-phone"></span>{{ contact.phone }}</p>
+                                        <p><span class="fa fa-envelope"></span>Email: {{ contact.email }}</p>
+                                    </address>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

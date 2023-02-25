@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Product | Detail{% endblock %}
+
+{% block content %}
+
+<!-- catg header banner section -->
+<section id="aa-catg-head-banner">
+    <img src="{% static 'img/fashion/fashion-header-bg-8.jpg' %}" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>MakonMirzo</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'main:home' %}">Home</a></li>
+                    <li><a href="{% url 'main:product' %}">Product</a></li>
+                    <li class="active">MakonMirzo</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / catg header banner section -->
+
+<section id="aa-product-details">
+    <div class="container">
+        <div class="row">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="col-md-12">
+                    <div class="aa-product-details-area">
+                        <div class="aa-product-details-content">
+                            {% for detail in details %}
+                            <div class="row">
+                                <!-- Modal view slider -->
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <div class="aa-product-view-slider">
+                                        <div id="demo-1" class="simpleLens-gallery-container">
+                                            <div class="simpleLens-container">
+                                                <div class="simpleLens-big-image-container"><a
+                                                        data-lens-image="{{ detail.image.url }}"
+                                                        class="simpleLens-lens-image"><img
+                                                        src="{{ detail.image.url }}"
+                                                        class="simpleLens-big-image"></a></div>
+                                            </div>
+                                            <div class="simpleLens-thumbnails-container">
+                                                {% if detail.image1 %}
+                                                <a data-big-image="{{ detail.image1.url }}"
+                                                   data-lens-image="{{ detail.image1.url }}"
+                                                   class="simpleLens-thumbnail-wrapper" href="#">
+                                                    <img src="{{ detail.image1.url }}"
+                                                         style="height: 80px; width: 80px;">
+                                                </a>
+                                                {% endif %}
+                                                {% if detail.image2 %}
+                                                <a data-big-image="{{ detail.image2.url }}"
+                                                   data-lens-image="{{ detail.image2.url }}"
+                                                   class="simpleLens-thumbnail-wrapper" href="#">
+                                                    <img src="{{ detail.image2.url }}"
+                                                         style="height: 80px; width: 80px;">
+                                                </a>
+                                                {% endif %}
+                                                {% if detail.image3 %}
+                                                <a data-big-image="{{ detail.image3.url }}"
+                                                   data-lens-image="{{ detail.image3.url }}"
+                                                   class="simpleLens-thumbnail-wrapper" href="#">
+                                                    <img src="{{ detail.image3.url }}"
+                                                         style="height: 80px; width: 80px;">
+                                                </a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal view content -->
+                                <div class="col-md-7 col-sm-7 col-xs-12">
+                                    <div class="aa-product-view-content">
+                                        <h3>{{ detail.name }}</h3>
+                                        <div class="aa-price-block">
+                                            <span class="aa-product-view-price">{{ detail.price }}.uzs</span>
+                                            <p class="aa-product-avilability">Mavjudligi: <span>Omborda mavjud; sotuvda mavjud</span>
+                                            </p>
+                                            <p class="aa-product-avilability">Sotuv
+                                                kodi:<span>{{ detail.vendor_code }}</span></p>
+                                        </div>
+                                        <p>{{ detail.title }}!</p>
+
+                                        <h4>Size</h4>
+                                        <div class="aa-prod-view-size">
+                                            <div class="form-checkbox">
+                                                {% for d in detail.size.all %}
+                                                <label for="{{ sd.id }}"><a href="#">{{ d.size }}</a></label>
+                                                <input type="checkbox" id="{{ d.id }}" name="size" value="{{ d.size }}">
+                                                {% endfor %}
+                                            </div>
+                                            <h4>Color</h4>
+                                            <div class="aa-color-tag">
+                                                <div class="form-checkbox">
+                                                    {% for sd in detail.color.all %}
+                                                    <label for="{{ sd.id }}"><a href="#" class="aa-color-{{ sd.name }}"></a>{{ sd.name }}</label>
+                                                    <input type="checkbox" id="{{ sd.id }}" name="color" value="{{ sd.name }}">
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="aa-prod-quantity">
+                                            <p class="aa-prod-category">Category: <a href="#">{{ detail.categories.name }}</a>
+                                            </p>
+                                        </div>
+                                        <div class="aa-prod-view-bottom">
+                                            <button type="submit" class="btn btn-primary">Add To Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="aa-product-details-bottom">
+                            <ul class="nav nav-tabs" id="myTab2">
+                                <li><a href="#" data-toggle="tab">Tavsif</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="description">
+                                    <p>{{ detail.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add to Cart{% endblock %}
+
+
+{% block content %}
+
+<!-- catg header banner section -->
+<section id="aa-catg-head-banner">
+    <img src="{% static 'img/fashion/fashion-header-bg-8.jpg' %}" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>Cart Page</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'main:home' %}">Home</a></li>
+                    <li class="active">Cart</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / catg header banner section -->
+
+<!-- Cart view section -->
+<section id="cart-view">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="cart-view-area">
+                    <div class="cart-view-table">
+                        <div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th>Color</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in cart %}
+                                    <tr>
+                                        <td><a class="remove" href="{% url 'main:remove_cart' item.product.id %}">
+                                            <fa class="fa fa-close"></fa>
+                                        </a></td>
+                                        <td><a href="#"><img src="{{ item.product.image.url }}" alt="img"></a></td>
+                                        <td><a class="aa-cart-title" href="#">{{ item.product.name }}</a></td>
+                                        <td>{{ item.product.price }} uzs</td>
+                                        <td>
+                                            <a href="{% url 'main:change_quantity' item.product.id %}?action=decrease">
+                                                <button style="border: none; background-color: red; color: white; padding: 0 10px;">-</button>
+                                            </a>
+                                            <a href="">{{ item.quantity }}</a>
+                                            <a href="{% url 'main:change_quantity' item.product.id %}?action=increase">
+                                                <button style="border: none; background-color: rgb(32,110,181); color: white; padding: 0 10px;">+</button>
+                                            </a>
+                                        </td>
+                                        <td>{{ item.total_price }}</td>
+                                        <td>{{ item.color }}<br>{{ item.size }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="6" class="aa-cart-view-bottom">
+                                            <div class="aa-cart-coupon">
+                                                <h1>Subtotal</h1>
+                                                <p><strong>{{ cart.get_total_cost }} uzs</strong></p>
+                                            </div>
+                                            <a href="{% url 'main:chekout' %}" class="aa-cart-view-btn">Proced to Checkout</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                {% if my_data %}
+                                <p>My data: {{ my_data }}</p>
+                                {% else %}
+                                <p>No data in session</p>
+                                {% endif %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- / Cart view section -->
+
+{% endblock %}
