@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from .forms import AddProductForm, OrderModelForm
 import requests
-
+from config import settings
 
 class NewProduct(ListView):
     """Glavni saxifaga maxsulotlarnii chiqarish"""
@@ -26,14 +26,21 @@ class NewProduct(ListView):
         headers = {
             "Content-Type": "application/json",
             "Accept": "application/json;charset=UTF-8",
-            "accessToken": "2A390F47-F3A7-4E59-9227-8BA6D41E0262",
-            "x-auth": "PAID$92792$CE708F467B82D26F"
+            "accessToken": settings.ACCESS_TOKEN,
+            "x-auth": settings.X_TOKEN
         }
         response = requests.post("https://apps.kpi.com/services/api/v2/2/products_zapier", json=code, headers=headers)
         api_products = response.json()
         api_vendor_codes = [p['number'] for p in api_products]
         return Product.objects.filter(vendor_code__in=api_vendor_codes).order_by('-id')
 
+
+def allproduct(request):
+    products = Product.objects.all()
+    context = {
+        'products': products
+    }
+    return render(request, 'main/product.html', context=context)
 
 class ProductListView(ListView):
     """Peoductlarni ko'rish uchun Class based views"""
@@ -50,8 +57,8 @@ class ProductListView(ListView):
         headers = {
             "Content-Type": "application/json",
             "Accept": "application/json;charset=UTF-8",
-            "accessToken": "2A390F47-F3A7-4E59-9227-8BA6D41E0262",
-            "x-auth": "PAID$92792$CE708F467B82D26F"
+            "accessToken": settings.ACCESS_TOKEN,
+            "x-auth": settings.X_TOKEN
         }
         response = requests.post("https://apps.kpi.com/services/api/v2/2/products_zapier", json=code, headers=headers)
         api_products = response.json()

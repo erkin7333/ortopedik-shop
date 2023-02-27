@@ -19,69 +19,55 @@
         </div>
     </div>
 </section>
-<!-- / catg header banner section -->
-<!-- Latest Blog -->
-<section id="aa-latest-blog">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div style="margin-top: 30px;" class="aa-latest-blog-area">
-                    <div class="row">
-                        {% for product in products %}
-                        <div class="col-md-4 col-sm-4">
-                            <div>
-                                <figure>
-                                    <a href="{% url 'main:p_detail' product.pk %}"><img src="{{ product.image.url }}"
-                                                                                      style="max-width: 100%;"
-                                                                                      alt="img"></a>
-                                </figure>
-                                <div class="aa-blog-info">
-                                    <h2 class="aa-blog-title">
-                                        <a href="{% url 'main:p_detail' product.pk %}">{{ product.name }}</a>
-                                    </h2>
-                                    <p>{{ product.title|truncatewords:4 }}.</p>
-                                    <h2>{{ product.price }} uzs</h2>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% if page_obj.has_other_pages %}
-                    <div class="aa-blog-archive-pagination">
-                        <nav>
-                            <ul class="pagination">
-                                {% if page_obj.has_previous %}
-                                <li>
-                                    <a aria-label="Previous" href="?page={{ page_obj.previous_page_number  }}">
-                                        <span aria-hidden="true">«</span>
-                                    </a>
-                                </li>
-                                {% endif %}
-                                {% for p in paginator.page_range %}
-                                {% if page_obj.number == p %}
-                                <li class="active"><a href="">{{ p }}</a></li>
-                                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-                                <li>
-                                    <a href="?page={{ p }}">{{ p }}</a>
-                                </li>
-                                {% endif %}
-                                {% endfor %}
-                                {% if page_obj.has_next %}
-                                <li>
-                                    <a aria-label="Next" href="?page={{ page_obj.next_page_number }}">
-                                        <span aria-hidden="true">»</span>
-                                    </a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    </div>
-                    {% endif %}
+
+<!-- product category -->
+<!--<section id="aa-product-category">-->
+<div class="container">
+    {% for p in products %}
+    <div class="row row-cols-1 row-cols-md-3">
+
+        <div class="col mb-4">
+            <div class="card h-100">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                        to additional content. This content is a little bit longer.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<!-- / Latest Blog -->
+        <div class="col mb-4">
+            <div class="card h-100">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a short card.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                        to additional content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                        to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
 
+    </div>
+    {% endfor %}
+</div>
+<!--</section>-->
 {% endblock %}
