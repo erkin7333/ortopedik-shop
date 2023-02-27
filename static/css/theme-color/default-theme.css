@@ -224,8 +224,8 @@ h2 {
   color: #ff6666;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-content .aa-blog-content-single .aa-article-bottom .aa-post-author a {
-  border-bottom: 1px solid #ff6666;
-  color: #ff6666;
+  border-bottom: 1px solid #b54592;
+  color: #b54592;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-sidebar .aa-sidebar-widget h3 {
   color: #ff6666;
@@ -245,14 +245,14 @@ h2 {
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-archive-pagination .pagination li a:hover,
 #aa-blog-archive .aa-blog-archive-area .aa-blog-archive-pagination .pagination li span:hover {
-  color: #ff6666;
+  color: #b54592;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-archive-pagination .pagination li a:focus,
 #aa-blog-archive .aa-blog-archive-area .aa-blog-archive-pagination .pagination li span:focus {
-  background-color: #ff6666;
+  background-color: #b54592;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-archive-pagination .pagination .active a {
-  background-color: #ff6666;
+  background-color: #176eb5;
 }
 .aa-blog-details h2 a:hover, .aa-blog-details h2 a:focus {
   color: #ff6666;

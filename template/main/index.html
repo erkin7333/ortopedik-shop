@@ -73,27 +73,27 @@
 
 <!-- Products section -->
 
-<section id="aa-latest-blog">
+<section id="aa-blog-archive">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div style="margin-top: 30px;" class="aa-latest-blog-area">
+        <div class="col-md-12">
+            <div class="aa-blog-archive-area">
+                <div class="aa-blog-content">
                     <div class="row">
                         {% for product in posts %}
                         <div class="col-md-4 col-sm-4">
-                            <div>
-                                <figure>
-                                    <a href="{% url 'main:p_detail' product.pk %}">
-                                        <img src="{{ product.image.url }}" style="max-width: 100%;" alt="img">
-                                    </a>
+                            <article class="aa-blog-content-single">
+                                <figure class="aa-blog-img">
+                                    <a href="{% url 'main:p_detail' product.pk %}"><img src="{{ product.image.url }}"
+                                                     style="height: 350px; width: 300px;" alt="fashion img"></a>
                                 </figure>
-                                <div class="aa-blog-info">
-                                    <h2 class="aa-blog-title">
+                                <div class="aa-article-bottom">
+                                    <div class="aa-post-author">
                                         <a href="{% url 'main:p_detail' product.pk %}">{{ product.name }}</a>
-                                    </h2>
-                                    <h2>{{ product.price }} uzs</h2>
+                                        <br>
+                                        <span>{{ product.price }} sum</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
                         {% endfor %}
                     </div>
@@ -116,7 +116,7 @@
                                 <li>
                                     <a href="?page={{ p }}">{{ p }}</a>
                                 </li>
-                                 {% endif %}
+                                {% endif %}
                                 {% endfor %}
                                 {% if page_obj.has_next %}
                                 <li>

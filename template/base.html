@@ -30,6 +30,7 @@
 
     <!-- Main style sheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}" type="text/css" />
 
     <!--    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" />-->
     <!--    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-icons/bootstrap-icons.css' %}" />-->
@@ -212,11 +213,9 @@
                                     <div class="aa-footer-widget">
                                         <h3>Kategoriyalar</h3>
                                         <ul class="aa-footer-nav">
-                                            <li><a href="#">Site Map</a></li>
-                                            <li><a href="#">Search</a></li>
-                                            <li><a href="#">Advanced Search</a></li>
-                                            <li><a href="#">Suppliers</a></li>
-                                            <li><a href="#">FAQ</a></li>
+                                            {% for cat in categories %}
+                                            <li><a href="#">{{ cat.name }}</a></li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
@@ -227,7 +226,7 @@
                                         <h3>Biz bilan bog'lanish</h3>
                                         <address>
                                             <p>Toshkent shaxar</p>
-                                            <p><span class="fa fa-phone"></span>+99888 700-49-59</p>
+                                            <p><span class="fa fa-phone"></span>+99888 700-00-00</p>
                                             <p><span class="fa fa-envelope"></span>makonmirzo@gmail.com</p>
                                         </address>
                                         <div class="aa-footer-social">

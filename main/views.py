@@ -16,7 +16,7 @@ class NewProduct(ListView):
     model = Product
     template_name = 'main/index.html'
     context_object_name = 'posts'
-    paginate_by = 3
+    paginate_by = 2
 
     def get_queryset(self):
         code = {
@@ -35,19 +35,12 @@ class NewProduct(ListView):
         return Product.objects.filter(vendor_code__in=api_vendor_codes).order_by('-id')
 
 
-def allproduct(request):
-    products = Product.objects.all()
-    context = {
-        'products': products
-    }
-    return render(request, 'main/product.html', context=context)
-
 class ProductListView(ListView):
     """Peoductlarni ko'rish uchun Class based views"""
 
     template_name = "main/product.html"
     context_object_name = 'products'
-    paginate_by = 20
+    paginate_by = 2
 
     def get_queryset(self):
         code = {
