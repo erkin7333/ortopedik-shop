@@ -29,7 +29,6 @@ class Cart(object):
             # item['created_at'] = str(product.created_at)
             # item['price'] = int(product.price)
             # item['color'] = ', '.join(color for color in product.color.values_list(str('name'), flat=True))
-            print("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ", item)
 
             yield item
 

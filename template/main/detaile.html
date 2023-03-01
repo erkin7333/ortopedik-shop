@@ -90,21 +90,23 @@
                                             <div class="form-checkbox">
                                                 {% for d in detail.size.all %}
                                                 <label for="{{ sd.id }}"><a href="#">{{ d.size }}</a></label>
-                                                <input type="checkbox" id="{{ d.id }}" name="size" value="{{ d.size }}">
+                                                <input type="radio" id="{{ d.id }}" name="size" value="{{ d.size }}">
                                                 {% endfor %}
                                             </div>
-                                            <h4>Color</h4>
-                                            <div class="aa-color-tag">
-                                                <div class="form-checkbox">
-                                                    {% for sd in detail.color.all %}
-                                                    <label for="{{ sd.id }}"><a href="#" class="aa-color-{{ sd.name }}"></a>{{ sd.name }}</label>
-                                                    <input type="checkbox" id="{{ sd.id }}" name="color" value="{{ sd.name }}">
-                                                    {% endfor %}
-                                                </div>
+                                        </div>
+                                        <h4>Color</h4>
+                                        <div class="aa-color-tag">
+                                            <div class="form-checkbox">
+                                                {% for sd in detail.color.all %}
+                                                <a href="#" class="aa-color-{{ sd.name }}"></a>
+                                                <label for="{{ sd.id }}"></label>
+                                                <input type="radio" id="{{ sd.id }}" name="color" value="{{ sd.name }}">
+                                                {% endfor %}
                                             </div>
                                         </div>
                                         <div class="aa-prod-quantity">
-                                            <p class="aa-prod-category">Category: <a href="#">{{ detail.categories.name }}</a>
+                                            <p class="aa-prod-category">Category:
+                                                <a href="#">{{ detail.categories.name }}</a>
                                             </p>
                                         </div>
                                         <div class="aa-prod-view-bottom">

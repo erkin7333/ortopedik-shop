@@ -9,6 +9,9 @@ from django.core.paginator import Paginator
 from .forms import AddProductForm, OrderModelForm
 import requests
 from config import settings
+from datetime import datetime
+import threading
+
 
 class NewProduct(ListView):
     """Glavni saxifaga maxsulotlarnii chiqarish"""
@@ -56,6 +59,8 @@ class ProductListView(ListView):
         response = requests.post("https://apps.kpi.com/services/api/v2/2/products_zapier", json=code, headers=headers)
         api_products = response.json()
         api_vendor_codes = [p['number'] for p in api_products]
+        print("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", api_products)
+        kpi_id = [s['id'] for s in api_products]
         return Product.objects.filter(vendor_code__in=api_vendor_codes).order_by('-id')
 
 
@@ -65,13 +70,11 @@ def productdetails(request, product_id):
     cart = Cart(request)
     details = Product.objects.filter(id=product_id)
     single = Product.objects.get(id=product_id)
-    print("SSSSSSSSSSSSSSSSSSs", single.vendor_code)
     if request.method == 'POST':
         form = AddProductForm(request.POST)
         if form.is_valid():
             color = form.data.get('color', None)
             size = form.data.get('size', None)
-            print("COLOR, SIZE ==============================", color, size)
             cart.add(product_id=single.id, color=color, size=size, vendor_code=single.vendor_code,
                      price=single.price)
             return redirect('main:addtocart')
@@ -112,20 +115,25 @@ def remove_cart(request, product_id):
     cart.remove(str(product_id))
     return redirect('main:addtocart')
 
+
 def addtocart(request):
     cart = Cart(request)
     my_data = request.session.get('cart')
 
     return render(request, 'main/cart.html', {'cart': cart, 'my_data': my_data})
 
-def chekout(request):
-    """Checkout qismi uchun funksiya"""
+
+import threading
+
+def checkout(request):
+    """Hisob-kitob bo'limi uchun funksiya"""
 
     cart = Cart(request)
     if request.method == 'POST':
         form = OrderModelForm(request.POST)
         if form.is_valid():
             total_price = 0
+            order_items = []
             for item in cart:
                 product = item['product']
                 quantity = item['quantity']
@@ -136,18 +144,67 @@ def chekout(request):
             order.save()
             for item in cart:
                 product = item['product']
-                print("ORDER99999999999999999999999999999999", product)
+                quantity = item['quantity']
+                total_price += product.price * quantity
                 vendor_code = item['vendor_code']
                 size = item['size']
                 color = item['color']
-                quantity = item['quantity']
-                prices = item['price']
+                unit_price = item['price']
                 price = product.price * quantity
-                item = OrderItem.objects.create(order=order, product=product, quantity=quantity, vendor_code=vendor_code,
-                                                total_price=price, size=size, color=color, price_per_product=prices)
-                item.save()
+                order_item = OrderItem(order=order, product=product, quantity=quantity,
+                                       vendor_code=vendor_code, total_price=price, size=size,
+                                       color=color, price_per_product=unit_price)
+                order_items.append(order_item)
+            order = form.save(commit=False)
+            order.user = request.user
+            order.paid_amount = total_price
+            order.save()
+            OrderItem.objects.bulk_create(order_items)
             cart.clear()
-        return redirect('main:home')
+
+            # API so'rovini asinxron tarzda qilindi
+            def make_api_request():
+                api_url = "https://apps.kpi.com/services/api/v3/sales/invoice"
+                order_invoice = {
+                    "customer": {
+                        "id": request.user.kpi_id
+                    },
+                    "date": datetime.now().strftime('%Y-%m-%d'),
+                    "dueDate": datetime.now().strftime('%Y-%m-%d'),
+                    "status": "APPROVE",
+                    "items": [
+                        {
+                            "product": {
+                                "code": item['vendor_code']
+                            },
+                            "quantity": item['quantity'],
+                            "unitPrice": item['price']
+                        } for item in cart
+                    ]
+                }
+                print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDD", order_invoice)
+                headers = {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "accessToken": settings.ACCESS_TOKEN,
+                    "x-auth": settings.X_TOKEN
+                }
+                response = requests.post(api_url, json=order_invoice, headers=headers,)
+                data_json = response.json()
+                print("INVOICE=========", data_json)
+                if response.status_code == 200:
+                    data_json = response.json()
+                    print("INVOICE=========", data_json)
+
+            # API so'rovlari uchun mavzularni boshlash
+            threads = []
+            for i in range(5):  # Foydalanish uchun iplar soni
+                thread = threading.Thread(target=make_api_request)
+                print("TTTTTTTTTTTTTTTTTTTTTTTT", thread)
+                threads.append(thread)
+                thread.start()
+
+            return redirect('main:home')
 
     else:
         form = OrderModelForm()
@@ -156,3 +213,78 @@ def chekout(request):
         'form': form
     }
     return render(request, 'main/checkout.html', context=context)
+
+
+
+
+
+# def checkout(request):
+#     """Checkout qismi uchun funksiya"""
+#
+#     cart = Cart(request)
+#     if request.method == 'POST':
+#         form = OrderModelForm(request.POST)
+#         if form.is_valid():
+#             total_price = 0
+#             for item in cart:
+#                 product = item['product']
+#                 quantity = item['quantity']
+#                 total_price += product.price * quantity
+#             order = form.save(commit=False)
+#             order.user = request.user
+#             order.paid_amount = total_price
+#             order.save()
+#             for item in cart:
+#                 product = item['product']
+#                 vendor_code = item['vendor_code']
+#                 size = item['size']
+#                 color = item['color']
+#                 quantity = item['quantity']
+#                 unit_price = item['price']
+#                 user_kpi = request.user.kpi_id
+#                 date = datetime.now().isoformat()
+#                 price = product.price * quantity
+#                 item = OrderItem.objects.create(order=order, product=product, quantity=quantity,
+#                                                 vendor_code=vendor_code,
+#                                                 total_price=price, size=size, color=color,
+#                                                 price_per_product=unit_price)
+#                 api_url = "https://apps.kpi.com/services/api/v3/sales/invoice"
+#                 order_invoice = {
+#                     "customer": {
+#                         "id": user_kpi
+#                     },
+#                     "date": date,
+#                     "dueDate": date,
+#                     "status": "APPROVE",
+#                     "items": [
+#                         {
+#                             "product": {
+#                                 "code": vendor_code
+#                             },
+#                             "quantity": quantity,
+#                             "unitPrice": unit_price
+#                         }
+#                     ]
+#                 }
+#                 print("API ga post buladigan malumotlar=======", order_invoice)
+#                 headers = {
+#                     "Content-Type": "application/json",
+#                     "Accept": "application/json",
+#                     "accessToken": settings.ACCESS_TOKEN,
+#                     "x-auth": settings.X_TOKEN
+#                 }
+#                 response = requests.post(api_url, json=order_invoice, headers=headers,)
+#                 if response.status_code == 200:
+#                     data_json = response.json()
+#                     print("INVOICE=========", data_json)
+#                 item.save()
+#             cart.clear()
+#         return redirect('main:home')
+#
+#     else:
+#         form = OrderModelForm()
+#     context = {
+#         'cart': cart,
+#         'form': form
+#     }
+#     return render(request, 'main/checkout.html', context=context)

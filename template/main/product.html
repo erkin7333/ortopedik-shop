@@ -30,12 +30,12 @@
                         <div class="col-md-4 col-sm-4">
                             <article class="aa-blog-content-single">
                                 <figure class="aa-blog-img">
-                                    <a href="#"><img src="{{ product.image.url }}"
+                                    <a href="{% url 'main:p_detail' product.pk %}"><img src="{{ product.image.url }}"
                                                      style="height: 350px; width: 300px;" alt="fashion img"></a>
                                 </figure>
                                 <div class="aa-article-bottom">
                                     <div class="aa-post-author">
-                                        <a href="#">{{ product.name }}</a>
+                                        <a href="{% url 'main:p_detail' product.pk %}">{{ product.name }}</a>
                                         <br>
                                         <span>{{ product.price }} sum</span>
                                     </div>
