@@ -78,12 +78,12 @@
                                         <h3>{{ detail.name }}</h3>
                                         <div class="aa-price-block">
                                             <span class="aa-product-view-price">{{ detail.price }}.uzs</span>
-                                            <p class="aa-product-avilability">Mavjudligi: <span>Omborda mavjud; sotuvda mavjud</span>
+                                            <p class="aa-product-avilability">Mavjudligi: <span>{{ api_quantity }}</span>
                                             </p>
                                             <p class="aa-product-avilability">Sotuv
                                                 kodi:<span>{{ detail.vendor_code }}</span></p>
                                         </div>
-                                        <p>{{ detail.title }}!</p>
+                                        <h3>{{ detail.title }}!</h3>
 
                                         <h4>Size</h4>
                                         <div class="aa-prod-view-size">
@@ -96,7 +96,7 @@
                                         </div>
                                         <h4>Color</h4>
                                         <div class="aa-color-tag">
-                                            <div class="form-checkbox">
+                                            <div class="form-checkbox" style="display: flex; gap: 2px;">
                                                 {% for sd in detail.color.all %}
                                                 <a href="#" class="aa-color-{{ sd.name }}"></a>
                                                 <label for="{{ sd.id }}"></label>
@@ -115,7 +115,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="aa-product-details-bottom">
                             <ul class="nav nav-tabs" id="myTab2">

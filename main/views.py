@@ -10,6 +10,9 @@ from .forms import AddProductForm, OrderModelForm
 import requests
 from config import settings
 from datetime import datetime
+from django.core.cache import cache
+import asyncio
+import aiohttp
 import threading
 
 
@@ -23,7 +26,7 @@ class NewProduct(ListView):
 
     def get_queryset(self):
         code = {
-            "limit": 10,
+            "limit": 5,
             "start": 0
         }
         headers = {
@@ -47,7 +50,7 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         code = {
-            "limit": 10,
+            "limit": 5,
             "start": 0
         }
         headers = {
@@ -59,9 +62,28 @@ class ProductListView(ListView):
         response = requests.post("https://apps.kpi.com/services/api/v2/2/products_zapier", json=code, headers=headers)
         api_products = response.json()
         api_vendor_codes = [p['number'] for p in api_products]
-        print("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", api_products)
         kpi_id = [s['id'] for s in api_products]
         return Product.objects.filter(vendor_code__in=api_vendor_codes).order_by('-id')
+
+
+
+async def get_api_date(limit=1000, strat=0):
+    """API dan ma'lumotlarni olish uchun async funktsiyasi"""
+
+    code = {
+        "limit": limit,
+        "start": strat
+    }
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json;charset=UTF-8",
+        "accessToken": settings.ACCESS_TOKEN,
+        "x-auth": settings.X_TOKEN
+    }
+    async with aiohttp.ClientSession(headers=headers) as session:
+        async with session.post(f"https://apps.kpi.com/services/api/v2/2/products/", json=code) as response:
+            api_product = await response.json()
+    return api_product
 
 
 def productdetails(request, product_id):
@@ -70,6 +92,18 @@ def productdetails(request, product_id):
     cart = Cart(request)
     details = Product.objects.filter(id=product_id)
     single = Product.objects.get(id=product_id)
+    api_product = cache.get('api_product')
+    if not api_product:
+        api_product = asyncio.run(get_api_date())
+        cache.set('api_product', api_product, 3600)
+    api_quantitys = api_product.get('data', {}).get('list')
+    api_vendor_codes = [p['number'] for p in api_quantitys]
+    quantity_api = [q['quantity'] for q in api_quantitys]
+    print("MAXSULOT SONI ===============", len(api_vendor_codes))
+    print("SOTUVDA NECHTADAN BORLARI  ===============", quantity_api)
+    print("SOTUV KODI ==================", api_vendor_codes)
+    if single.vendor_code in api_vendor_codes:
+        index = api_vendor_codes.index(single.vendor_code)
     if request.method == 'POST':
         form = AddProductForm(request.POST)
         if form.is_valid():
@@ -83,6 +117,7 @@ def productdetails(request, product_id):
     context = {
         'form': form,
         'details': details,
+        'api_quantity': api_quantitys[index]['quantity']
     }
     return render(request, 'main/detaile.html', context=context)
 
@@ -157,7 +192,6 @@ def checkout(request):
                 order_items.append(order_item)
             order = form.save(commit=False)
             order.user = request.user
-            order.paid_amount = total_price
             order.save()
             OrderItem.objects.bulk_create(order_items)
             cart.clear()
@@ -196,13 +230,11 @@ def checkout(request):
                     data_json = response.json()
                     print("INVOICE=========", data_json)
 
-            # API so'rovlari uchun mavzularni boshlash
             threads = []
-            for i in range(5):  # Foydalanish uchun iplar soni
-                thread = threading.Thread(target=make_api_request)
-                print("TTTTTTTTTTTTTTTTTTTTTTTT", thread)
-                threads.append(thread)
-                thread.start()
+            thread = threading.Thread(target=make_api_request)
+            print("TTTTTTTTTTTTTTTTTTTTTTTT", thread)
+            threads.append(thread)
+            thread.start()
 
             return redirect('main:home')
 

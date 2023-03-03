@@ -48,7 +48,7 @@ class UserRegistration(View):
             if response.status_code == 200:
                 response_data = response.json()
                 print("DATA=================", response_data)
-                data_id = response_data.get('data', {}).get('id')
+                data_id = response_data.get('data', {}).get("id")
                 print("SUCCESS ID ===========================", data_id)
                 user.kpi_id = data_id
                 print("ID==================", user.kpi_id)
