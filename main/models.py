@@ -20,28 +20,32 @@ class Category(TranslatableModel):
         verbose_name = _("Category")
 
 
-class Product(TranslatableModel):
+class Products(TranslatableModel):
     """Maxsulotlar uchun model"""
 
-    categories = models.ForeignKey(Category, on_delete=models.CASCADE)
-    color = models.ManyToManyField('Color', related_name='colors')
-    size = models.ManyToManyField('ProductSize', related_name='product_size')
     translations = TranslatedFields(
-        name=models.CharField(_('Name'), max_length=100),
-        title=models.CharField(_('Title'), max_length=500),
+        name=models.CharField(_('Name'), max_length=100, blank=True, null=True),
+        title=models.CharField(_('Title'), max_length=500, blank=True, null=True),
         description=models.TextField()
     )
-    price = models.IntegerField()
-    vendor_code = models.CharField(max_length=10, verbose_name=_('Shotuv kodi'))
-    image = models.ImageField(upload_to='product/')
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
+    color = models.ManyToManyField('Color', related_name='colors')
+    size = models.ManyToManyField('ProductSize', related_name='product_size')
+    price = models.IntegerField(blank=True, null=True)
+    k_id = models.IntegerField()
+    number = models.CharField(max_length=50, verbose_name=_('Shotuv kodi'))
+    p_quantity = models.IntegerField()
+    image = models.ImageField(upload_to='product/', blank=True)
     image1 = models.ImageField(upload_to='product/', blank=True, null=True)
     image2 = models.ImageField(upload_to='product/', blank=True, null=True)
     image3 = models.ImageField(upload_to='product/', blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+
+    # def __str__(self):
+    #     return f"{self.safe_translation_getter('name')}"
 
     def __str__(self):
-        return f"{self.safe_translation_getter('name')}"
-
+        return str(self.k_id)
     class Meta:
         verbose_name = _("Product")
 
@@ -64,6 +68,7 @@ class ProductSize(models.Model):
 
 class Payment(models.Model):
     name = models.CharField(max_length=50)
+    payme_code = models.IntegerField()
     def __str__(self):
         return self.name
     class Meta:
@@ -90,8 +95,8 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
-    product = models.ForeignKey(Product, on_delete=models.RESTRICT, related_name='items')
-    vendor_code = models.CharField(max_length=8)
+    product = models.ForeignKey(Products, on_delete=models.RESTRICT, related_name='items')
+    number = models.CharField(max_length=8)
     size = models.CharField(max_length=10)
     color = models.CharField(max_length=30)
     price_per_product = models.FloatField()

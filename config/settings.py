@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
+    'crontab',
     'parler',
     'crispy_forms',
     'account',
@@ -172,6 +174,10 @@ LOCALE_PATHS = [
 ]
 
 
+CRONJOBS = [
+    ('*/1 * * * *', 'main.cron.cron_job')
+]
+
 
 PARLER_LANGUAGES = {
     None: (
@@ -271,7 +277,7 @@ JAZZMIN_SETTINGS = {
         {"model": "auth.User"},
 
         {"model": "main.Category"},
-        {"model": "main.Product"},
+        {"model": "main.Products"},
         {"model": "main.Order"},
         {"model": "contact.Blog"},
 
@@ -306,7 +312,7 @@ JAZZMIN_SETTINGS = {
     "hide_apps": [],
 
     # Hide these models when generating side menu (e.g auth.user)
-    "hide_models": ["main.Category", "main.Product", "contact.Blog", "main:Order"],
+    "hide_models": ["main.Category", "contact.Blog", "main:Order", "main:Products"],
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
     "order_with_respect_to": ["auth", "books", "books.author", "books.book"],

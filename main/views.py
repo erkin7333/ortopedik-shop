@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from main.cart import Cart
-from .models import Product, OrderItem
+from main.cron import get_api_date
+from .models import Products, OrderItem
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from .forms import AddProductForm, OrderModelForm
@@ -11,34 +12,23 @@ import requests
 from config import settings
 from datetime import datetime
 from django.core.cache import cache
+from multiprocessing import Pool, cpu_count
 import asyncio
 import aiohttp
 import threading
+from django.core.management import call_command
 
 
 class NewProduct(ListView):
     """Glavni saxifaga maxsulotlarnii chiqarish"""
 
-    model = Product
+    model = Products
     template_name = 'main/index.html'
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 3
 
     def get_queryset(self):
-        code = {
-            "limit": 5,
-            "start": 0
-        }
-        headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json;charset=UTF-8",
-            "accessToken": settings.ACCESS_TOKEN,
-            "x-auth": settings.X_TOKEN
-        }
-        response = requests.post("https://apps.kpi.com/services/api/v2/2/products_zapier", json=code, headers=headers)
-        api_products = response.json()
-        api_vendor_codes = [p['number'] for p in api_products]
-        return Product.objects.filter(vendor_code__in=api_vendor_codes).order_by('-id')
+        return Products.objects.filter().order_by('-id')
 
 
 class ProductListView(ListView):
@@ -46,70 +36,25 @@ class ProductListView(ListView):
 
     template_name = "main/product.html"
     context_object_name = 'products'
-    paginate_by = 2
+    paginate_by = 3
 
     def get_queryset(self):
-        code = {
-            "limit": 5,
-            "start": 0
-        }
-        headers = {
-            "Content-Type": "application/json",
-            "Accept": "application/json;charset=UTF-8",
-            "accessToken": settings.ACCESS_TOKEN,
-            "x-auth": settings.X_TOKEN
-        }
-        response = requests.post("https://apps.kpi.com/services/api/v2/2/products_zapier", json=code, headers=headers)
-        api_products = response.json()
-        api_vendor_codes = [p['number'] for p in api_products]
-        kpi_id = [s['id'] for s in api_products]
-        return Product.objects.filter(vendor_code__in=api_vendor_codes).order_by('-id')
+        return Products.objects.filter().order_by('-id')
 
-
-
-async def get_api_date(limit=1000, strat=0):
-    """API dan ma'lumotlarni olish uchun async funktsiyasi"""
-
-    code = {
-        "limit": limit,
-        "start": strat
-    }
-    headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json;charset=UTF-8",
-        "accessToken": settings.ACCESS_TOKEN,
-        "x-auth": settings.X_TOKEN
-    }
-    async with aiohttp.ClientSession(headers=headers) as session:
-        async with session.post(f"https://apps.kpi.com/services/api/v2/2/products/", json=code) as response:
-            api_product = await response.json()
-    return api_product
 
 
 def productdetails(request, product_id):
     """Maxsulotni tavsilotini ko'rish uchun funksiya"""
 
     cart = Cart(request)
-    details = Product.objects.filter(id=product_id)
-    single = Product.objects.get(id=product_id)
-    api_product = cache.get('api_product')
-    if not api_product:
-        api_product = asyncio.run(get_api_date())
-        cache.set('api_product', api_product, 3600)
-    api_quantitys = api_product.get('data', {}).get('list')
-    api_vendor_codes = [p['number'] for p in api_quantitys]
-    quantity_api = [q['quantity'] for q in api_quantitys]
-    print("MAXSULOT SONI ===============", len(api_vendor_codes))
-    print("SOTUVDA NECHTADAN BORLARI  ===============", quantity_api)
-    print("SOTUV KODI ==================", api_vendor_codes)
-    if single.vendor_code in api_vendor_codes:
-        index = api_vendor_codes.index(single.vendor_code)
+    details = Products.objects.filter(id=product_id)
+    single = Products.objects.get(id=product_id)
     if request.method == 'POST':
         form = AddProductForm(request.POST)
         if form.is_valid():
             color = form.data.get('color', None)
             size = form.data.get('size', None)
-            cart.add(product_id=single.id, color=color, size=size, vendor_code=single.vendor_code,
+            cart.add(product_id=single.id, color=color, size=size, number=single.number,
                      price=single.price)
             return redirect('main:addtocart')
     else:
@@ -117,7 +62,6 @@ def productdetails(request, product_id):
     context = {
         'form': form,
         'details': details,
-        'api_quantity': api_quantitys[index]['quantity']
     }
     return render(request, 'main/detaile.html', context=context)
 
@@ -181,13 +125,15 @@ def checkout(request):
                 product = item['product']
                 quantity = item['quantity']
                 total_price += product.price * quantity
-                vendor_code = item['vendor_code']
+                number = item['number']
                 size = item['size']
                 color = item['color']
+                p_k_id = product.k_id
+                print("FFFFFFFFFFFFFFFFFFFFFFf======", p_k_id)
                 unit_price = item['price']
                 price = product.price * quantity
                 order_item = OrderItem(order=order, product=product, quantity=quantity,
-                                       vendor_code=vendor_code, total_price=price, size=size,
+                                       number=number, total_price=price, size=size,
                                        color=color, price_per_product=unit_price)
                 order_items.append(order_item)
             order = form.save(commit=False)
@@ -209,12 +155,22 @@ def checkout(request):
                     "items": [
                         {
                             "product": {
-                                "code": item['vendor_code']
+                                "id": product.k_id,
+                                "code": item['number']
                             },
                             "quantity": item['quantity'],
                             "unitPrice": item['price']
                         } for item in cart
-                    ]
+                    ],
+                    "payments": [
+                        {
+                            "account": {
+                                "id": order.payment_type
+                            },
+                            "amount": order.paid_amount,
+                            "date": datetime.now().strftime('%Y-%m-%d'),
+                        } for p_code in cart
+                    ],
                 }
                 print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDD", order_invoice)
                 headers = {
