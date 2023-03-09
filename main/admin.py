@@ -15,10 +15,10 @@ admin.site.register(Category, CategoryAdmin)
 
 
 class ProductAdmin(TranslatableAdmin):
-    list_display = ('id', 'k_id', 'categories', 'name', 'price', 'number', 'created_at')
+    list_display = ('id', 'k_id', 'categories', 'name', 'price', 'p_quantity', 'number', 'created_at')
     list_display_links = ('name', 'k_id')
-    list_per_page = 50
-    search_fields = ('name', 'number', 'k_id')
+    list_per_page = 687
+    search_fields = ['number', 'k_id']
 
 admin.site.register(Products, ProductAdmin)
 

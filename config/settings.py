@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pyclick',
+    'rest_framework',
     'django_crontab',
     'crontab',
     'parler',
@@ -370,4 +372,13 @@ JAZZMIN_SETTINGS = {
     # Add a language dropdown into the admin
     # "language_chooser": True,
     "show_ui_builder": True,
+}
+
+# Clik uchun sozlamalar
+
+CLICK_SETTINGS = {
+    'service_id': "<Ваш сервис ID>",
+    'merchant_id': "<Ваш merchant ID>",
+    'secret_key': "<Ваш секретный ключ>",
+    'merchant_user_id': "<Ваш merchant user ID>",
 }

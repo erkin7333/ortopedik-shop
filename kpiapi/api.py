@@ -1,27 +1,26 @@
 import requests
-
-
+import json
+from config.settings import ACCESS_TOKEN, X_TOKEN
 
 code = {
-    "limit": 10,
-    "start": 0
+    "warehouse_id": 6
 }
 headers = {
     "Content-Type": "application/json",
     "Accept": "application/json;charset=UTF-8",
-    "accessToken": "2A390F47-F3A7-4E59-9227-8BA6D41E0262",
-    "x-auth": "PAID$92792$CE708F467B82D26F"
+    "accessToken": ACCESS_TOKEN,
+    "x-auth": X_TOKEN
 }
 
-response = requests.post("https://apps.kpi.com/services/api/v2/2/products_zapier", json=code, headers=headers)
-api_sales_code = requests.get(response).json()['number']
-print("DDDDDDDDDDD0", api_sales_code)
-
-# response_data = response.json()
-# print("SSSSSSSSSSSSSSSS", response_data)
-# if isinstance(response_data, list):
-#     data_product = [d['number'] for d in response_data[:10]]
-#     print("RESPOSE===", data_product)
+response = requests.post("https://apps.kpi.com/services/api/v2/2/product_variants_zapier", json=code, headers=headers)
+response_data = response.json()
+print("SSSSSSSSSSSSSSSS=====================", len(response_data))
+print("TTTTTTTTTTTTTTTTTTTTTTTTTTT==========", response_data)
+if isinstance(response_data, list):
+    data_product = [d['parent_number'] for d in response_data[:100]]
+    print("RESPOSE===", data_product)
+else:
+    print("No products found.")
 # elif isinstance(response_data, dict):
 #     data_product = response_data.get("number")
 #     print("RESPOSE===", data_product)
@@ -33,7 +32,6 @@ print("DDDDDDDDDDD0", api_sales_code)
 #     for product in products:
 #         sales_codes[product['id']] = product['sales_codes']
 #         print("KODE", sales_codes)
-
 
 # response = requests.get("https://apps.kpi.com/services/api/v2/2/products_zapier")
 # if response.status_code == 200:

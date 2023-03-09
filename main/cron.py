@@ -4,10 +4,12 @@ import requests
 from main.models import Products
 
 def cron_job():
-    print("Cronjob ishga tushdi")
     code = {
-        "limit": 687,
-        "start": 0
+        "limit": 100,
+        "start": 0,
+        "filters": {
+            "warehouse_id": {"eq": 6}
+        }
     }
     headers = {
         "Content-Type": "application/json",
@@ -33,10 +35,6 @@ def cron_job():
             product.k_id = product_data['id']
             product.number = product_data['number']
             product.p_quantity = product_data['quantity']
-            # ... update other fields ...
-            print("QQQQQQ", product.k_id)
-            print("WWWWW", product.number)
-            print("EEEEE", product.p_quantity)
             product.save()
 # path('django_crontab/', include('crontab.urls'))
 

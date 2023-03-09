@@ -20,6 +20,7 @@ class Category(TranslatableModel):
         verbose_name = _("Category")
 
 
+
 class Products(TranslatableModel):
     """Maxsulotlar uchun model"""
 
@@ -29,6 +30,7 @@ class Products(TranslatableModel):
         description=models.TextField()
     )
     categories = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, null=True)
+    warehouse = models.IntegerField(blank=True, null=True)
     color = models.ManyToManyField('Color', related_name='colors')
     size = models.ManyToManyField('ProductSize', related_name='product_size')
     price = models.IntegerField(blank=True, null=True)
@@ -96,6 +98,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Products, on_delete=models.RESTRICT, related_name='items')
+    warehouse = models.IntegerField(blank=True, null=True)
     number = models.CharField(max_length=8)
     size = models.CharField(max_length=10)
     color = models.CharField(max_length=30)

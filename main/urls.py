@@ -20,4 +20,6 @@ urlpatterns = [
     path('remove-cart/<int:product_id>/', remove_cart, name='remove_cart'),
 
     path('checkout/', checkout, name='chekout'),
+
+    path('payment/', payment_method, name="payment")
 ]

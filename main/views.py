@@ -25,10 +25,10 @@ class NewProduct(ListView):
     model = Products
     template_name = 'main/index.html'
     context_object_name = 'posts'
-    paginate_by = 3
+    paginate_by = 100
 
     def get_queryset(self):
-        return Products.objects.filter().order_by('-id')
+        return Products.objects.filter().order_by('-id').exclude(p_quantity=0)
 
 
 class ProductListView(ListView):
@@ -126,6 +126,8 @@ def checkout(request):
                 quantity = item['quantity']
                 total_price += product.price * quantity
                 number = item['number']
+                warehouse = item['warehouse']
+                print("RRRRRRRRRRRRRRRRRRRRRRr", warehouse)
                 size = item['size']
                 color = item['color']
                 p_k_id = product.k_id
@@ -134,7 +136,7 @@ def checkout(request):
                 price = product.price * quantity
                 order_item = OrderItem(order=order, product=product, quantity=quantity,
                                        number=number, total_price=price, size=size,
-                                       color=color, price_per_product=unit_price)
+                                       color=color, price_per_product=unit_price, warehouse=warehouse)
                 order_items.append(order_item)
             order = form.save(commit=False)
             order.user = request.user
@@ -151,7 +153,6 @@ def checkout(request):
                     },
                     "date": datetime.now().strftime('%Y-%m-%d'),
                     "dueDate": datetime.now().strftime('%Y-%m-%d'),
-                    "status": "APPROVE",
                     "items": [
                         {
                             "product": {
@@ -159,18 +160,20 @@ def checkout(request):
                                 "code": item['number']
                             },
                             "quantity": item['quantity'],
-                            "unitPrice": item['price']
+                            "unitPrice": item['price'],
+                            "warehouseId": item['warehouse']
                         } for item in cart
                     ],
                     "payments": [
                         {
                             "account": {
-                                "id": order.payment_type
+                                "id": order.payment_type.payme_code
                             },
                             "amount": order.paid_amount,
                             "date": datetime.now().strftime('%Y-%m-%d'),
-                        } for p_code in cart
+                        }
                     ],
+                    "status": "APPROVE"
                 }
                 print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDD", order_invoice)
                 headers = {
@@ -204,6 +207,8 @@ def checkout(request):
 
 
 
+def payment_method(request):
+    return render(request, 'main/payment.html')
 
 
 # def checkout(request):
