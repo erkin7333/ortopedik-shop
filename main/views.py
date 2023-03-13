@@ -3,20 +3,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from main.cart import Cart
-from main.cron import get_api_date
 from .models import Products, OrderItem
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.paginator import Paginator
 from .forms import AddProductForm, OrderModelForm
+from click.models import ClickOrder
 import requests
 from config import settings
 from datetime import datetime
-from django.core.cache import cache
-from multiprocessing import Pool, cpu_count
-import asyncio
-import aiohttp
-import threading
-from django.core.management import call_command
+
 
 
 class NewProduct(ListView):
@@ -25,10 +18,10 @@ class NewProduct(ListView):
     model = Products
     template_name = 'main/index.html'
     context_object_name = 'posts'
-    paginate_by = 100
+    paginate_by = 3
 
     def get_queryset(self):
-        return Products.objects.filter().order_by('-id').exclude(p_quantity=0)
+        return Products.objects.filter(p_quantity__gt=0).order_by('-id')
 
 
 class ProductListView(ListView):
@@ -39,7 +32,7 @@ class ProductListView(ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        return Products.objects.filter().order_by('-id')
+        return Products.objects.filter(p_quantity__gt=0).order_by('-id')
 
 
 
@@ -127,7 +120,6 @@ def checkout(request):
                 total_price += product.price * quantity
                 number = item['number']
                 warehouse = item['warehouse']
-                print("RRRRRRRRRRRRRRRRRRRRRRr", warehouse)
                 size = item['size']
                 color = item['color']
                 p_k_id = product.k_id

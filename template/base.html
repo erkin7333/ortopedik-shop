@@ -76,31 +76,31 @@
                                 <div class="dropdown">
                                     <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <img src="{% static 'img/flag/english.jpg' %}" alt="english flag">ENGLISH
+                                        <img src="{% static 'img/flag/rus.jpg' %}" alt="english flag">RUSSIA
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" id="til"><img src="{% static 'img/flag/french.jpg' %}" alt="">FRENCH</a>
+                                        <li><a href="#" id="til"><img src="{% static 'img/flag/rus.jpg' %}" alt="">RUSSIA</a>
                                         </li>
-                                        <li><a href="#"><img src="{% static 'img/flag/english.jpg' %}"
-                                                             alt="">ENGLISH</a></li>
+                                        <li><a href="#"><img src="{% static 'img/flag/images.png' %}"
+                                                             alt="">UZBEK</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- / language -->
                             <!-- start cellphone -->
                             <div class="cellphone hidden-xs">
-                                <p><span class="fa fa-phone"></span>00-62-658-658</p>
+                                <p><span class="fa fa-phone"></span>+99897 700-00-00</p>
                             </div>
                             <!-- / cellphone -->
                         </div>
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                                <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                                <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                                <li><a href="#"><span class="fa fa-youtube"></span></a></li>
+                                <li><a href="https://www.facebook.com/"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span></a></li>
+                                <li><a href="https://www.google.com/"><span class="fa fa-google-plus"></span></a></li>
+                                <li><a href="https://www.youtube.com/"><span class="fa fa-youtube"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -132,15 +132,15 @@
                         <div class="aa-cartbox">
                             <a class="aa-cart-link" href="{% url 'main:addtocart' %}">
                                 <span class="fa fa-shopping-basket"></span>
-                                <span class="aa-cart-title">SHOPPING CART</span>
+                                <span class="aa-cart-title">XARID SAVATI</span>
                                 <span class="aa-cart-notify">2</span>
                             </a>
                         </div>
                         <!-- / cart box -->
                         <!-- search box -->
                         <div class="aa-search-box">
-                            <form action="">
-                                <input type="text" name="" id="" placeholder="Search here ex. 'man' ">
+                            <form class="aa-erkin" action="">
+                                <input type="text" name="" id="" placeholder="Search">
                                 <button type="submit"><span class="fa fa-search"></span></button>
                             </form>
                         </div>
@@ -215,7 +215,9 @@
                                         <h3>Kategoriyalar</h3>
                                         <ul class="aa-footer-nav">
                                             {% for cat in categories %}
-                                            <li><a href="#">{{ cat.name }}</a></li>
+                                            <li>
+                                                <a href="#">{{ cat.name }}</a>
+                                            </li>
                                             {% endfor %}
                                         </ul>
                                     </div>
@@ -231,10 +233,10 @@
                                             <p><span class="fa fa-envelope"></span>makonmirzo@gmail.com</p>
                                         </address>
                                         <div class="aa-footer-social">
-                                            <a href="#"><span class="fa fa-facebook"></span></a>
-                                            <a href="#"><span class="fa fa-twitter"></span></a>
-                                            <a href="#"><span class="fa fa-google-plus"></span></a>
-                                            <a href="#"><span class="fa fa-youtube"></span></a>
+                                            <a href="https://www.facebook.com/"><span class="fa fa-facebook"></span></a>
+                                            <a href="https://twitter.com/"><span class="fa fa-twitter"></span></a>
+                                            <a href="https://www.google.com/"><span class="fa fa-google-plus"></span></a>
+                                            <a href="https://www.youtube.com/"><span class="fa fa-youtube"></span></a>
                                         </div>
                                     </div>
                                 </div>

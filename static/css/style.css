@@ -412,6 +412,11 @@ img {
   position: relative;
   width: 500px;
 }
+
+#aa-header .aa-header-bottom .aa-header-bottom-area .aa-search-box form {
+    display: flex;
+}
+
 #aa-header .aa-header-bottom .aa-header-bottom-area .aa-search-box input[type="text"] {
   border: 1px solid #ddd;
   color: #555;
@@ -815,11 +820,10 @@ img {
   width: 100%;
 }
 #aa-slider .aa-slider-area .seq-title {
-  left: 19%;
   margin-right: 0;
   position: absolute;
   top: 30%;
-  width: 57%;
+  width: 40%;
   text-align: center;
 }
 #aa-slider .aa-slider-area .seq-title span {
@@ -835,8 +839,7 @@ img {
   color: #333;
   display: inline-block;
   float: none;
-  font-size: 50px;
-  font-family: "Raleway", sans-serif;
+  font-size: 50px
   font-weight: bold;
   margin-top: 20px;
   text-align: center;
@@ -2720,11 +2723,10 @@ img {
   margin-bottom: 20px;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-content .aa-blog-content-single .aa-blog-img:hover img {
-  opacity: 1;
+  opacity: 12;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-content .aa-blog-content-single .aa-blog-img img {
   max-width: 100%;
-  opacity: 0.8;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
@@ -2865,6 +2867,7 @@ img {
   float: left;
   text-align: center;
   width: 100%;
+  font-size: 20px;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-archive-pagination .pagination {
   border: 1px solid #ccc;
@@ -3286,6 +3289,7 @@ img {
   display: inline;
   float: left;
   width: 100%;
+  font-size: 15px;
 }
 #aa-contact .aa-contact-area .aa-contact-address .aa-contact-address-right address h4 {
   font-size: 22px;
@@ -3376,6 +3380,8 @@ img {
 }
 #aa-footer .aa-footer-top .aa-footer-top-area .aa-footer-widget .aa-footer-nav li a {
   color: #FFFFFF;
+  font-size: 21px;
+  margin-bottom: 3px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -ms-transition: all 0.5s;
@@ -3386,8 +3392,9 @@ img {
   color: #fff;
 }
 #aa-footer .aa-footer-top .aa-footer-top-area .aa-footer-widget address p {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   color: #FFFFFF;
+  font-size: 22px;
 }
 #aa-footer .aa-footer-top .aa-footer-top-area .aa-footer-widget address p span {
   margin-right: 5px;

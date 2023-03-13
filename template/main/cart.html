@@ -41,7 +41,6 @@
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
-                                        <th>Color</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -63,7 +62,6 @@
                                             </a>
                                         </td>
                                         <td>{{ item.total_price }}</td>
-                                        <td>{{ item.color }}<br>{{ item.size }}</td>
                                     </tr>
                                     {% endfor %}
                                     <tr>
@@ -76,11 +74,11 @@
                                         </td>
                                     </tr>
                                     </tbody>
-                                {% if my_data %}
-                                <p>My data: {{ my_data }}</p>
-                                {% else %}
-                                <p>No data in session</p>
-                                {% endif %}
+<!--                                {% if my_data %}-->
+<!--                                <p>My data: {{ my_data }}</p>-->
+<!--                                {% else %}-->
+<!--                                <p>No data in session</p>-->
+<!--                                {% endif %}-->
                                 </table>
                             </div>
                         </div>

@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pyclick',
+    'corsheaders',
+    'clickuz',
     'rest_framework',
     'django_crontab',
     'crontab',
@@ -63,6 +64,7 @@ INSTALLED_APPS = [
     'account',
     'main',
     'contact',
+    'click',
     'crispy_bootstrap4'
 ]
 
@@ -70,9 +72,10 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    "corsheaders.middleware.CorsPostCsrfMiddleware",
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -377,8 +380,43 @@ JAZZMIN_SETTINGS = {
 # Clik uchun sozlamalar
 
 CLICK_SETTINGS = {
-    'service_id': "<Ваш сервис ID>",
-    'merchant_id': "<Ваш merchant ID>",
-    'secret_key': "<Ваш секретный ключ>",
-    'merchant_user_id': "<Ваш merchant user ID>",
+    'service_id': env('SERVICE_ID'),
+    'merchant_id': env('MERCHANT_ID'),
+    'secret_key': env('SECRET_KEY'),
+    'merchant_user_id': env('MERCHANT_USER_ID'),
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:2000",
+]
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:2000",
+    "https://0e10-84-54-74-20.in.ngrok.io",
+]
