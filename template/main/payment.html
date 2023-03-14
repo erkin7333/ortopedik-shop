@@ -23,10 +23,12 @@
 <!-- Cart view section -->
 <section id="cart-view">
     <div class="container">
+        {{ order_paymnet_type.payment_type }}
         <div class="row">
             <div class="col-md-12">
                 <div class="cart-view-area">
                     <div class="cart-view-table aa-wishlist-table">
+
                         <form method="post" action="/your-after-payment-url">
                             <script src="https://my.click.uz/pay/checkout.js"
                                     class="uzcard_payment_button"

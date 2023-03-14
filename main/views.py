@@ -3,9 +3,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from main.cart import Cart
-from .models import Products, OrderItem
+from .models import Products, OrderItem, Order
 from .forms import AddProductForm, OrderModelForm
 from click.models import ClickOrder
+from payment.models import PaymentOrder
 import requests
 from config import settings
 from datetime import datetime
@@ -133,6 +134,11 @@ def checkout(request):
             order = form.save(commit=False)
             order.user = request.user
             order.save()
+            if order.payment_type.payme_code == 253:
+                ClickOrder.objects.create(user=order.user, amount=order.paid_amount)
+            else:
+                PaymentOrder.objects.create(user=order.user, amount=order.paid_amount)
+            print("CliclOrder=============", ClickOrder)
             OrderItem.objects.bulk_create(order_items)
             cart.clear()
 
@@ -199,8 +205,17 @@ def checkout(request):
 
 
 
+
 def payment_method(request):
-    return render(request, 'main/payment.html')
+    order_payment_type = ClickOrder.objects.get()
+    print("Click=====", order_payment_type)
+
+    context = {
+        'order_payment_type': order_payment_type
+    }
+
+    return render(request, 'main/payment.html', context=context)
+
 
 
 # def checkout(request):

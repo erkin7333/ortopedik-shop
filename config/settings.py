@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'parler',
     'crispy_forms',
     'account',
+    'payment',
     'main',
     'contact',
     'click',
