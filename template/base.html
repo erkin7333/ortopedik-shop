@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -30,7 +31,7 @@
 
     <!-- Main style sheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/cart.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}" type="text/css"/>
 
     <!--    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" />-->
     <!--    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-icons/bootstrap-icons.css' %}" />-->
@@ -73,19 +74,22 @@
                         <div class="aa-header-top-left">
                             <!-- start language -->
                             <div class="aa-language">
-                                <div class="dropdown">
-                                    <a class="btn dropdown-toggle" href="#" type="button" id="dropdownMenu1"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        <img src="{% static 'img/flag/rus.jpg' %}" alt="english flag">RUSSIA
-                                        <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" id="til"><img src="{% static 'img/flag/rus.jpg' %}" alt="">RUSSIA</a>
-                                        </li>
-                                        <li><a href="#"><img src="{% static 'img/flag/images.png' %}"
-                                                             alt="">UZBEK</a></li>
-                                    </ul>
-                                </div>
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                <form action="{% url 'set_language' %}" method="post" id="lang_form"
+                                      style="display: flex; margin-top: 1rem;  margin-right: 15px;">{% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                                    <select id="language_selection" onchange="ChangeLanguage(this);"
+                                            class="form-control bg-primary text-white" name="language">
+                                        {% for language in languages %}
+                                        <option class="text-white" value="{{ language.code }}"
+                                                {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                            {{ language.name_local }}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </form>
                             </div>
                             <!-- / language -->
                             <!-- start cellphone -->
@@ -132,15 +136,15 @@
                         <div class="aa-cartbox">
                             <a class="aa-cart-link" href="{% url 'main:addtocart' %}">
                                 <span class="fa fa-shopping-basket"></span>
-                                <span class="aa-cart-title">XARID SAVATI</span>
+                                <span class="aa-cart-title">{% trans 'XARID SAVATI' %}</span>
                                 <span class="aa-cart-notify">2</span>
                             </a>
                         </div>
                         <!-- / cart box -->
                         <!-- search box -->
                         <div class="aa-search-box">
-                            <form class="aa-erkin" action="">
-                                <input type="text" name="" id="" placeholder="Search">
+                            <form class="aa-erkin" action="{% url 'main:search' %}" method="get">
+                                <input type="text" name="query" placeholder="Search">
                                 <button type="submit"><span class="fa fa-search"></span></button>
                             </form>
                         </div>
@@ -170,16 +174,16 @@
                 <div class="navbar-collapse collapse">
                     <!-- Left nav -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{% url 'main:home' %}">Home</a></li>
-                        <li><a href="{% url 'main:product' %}">Product</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="{% url 'contact:contact' %}">Contact</a></li>
-                        <li><a href="{% url 'main:payment' %}">Payment</a></li>
+                        <li><a href="{% url 'main:home' %}">{% trans 'Bosh sahifa' %}</a></li>
+                        <li><a href="{% url 'main:product' %}">{% trans 'Mahsulotlar' %}</a></li>
+                        <li><a href="{% url 'contact:blog' %}">{% trans 'Blog' %}</a></li>
+                        <li><a href="{% url 'contact:contact' %}">{% trans 'Aloqa' %}</a></li>
+                        <li><a href="{% url 'click:uzclick' %}">To'lov</a></li>
                         {% if request.user.is_authenticated %}
-                        <li><a href="{% url 'account:logout' %}">Chiqish</a></li>
+                        <li><a href="{% url 'account:logout' %}">{% trans 'Chiqish' %}</a></li>
                         {% else %}
-                        <li><a href="{% url 'account:register' %}">Ro'yxatdan o'tish</a></li>
-                        <li><a href="{% url 'account:login' %}">Tizimga kirish</a></li>
+                        <li><a href="{% url 'account:register' %}">{% trans "Ro'yxatdan o'tish" %}</a></li>
+                        <li><a href="{% url 'account:login' %}">{% trans 'Tizimga kirish' %}</a></li>
                         {% endif %}
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -200,19 +204,19 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="aa-footer-widget">
-                                    <h3>Asosiy menyu</h3>
+                                    <h3>{% trans 'Asosiy menyu' %}</h3>
                                     <ul class="aa-footer-nav">
-                                        <li><a href="{% url 'main:home' %}">Uy</a></li>
-                                        <li><a href="{% url 'main:product' %}">Mahsulotlarimiz</a></li>
+                                        <li><a href="{% url 'main:home' %}">{% trans 'Uy' %}</a></li>
+                                        <li><a href="{% url 'main:product' %}">{% trans 'Mahsulotlarimiz' %}</a></li>
                                         <li><a href="#">Blog</a></li>
-                                        <li><a href="{% url 'contact:contact' %}">Biz bilan bog'lanish</a></li>
+                                        <li><a href="{% url 'contact:contact' %}">{% trans "Biz bilan bog'lanish" %}</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6">
                                 <div class="aa-footer-widget">
                                     <div class="aa-footer-widget">
-                                        <h3>Kategoriyalar</h3>
+                                        <h3>{% trans 'Kategoriyalar' %}</h3>
                                         <ul class="aa-footer-nav">
                                             {% for cat in categories %}
                                             <li>
@@ -226,7 +230,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="aa-footer-widget">
                                     <div class="aa-footer-widget">
-                                        <h3>Biz bilan bog'lanish</h3>
+                                        <h3>{% trans "Biz bilan bog'lanish" %}</h3>
                                         <address>
                                             <p>Toshkent shaxar</p>
                                             <p><span class="fa fa-phone"></span>+99888 700-00-00</p>
@@ -235,7 +239,8 @@
                                         <div class="aa-footer-social">
                                             <a href="https://www.facebook.com/"><span class="fa fa-facebook"></span></a>
                                             <a href="https://twitter.com/"><span class="fa fa-twitter"></span></a>
-                                            <a href="https://www.google.com/"><span class="fa fa-google-plus"></span></a>
+                                            <a href="https://www.google.com/"><span
+                                                    class="fa fa-google-plus"></span></a>
                                             <a href="https://www.youtube.com/"><span class="fa fa-youtube"></span></a>
                                         </div>
                                     </div>
@@ -253,7 +258,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="aa-footer-bottom-area">
-                        <p>Tomonidan ishlab chiqilgan <a href="https://datasite.uz/">DataSite.uz</a></p>
+                        <p>{% trans "Tomonidan ishlab chiqilgan" %} <a href="https://datasite.uz/">DataSite.uz</a></p>
                         <div class="aa-footer-payment">
                             <span class="fa fa-cc-mastercard"></span>
                             <span class="fa fa-cc-visa"></span>
@@ -268,30 +273,15 @@
 </footer>
 <!-- / footer -->
 
-<!-- Login Modal -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4>Login or Register</h4>
-                <form class="aa-login-form" action="">
-                    <label for="">Username or Email address<span>*</span></label>
-                    <input type="text" placeholder="Username or email">
-                    <label for="">Password<span>*</span></label>
-                    <input type="password" placeholder="Password">
-                    <button class="aa-browse-btn" type="submit">Login</button>
-                    <label for="rememberme" class="rememberme"><input type="checkbox" id="rememberme"> Remember me
-                    </label>
-                    <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
-                    <div class="aa-register-now">
-                        Don't have an account?<a href="account.html">Register now!</a>
-                    </div>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
+<script>
+        function ChangeLanguage(element){
+          const lang_form = document.getElementById('lang_form');
+          console.log(lang_form);
+          lang_form.submit();
+    }
+
+
+</script>
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -313,6 +303,7 @@
 <script type="text/javascript" src="{% static 'js/nouislider.js' %}"></script>
 <!-- Custom js -->
 <script src="{% static 'js/custom.js' %}"></script>
+{% block js %}{% endblock %}
 
 </body>
 </html>

@@ -3,6 +3,7 @@ from .models import Category, Products, Color, ProductSize, Payment, Order, Orde
 from parler.admin import TranslatableAdmin
 
 
+
 admin.site.register(Color)
 admin.site.register(ProductSize)
 

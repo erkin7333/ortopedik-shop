@@ -19,22 +19,22 @@ class OrderModelForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={
                 'class': 'aa-checkout-single-bill',
                 'type': 'text',
-                'placeholder': _('First Name')
+                'placeholder': _('Ism')
             }),
             'last_name': forms.TextInput(attrs={
                 'class': 'aa-checkout-single-bill',
                 'type': 'text',
-                'placeholder': _("Last Name")
+                'placeholder': _("Familiya")
             }),
             'company_name': forms.TextInput(attrs={
                 'class': 'aa-checkout-single-bill',
                 'type': 'text',
-                'placeholder': _("Company name")
+                'placeholder': _("Kompaniya nomi")
             }),
             'email': forms.EmailInput(attrs={
                 'class': 'aa-checkout-single-bill',
                 'type': 'email',
-                'placeholder': _("Email Address")
+                'placeholder': _("E-pochta manzili")
             }),
             'phone': forms.TextInput(attrs={
                 'class': 'aa-checkout-single-bill',
@@ -46,7 +46,7 @@ class OrderModelForm(forms.ModelForm):
                 'type': 'text',
                 'cols': '8',
                 'rows': '3',
-                'placeholder': _("Full Address")
+                'placeholder': _("To'liq manzil")
             }),
             'payment_type': forms.RadioSelect(attrs={
                 'class': 'aa-payment-method',

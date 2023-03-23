@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Product{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Mahsulotlar' %}{% endblock %}
 
 {% block content %}
 
@@ -12,8 +13,8 @@
             <div class="aa-catg-head-banner-content">
                 <h2>MakonMirzo</h2>
                 <ol class="breadcrumb">
-                    <li><a href="{% url 'main:home' %}">Home</a></li>
-                    <li class="active">Product</li>
+                    <li><a href="{% url 'main:home' %}">{% trans "Bosh sahifa" %}</a></li>
+                    <li class="active">{% trans "Mahsulot" %}</li>
                 </ol>
             </div>
         </div>

@@ -9,6 +9,7 @@ from click.models import ClickOrder
 from payment.models import PaymentOrder
 import requests
 from config import settings
+from django.db.models import Q
 from datetime import datetime
 
 
@@ -34,6 +35,19 @@ class ProductListView(ListView):
 
     def get_queryset(self):
         return Products.objects.filter(p_quantity__gt=0).order_by('-id')
+
+
+
+class SearchResultView(ListView):
+    """Maxsulotlarni izlash uchun CLass"""
+
+    model = Products
+    template_name = "main/search.html"
+
+    def get_queryset(self):
+        query =self.request.GET.get('query')
+        object_list = Products.objects.filter(Q(translations__name__icontains=query), Q(translations__title__icontains=query))
+        return object_list
 
 
 
@@ -192,8 +206,12 @@ def checkout(request):
             print("TTTTTTTTTTTTTTTTTTTTTTTT", thread)
             threads.append(thread)
             thread.start()
-
-            return redirect('main:home')
+            if order.payment_type.payme_code == 249:
+                print("PPPPPPPPPPPPPPPPPPPP", order.payment_type.payme_code)
+                return redirect('payment:payme')
+            else:
+                print("CCCCCCCCCCCCCCCCCCCCCCCC", order.payment_type.payme_code)
+                return redirect("click:click_p")
 
     else:
         form = OrderModelForm()
@@ -205,16 +223,6 @@ def checkout(request):
 
 
 
-
-def payment_method(request):
-    order_payment_type = ClickOrder.objects.get()
-    print("Click=====", order_payment_type)
-
-    context = {
-        'order_payment_type': order_payment_type
-    }
-
-    return render(request, 'main/payment.html', context=context)
 
 
 

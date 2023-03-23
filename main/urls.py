@@ -15,11 +15,12 @@ urlpatterns = [
 
     path('change_quantity/<int:product_id>/', change_quantity, name='change_quantity'),
 
+    path('search/', SearchResultView.as_view(), name="search"),
+
     path('addtocart/', addtocart, name='addtocart'),
 
     path('remove-cart/<int:product_id>/', remove_cart, name='remove_cart'),
 
     path('checkout/', checkout, name='chekout'),
 
-    path('payment/', payment_method, name="payment")
 ]

@@ -3,6 +3,7 @@ from parler.models import TranslatableModel, TranslatedFields
 from django.utils.translation import gettext_lazy as _
 
 
+
 # Create your models here.
 
 
@@ -40,14 +41,21 @@ class Requestforhelp(models.Model):
         verbose_name = _("Requestforhelp")
 
 
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+from parler.models import TranslatableModel, TranslatedFields
+
+
 class Blog(TranslatableModel):
-    """Blog uchun model"""
+    """Model for blog"""
 
     translations = TranslatedFields(
-        subject=models.CharField(max_length=100, verbose_name=_("Subject")),
+        subject=models.CharField(max_length=500, verbose_name=_("Subject")),
         description=models.TextField(),
     )
     image = models.ImageField(upload_to='blog/')
+    created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return f"{self.safe_translation_getter('subject')}"
 

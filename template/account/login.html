@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Tizimga kirish{% endblock %}
+{% load i18n %}
+{% block title %}{% trans 'Tizimga kirish' %}{% endblock %}
 {% load crispy_forms_tags %}
 {% load static %}
+
 
 {% block content %}
 <!-- catg header banner section -->
@@ -10,10 +12,10 @@
     <div class="aa-catg-head-banner-area">
         <div class="container">
             <div class="aa-catg-head-banner-content">
-                <h2>Tizimga kirish</h2>
+                <h2>{% trans 'Tizimga kirish' %}</h2>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Account</li>
+                    <li><a href="index.html">{% trans 'Bosh sahifa' %}</a></li>
+                    <li class="active">{% trans 'Hisob' %}</li>
                 </ol>
             </div>
         </div>
@@ -30,11 +32,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="aa-myaccount-login">
-                                <h4>Login</h4>
+                                <h4>{% trans 'Tizimga kirish' %}</h4>
                                 <form method="post" class="aa-login-form">
                                     {% csrf_token %}
                                     {{ form|crispy }}
-                                    <button type="submit" class="aa-browse-btn">Login</button>
+                                    <button type="submit" class="aa-browse-btn">{% trans 'Tizimga kirish' %}</button>
                                 </form>
                             </div>
                         </div>

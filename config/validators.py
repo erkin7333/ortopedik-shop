@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 import re
 import phonenumbers
+from django.utils.translation import gettext_lazy as _
 
 
 
@@ -29,4 +30,4 @@ class PhoneValidators:
 
     def __call__(self, value):
         if not PhoneValidators.validate(value):
-            raise ValidationError("Kiritilgan qiymat telefon raqam emas iltimos tekshirip qaytadan kiriting")
+            raise ValidationError(_("Kiritilgan qiymat telefon raqam emas iltimos tekshirip qaytadan kiriting"))

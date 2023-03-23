@@ -1,0 +1,406 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-23 11:48+0500\n"
+"PO-Revision-Date: 2023-03-23 12:42+0500\n"
+"Last-Translator:   <>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: account/forms.py:12 account/forms.py:13 account/forms.py:43
+#: account/forms.py:44
+msgid "Foydalanuvchi nomi"
+msgstr "Имя пользователя"
+
+#: account/forms.py:14 account/forms.py:15 contact/models.py:18
+#: contact/models.py:31
+msgid "Telefon raqam"
+msgstr "Номер телефона"
+
+#: account/forms.py:16 account/forms.py:17 account/forms.py:45
+#: account/forms.py:46
+msgid "Parol"
+msgstr "Пароль"
+
+#: account/forms.py:19
+msgid "Parolni qayta kiriting"
+msgstr "Введите пароль еще раз"
+
+#: account/forms.py:20
+msgid "Parolni tasdiqlang"
+msgstr "Подтвердите пароль"
+
+#: account/forms.py:26
+msgid "Ushbu foydalanuvchi nomi bilan ro'yxatdan o'tilgan"
+msgstr "Зарегистрирован с этим именем пользователя"
+
+#: account/forms.py:31
+msgid "Ushbu telefon raqami bilan ro'yxatdan o'tilgan"
+msgstr "Зарегистрирован с этим номером телефона"
+
+#: account/forms.py:36
+msgid "Iltimos parollar bir xilligini tekshiring"
+msgstr "Пожалуйста, убедитесь, что пароли совпадают"
+
+#: config/settings.py:138
+msgid "Uzbek"
+msgstr "Uzbek"
+
+#: config/settings.py:139
+msgid "Russian"
+msgstr "Russian"
+
+#: config/validators.py:33
+msgid ""
+"Kiritilgan qiymat telefon raqam emas iltimos tekshirip qaytadan kiriting"
+msgstr ""
+"Введенное значение не является номером телефона, проверьте и введите еще раз"
+
+#: contact/forms.py:16 contact/models.py:30
+msgid "F.I.O"
+msgstr "Ф.И.О."
+
+#: contact/forms.py:21
+msgid "Email"
+msgstr "Электронная почта"
+
+#: contact/forms.py:31
+msgid "Kompaniya"
+msgstr "Компания"
+
+#: contact/forms.py:37
+msgid "Xabar"
+msgstr "Сообщение"
+
+#: contact/models.py:13
+msgid "Sayt nomi"
+msgstr "Название сайта"
+
+#: contact/models.py:14
+msgid "Qisqacha malumot"
+msgstr "Краткая информация"
+
+#: contact/models.py:16
+msgid "Joylashuv"
+msgstr "Расположение"
+
+#: contact/models.py:17
+msgid "Manzil"
+msgstr "Адрес"
+
+#: contact/models.py:19 contact/models.py:32
+msgid "Elektron manzil"
+msgstr "Адрес электронной почты"
+
+#: contact/models.py:24
+msgid "Contact"
+msgstr "Контакт"
+
+#: contact/models.py:33 main/forms.py:32
+msgid "Kompaniya nomi"
+msgstr "Название компании"
+
+#: contact/models.py:40
+msgid "Requestforhelp"
+msgstr "Запрос помощи"
+
+#: contact/models.py:47
+msgid "Subject"
+msgstr "Предмет"
+
+#: contact/models.py:55 template/base.html:179
+msgid "Blog"
+msgstr "Блог"
+
+#: main/forms.py:22
+msgid "Ism"
+msgstr "Имя"
+
+#: main/forms.py:27
+msgid "Familiya"
+msgstr "Фамилия"
+
+#: main/forms.py:37
+msgid "E-pochta manzili"
+msgstr "Адрес электронной почты"
+
+#: main/forms.py:49
+msgid "To'liq manzil"
+msgstr "Полный адрес"
+
+#: main/models.py:12 main/models.py:28
+msgid "Name"
+msgstr "Имя"
+
+#: main/models.py:20
+msgid "Category"
+msgstr "Категория"
+
+#: main/models.py:29
+msgid "Title"
+msgstr "Заголовок"
+
+#: main/models.py:38
+msgid "Shotuv kodi"
+msgstr "Код Шотува"
+
+#: main/models.py:52
+msgid "Product"
+msgstr "Продукт"
+
+#: main/models.py:56
+msgid "Color name"
+msgstr "Название цвета"
+
+#: main/models.py:61
+msgid "Color"
+msgstr "Цвет"
+
+#: main/models.py:64
+msgid "Size"
+msgstr "Размер"
+
+#: main/models.py:68
+msgid "ProductSize"
+msgstr "Размер товара"
+
+#: main/models.py:77
+msgid "Payment"
+msgstr "Оплата"
+
+#: main/models.py:95
+msgid "Order"
+msgstr "Заказ"
+
+#: main/models.py:114
+msgid "OrderItem"
+msgstr "ЗаказатьЭлемент"
+
+#: template/account/login.html:3 template/account/login.html:15
+#: template/account/login.html:35 template/account/login.html:39
+#: template/base.html:186
+msgid "Tizimga kirish"
+msgstr "Авторизоваться"
+
+#: template/account/login.html:17 template/account/register.html:17
+#: template/base.html:177 template/main/cart.html:18
+#: template/main/checkout.html:16 template/main/click.html:16
+#: template/main/contact.html:16 template/main/detaile.html:16
+#: template/main/payment.html:16 template/main/product.html:16
+msgid "Bosh sahifa"
+msgstr "Домашняя страница"
+
+#: template/account/login.html:18 template/account/register.html:18
+msgid "Hisob"
+msgstr "Счет"
+
+#: template/account/register.html:3 template/account/register.html:15
+#: template/base.html:185
+msgid "Ro'yxatdan o'tish"
+msgstr "Зарегистрироваться"
+
+#: template/account/register.html:35 template/account/register.html:39
+msgid "Roʻyxatdan oʻtish"
+msgstr "Зарегистрироваться"
+
+#: template/base.html:139
+msgid "XARID SAVATI"
+msgstr "КОРЗИНА"
+
+#: template/base.html:178 template/main/product.html:4
+msgid "Mahsulotlar"
+msgstr "Продукты"
+
+#: template/base.html:180 template/main/contact.html:4
+#: template/main/contact.html:14 template/main/contact.html:17
+msgid "Aloqa"
+msgstr "Контакт"
+
+#: template/base.html:183
+msgid "Chiqish"
+msgstr "Выход"
+
+#: template/base.html:207
+msgid "Asosiy menyu"
+msgstr "Главное меню"
+
+#: template/base.html:209
+msgid "Uy"
+msgstr "Дом"
+
+#: template/base.html:210
+msgid "Mahsulotlarimiz"
+msgstr "Наши продукты"
+
+#: template/base.html:212 template/base.html:233
+msgid "Biz bilan bog'lanish"
+msgstr "связаться с нами"
+
+#: template/base.html:219
+msgid "Kategoriyalar"
+msgstr "Категории"
+
+#: template/base.html:261
+msgid "Tomonidan ishlab chiqilgan"
+msgstr "Разработан"
+
+#: template/main/cart.html:5 template/main/cart.html:19
+msgid "Savat"
+msgstr "Корзина"
+
+#: template/main/cart.html:42 template/main/checkout.html:98
+#: template/main/product.html:17
+msgid "Mahsulot"
+msgstr "Продукт"
+
+#: template/main/cart.html:43
+msgid "Narxi"
+msgstr "Расходы"
+
+#: template/main/cart.html:44
+msgid "Miqdori"
+msgstr "Количество"
+
+#: template/main/cart.html:45 template/main/checkout.html:99
+msgid "Jami narxi"
+msgstr "Общая стоимость"
+
+#: template/main/cart.html:72
+msgid "Barcha mahsulot narxi"
+msgstr "Все цены на товары"
+
+#: template/main/cart.html:75
+msgid "Toʻlov uchun mahsulot"
+msgstr "Продукт для оплаты"
+
+#: template/main/cart.html:81
+msgid "Savatda maʼlumot yoʻq"
+msgstr "В корзине нет товаров"
+
+#: template/main/checkout.html:4 template/main/checkout.html:14
+msgid "Mahsulotni tekshirish"
+msgstr "Проверка продукта"
+
+#: template/main/checkout.html:17
+msgid "Tekshiruv"
+msgstr "Oсмотр"
+
+#: template/main/checkout.html:42
+msgid "Yetkazib berish manzili"
+msgstr "Адрес доставки"
+
+#: template/main/checkout.html:93
+msgid "Buyurtma xulosasi"
+msgstr "Итог заказа"
+
+#: template/main/checkout.html:112
+msgid "Umumiy narx"
+msgstr "Итоговая цена"
+
+#: template/main/checkout.html:118
+msgid "To'lov usuli"
+msgstr "Способ оплаты"
+
+#: template/main/checkout.html:123
+msgid "Buyurtma berish"
+msgstr "Разместить заказ"
+
+#: template/main/click.html:14
+msgid "Click sahifa"
+msgstr "Click на страницу"
+
+#: template/main/click.html:37 template/main/payment.html:38
+msgid "Buyurtma identifikatori"
+msgstr "номер заказа"
+
+#: template/main/click.html:38 template/main/payment.html:39
+msgid "Foydalanuvchi"
+msgstr "Пользователь"
+
+#: template/main/click.html:39 template/main/payment.html:40
+msgid "To'lov miqdori"
+msgstr "К оплате"
+
+#: template/main/click.html:51 template/main/payment.html:52
+msgid "To'lov"
+msgstr "Толов"
+
+#: template/main/contact.html:31
+msgid "Sizga yordam berishni kutamiz"
+msgstr "Мы с нетерпением ждем, чтобы помочь вам"
+
+#: template/main/detaile.html:4
+msgid "Mahsulot | Tafsiloti"
+msgstr "Продукт | Деталь"
+
+#: template/main/detaile.html:17
+msgid "Tafsilot"
+msgstr "Деталь"
+
+#: template/main/detaile.html:81
+msgid "Mavjudligi"
+msgstr "Доступность"
+
+#: template/main/detaile.html:83
+msgid "Sotuv kodi"
+msgstr "Код продажи"
+
+#: template/main/detaile.html:87
+msgid "Rasmeri"
+msgstr "объем"
+
+#: template/main/detaile.html:96
+msgid "Rangi"
+msgstr "Цвет"
+
+#: template/main/detaile.html:107
+msgid "Turkumi"
+msgstr "Turkumi"
+
+#: template/main/detaile.html:111
+msgid "Savatchaga qo'shish"
+msgstr "добавить в корзину"
+
+#: template/main/detaile.html:119
+msgid "Tavsifi"
+msgstr "Описание"
+
+#: template/main/index.html:21
+msgid "HOZIR SOTISH"
+msgstr "ПРОДАЖА СЕЙЧАС"
+
+#: template/main/index.html:48
+msgid "YETKAZIB BERISH BEPUL"
+msgstr "БЕСПЛАТНАЯ ДОСТАВКА"
+
+#: template/main/index.html:56
+msgid "30 KUN PUL QAYTARISH"
+msgstr "ВОЗВРАТ ДЕНЕГ В 30 ДНЕЙ"
+
+#: template/main/index.html:64
+msgid "24/7 QO'LLAB-QUVVATLASH"
+msgstr "24/7 ПОДДЕРЖКА"
+
+#: template/main/payment.html:14
+msgid "Payment sahifa"
+msgstr "Страница оплаты"
+
+#: template/main/search.html:4
+msgid "Qidirmoq"
+msgstr "Поиск"
+
+#: template/main/search.html:36
+msgid "Kechirasiz siz izlagan malumot topilmadi"
+msgstr "Извините, информация, которую вы искали, не найдена"

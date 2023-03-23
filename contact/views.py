@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Contact, Requestforhelp
+from .models import Contact, Requestforhelp, Blog
 from .forms import RequestforhelpForm
 
 # Create your views here.
@@ -19,3 +19,9 @@ def contact(request):
         'form': form
     }
     return render(request, 'main/contact.html', context=context)
+
+
+def blogpage(request):
+    blog = Blog.objects.order_by('-id')
+    context = {'blog': blog}
+    return render(request, 'main/blog.html', context=context)

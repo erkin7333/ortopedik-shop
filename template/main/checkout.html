@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %}Checkout{% endblock %}
+{% block title %}{% trans "Mahsulotni tekshirish" %}{% endblock %}
 
 
 {% block content %}
@@ -10,10 +11,10 @@
     <div class="aa-catg-head-banner-area">
         <div class="container">
             <div class="aa-catg-head-banner-content">
-                <h2>Checkout Page</h2>
+                <h2>{% trans "Mahsulotni tekshirish" %}</h2>
                 <ol class="breadcrumb">
-                    <li><a href="{% url 'main:home' %}">Home</a></li>
-                    <li class="active">Checkout</li>
+                    <li><a href="{% url 'main:home' %}">{% trans "Bosh sahifa" %}</a></li>
+                    <li class="active">{% trans "Tekshiruv" %}</li>
                 </ol>
             </div>
         </div>
@@ -38,9 +39,7 @@
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
                                                     <a data-toggle="collapse" data-parent="#accordion"
-                                                           href="#collapseFour">
-                                                        Yetkazib berish manzili
-                                                    </a>
+                                                           href="#collapseFour">{% trans "Yetkazib berish manzili" %}</a>
                                                 </h4>
                                             </div>
                                             <div id="collapseFour" class="panel-collapse collapse">
@@ -91,13 +90,13 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="checkout-right">
-                                    <h4>Buyurtma xulosasi</h4>
+                                    <h4>{% trans "Buyurtma xulosasi" %}</h4>
                                     <div class="aa-order-summary-area">
                                         <table class="table table-responsive">
                                             <thead>
                                             <tr>
-                                                <th>Product</th>
-                                                <th>Total</th>
+                                                <th>{% trans "Mahsulot" %}</th>
+                                                <th>{% trans "Jami narxi" %}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -110,18 +109,18 @@
                                             </tbody>
                                             <tfoot>
                                             <tr>
-                                                <th>Umumiy narx</th>
+                                                <th>{% trans "Umumiy narx" %}</th>
                                                 <td>{{ cart.get_total_cost }} uzs</td>
                                             </tr>
                                             </tfoot>
                                         </table>
                                     </div>
-                                    <h4>Payment Method</h4>
+                                    <h4>{% trans "To'lov usuli" %}</h4>
                                     <div class="aa-payment-method">
                                         {{ form.payment_type }}
                                         <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"
                                              border="0" alt="PayPal Acceptance Mark">
-                                        <input type="submit" value="Place Order" class="aa-browse-btn">
+                                        <input type="submit" value="{% trans 'Buyurtma berish' %}" class="aa-browse-btn">
                                     </div>
                                 </div>
                             </div>

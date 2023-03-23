@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block title %}Payment{% endblock %}
 
 
@@ -10,9 +11,9 @@
     <div class="aa-catg-head-banner-area">
         <div class="container">
             <div class="aa-catg-head-banner-content">
-                <h2>Checkout Page</h2>
+                <h2>{% trans "Payment sahifa" %}</h2>
                 <ol class="breadcrumb">
-                    <li><a href="{% url 'main:home' %}">Home</a></li>
+                    <li><a href="{% url 'main:home' %}">{% trans "Bosh sahifa" %}</a></li>
                     <li class="active">Payment</li>
                 </ol>
             </div>
@@ -20,25 +21,35 @@
     </div>
 </section>
 
+
 <!-- Cart view section -->
 <section id="cart-view">
     <div class="container">
-        {{ order_paymnet_type.payment_type }}
+
         <div class="row">
             <div class="col-md-12">
                 <div class="cart-view-area">
                     <div class="cart-view-table aa-wishlist-table">
-
-                        <form method="post" action="/your-after-payment-url">
-                            <script src="https://my.click.uz/pay/checkout.js"
-                                    class="uzcard_payment_button"
-                                    data-service-id="MERCHANT_SERVICE_ID"
-                                    data-merchant-id="MERCHANT_ID"
-                                    data-transaction-param="MERCHANT_TRANS_ID"
-                                    data-merchant-user-id="MERCHANT_USER_ID"
-                                    data-amount="MERCHANT_TRANS_AMOUNT"
-                                    data-card-type="MERCHANT_CARD_TYPE"
-                                    data-label="Pay"></script> <!-- Payment button title -->
+                        <form>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>{% trans "Buyurtma identifikatori" %}</th>
+                                        <th>{% trans "Foydalanuvchi" %}</th>
+                                        <th>{% trans "To'lov miqdori" %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ payment_p.id }}</td>
+                                        <td>{{ payment_p.user }}</td>
+                                        <td>{{ payment_p.amount }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <buttom class="btn btn-block btn-primary">{% trans "To'lov" %}</buttom>
                         </form>
                     </div>
                 </div>
@@ -49,48 +60,3 @@
 <!-- / Cart view section -->
 
 {% endblock %}
-
-<script src="https://my.click.uz/pay/checkout.js"/>
-<script>
-window.onload = function() {
-          var linkEl = document.querySelector(".input-btn");
-          linkEl.addEventListener("click", function() {
-                    createPaymentRequest({
-                              service_id: MERCHANT_SERVICE_ID,
-                              merchant_id: MERCHANT_ID,
-                              amount: MERCHANT_TRANS_AMOUNT,
-                              transaction_param: "MERCHANT_TRANS_ID",
-                              merchant_user_id: "MERCHANT_USER_ID",
-                              card_type: "MERCHANT_CARD_TYPE",
-                    }, function(data) {
-                              console.log("closed", data.status);
-                    });
-          });
-};
-</script>
-
-<!--<form action="">-->
-<!--               <div class="table-responsive">-->
-<!--                  <table class="table">-->
-<!--                    <thead>-->
-<!--                      <tr>-->
-<!--                        <th></th>-->
-<!--                        <th></th>-->
-<!--                        <th>Product</th>-->
-<!--                        <th>Price</th>-->
-<!--                        <th>Stock Status</th>-->
-<!--                        <th></th>-->
-<!--                      </tr>-->
-<!--                    </thead>-->
-<!--                    <tbody>-->
-<!--                      <tr>-->
-<!--                        <td><a class="remove" href="#"><fa class="fa fa-close"></fa></a></td>-->
-<!--                        <td><a href="#"><img src="{% static 'img/man/polo-shirt-1.png' %}" alt="img"></a></td>-->
-<!--                        <td><a class="aa-cart-title" href="#">Polo T-Shirt</a></td>-->
-<!--                        <td>$250</td>-->
-<!--                        <td>In Stock</td>-->
-<!--                      </tr>-->
-<!--                      </tbody>-->
-<!--                  </table>-->
-<!--                </div>-->
-<!--             </form>-->

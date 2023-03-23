@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans "Qidirmoq" %}{% endblock %}
+
+{% block content %}
+
+<section id="aa-blog-archive">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="aa-blog-archive-area">
+                <div class="aa-blog-content">
+                    <div class="row">
+                        {% for search in object_list %}
+                        <div class="col-md-4 col-sm-4">
+                            <article class="aa-blog-content-single">
+                                <figure class="aa-blog-img">
+                                    <a href="{% url 'main:p_detail' search.pk %}">
+                                        {% if search.image %}
+                                        <img src="{{ search.image.url }}" style="height: 350px; width: 300px;"
+                                             alt="fashion img">
+                                        {% endif %}
+                                    </a>
+                                </figure>
+                                <div class="aa-article-bottom">
+                                    <div class="aa-post-author">
+                                        <a href="{% url 'main:p_detail' search.pk %}">{{ search.name }}</a>
+                                        <br>
+                                        <span>{{ search.price }} sum</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        {% empty %}
+                        <div class="col-md-4 col-sm-4">
+                            <h2>{% trans "Kechirasiz siz izlagan malumot topilmadi" %}</h2>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <hr/>
+                    {% if page_obj.has_other_pages %}
+                    <div class="aa-blog-archive-pagination">
+                        <nav>
+                            <ul class="pagination">
+                                {% if page_obj.has_previous %}
+                                <li>
+                                    <a aria-label="Previous" href="?page={{ page_obj.previous_page_number  }}">
+                                        <span aria-hidden="true">«</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for p in paginator.page_range %}
+                                {% if page_obj.number == p %}
+                                <li class="active"><a href="">{{ p }}</a></li>
+                                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                                <li>
+                                    <a href="?page={{ p }}">{{ p }}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                <li>
+                                    <a aria-label="Next" href="?page={{ page_obj.next_page_number }}">
+                                        <span aria-hidden="true">»</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

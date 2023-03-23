@@ -339,7 +339,7 @@ img {
 #aa-header .aa-header-top .aa-header-top-left .cellphone p {
   font-size: 14px;
   margin-bottom: 0;
-  padding: 5px 10px;
+  padding: 16px 10px;
 }
 #aa-header .aa-header-top .aa-header-top-left .cellphone p span {
   margin-right: 5px;
@@ -2327,6 +2327,7 @@ img {
   width: 100%;
   padding: 30px;
   min-height: 350px;
+  margin-bottom: 26px;
 }
 #cart-view .cart-view-area .cart-view-table .table {
   border: 1px solid #ddd;
@@ -3052,9 +3053,9 @@ img {
   margin-bottom: 10px;
 }
 .aa-blog-details .aa-blog-comment-threat .comments .commentlist li .news-img {
-  height: 70px;
+  height: 260px;
   margin-right: 10px;
-  width: 70px;
+  width: 280px;
 }
 .aa-blog-details .aa-blog-comment-threat .comments .commentlist li .media-body .author-name {
   margin-bottom: 0px;
@@ -3063,8 +3064,8 @@ img {
 .aa-blog-details .aa-blog-comment-threat .comments .commentlist li .comments-date {
   color: #888;
   display: block;
-  font-size: 14px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 40px;
 }
 .aa-blog-details .aa-blog-comment-threat .comments .commentlist li .reply-btn {
   color: #fff;

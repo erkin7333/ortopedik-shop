@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}Click{% endblock %}
+
+
+{% block content %}
+<!-- catg header banner section -->
+<section id="aa-catg-head-banner">
+    <img src="{% static 'img/fashion/fashion-header-bg-8.jpg' %}" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>{% trans "Click sahifa" %}</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'main:home' %}">{% trans 'Bosh sahifa' %}</a></li>
+                    <li class="active">Click</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Cart view section -->
+<section id="cart-view">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="cart-view-area">
+                    <div class="cart-view-table aa-wishlist-table">
+                        <form action="{{ url }}" method="get">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>{% trans "Buyurtma identifikatori" %}</th>
+                                        <th>{% trans "Foydalanuvchi" %}</th>
+                                        <th>{% trans "To'lov miqdori" %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ click_p.id }}</td>
+                                        <td>{{ click_p.user }}</td>
+                                        <td>{{ click_p.amount}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button typo="submit" class="btn btn-block btn-primary">{% trans "To'lov" %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / Cart view section -->
+
+{% endblock %}

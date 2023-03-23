@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Contact{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Aloqa" %}{% endblock %}
 
 
 {% block content %}
@@ -10,10 +11,10 @@
     <div class="aa-catg-head-banner-area">
         <div class="container">
             <div class="aa-catg-head-banner-content">
-                <h2>Contact</h2>
+                <h2>{% trans "Aloqa" %}</h2>
                 <ol class="breadcrumb">
-                    <li><a href="{% url 'main:home' %}">Uy</a></li>
-                    <li class="active">Aloqa</li>
+                    <li><a href="{% url 'main:home' %}">{% trans "Bosh sahifa" %}</a></li>
+                    <li class="active">{% trans "Aloqa" %}</li>
                 </ol>
             </div>
         </div>
@@ -27,7 +28,7 @@
             <div class="col-md-12">
                 <div class="aa-contact-area">
                     <div class="aa-contact-top">
-                        <h2>Sizga yordam berishni kutamiz..</h2>
+                        <h2>{% trans "Sizga yordam berishni kutamiz" %}..</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, quos.</p>
                     </div>
                     <!-- contact map -->

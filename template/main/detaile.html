@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title %}Product | Detail{% endblock %}
+{% block title %}{% trans "Mahsulot | Tafsiloti" %}{% endblock %}
 
 {% block content %}
 
@@ -12,8 +13,8 @@
             <div class="aa-catg-head-banner-content">
                 <h2>MakonMirzo</h2>
                 <ol class="breadcrumb">
-                    <li><a href="{% url 'main:home' %}">Home</a></li>
-                    <li class="active">Detail</li>
+                    <li><a href="{% url 'main:home' %}">{% trans "Bosh sahifa" %}</a></li>
+                    <li class="active">{% trans "Tafsilot" %}</li>
                 </ol>
             </div>
         </div>
@@ -77,13 +78,13 @@
                                         <h3>{{ detail.name }}</h3>
                                         <div class="aa-price-block">
                                             <span class="aa-product-view-price">{{ detail.price }}.uzs</span>
-                                            <p class="aa-product-avilability">Mavjudligi: <span>{{ detail.p_quantity }}</span>
+                                            <p class="aa-product-avilability">{% trans "Mavjudligi" %}: <span>{{ detail.p_quantity }}</span>
                                             </p>
-                                            <p class="aa-product-avilability">Sotuv kodi:<span>{{ detail.number }}</span></p>
+                                            <p class="aa-product-avilability">{% trans "Sotuv kodi" %}:<span>{{ detail.number }}</span></p>
                                         </div>
                                         <h3>{{ detail.title }}!</h3>
 
-                                        <h4>Size</h4>
+                                        <h4>{% trans "Rasmeri" %}</h4>
                                         <div class="aa-prod-view-size">
                                             <div class="form-checkbox">
                                                 {% for d in detail.size.all %}
@@ -92,7 +93,7 @@
                                                 {% endfor %}
                                             </div>
                                         </div>
-                                        <h4>Color</h4>
+                                        <h4>{% trans "Rangi" %}</h4>
                                         <div class="aa-color-tag">
                                             <div class="form-checkbox" style="display: flex; gap: 2px;">
                                                 {% for sd in detail.color.all %}
@@ -103,12 +104,11 @@
                                             </div>
                                         </div>
                                         <div class="aa-prod-quantity">
-                                            <p class="aa-prod-category">Category:
-                                                <a href="#">{{ detail.categories.name }}</a>
+                                            <p class="aa-prod-category">{% trans "Turkumi" %}:<a href="#">{{ detail.categories.name }}</a>
                                             </p>
                                         </div>
                                         <div class="aa-prod-view-bottom">
-                                            <button type="submit" class="btn btn-primary">Add To Cart</button>
+                                            <button type="submit" class="btn btn-primary">{% trans "Savatchaga qo'shish" %}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="aa-product-details-bottom">
                             <ul class="nav nav-tabs" id="myTab2">
-                                <li><a href="#" data-toggle="tab">Tavsif</a></li>
+                                <li><a href="#" data-toggle="tab">{% trans "Tavsifi" %}</a></li>
                             </ul>
 
                             <!-- Tab panes -->

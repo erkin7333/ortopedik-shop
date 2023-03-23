@@ -21,7 +21,7 @@ admin.site.register(Requestforhelp, RequestforhelpAdmin)
 
 
 class BlogAdmin(TranslatableAdmin):
-    list_display = ('id', 'subject', 'description', 'image')
+    list_display = ('id', 'subject', 'description', 'created_at', 'image')
     list_display_links = ('subject',)
     list_per_page = 5
     search_fields = ('subject',)

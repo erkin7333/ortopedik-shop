@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 
-{% block title %}Add to Cart{% endblock %}
+{% block title %}{% trans "Savat" %}{% endblock %}
 
 
 {% block content %}
@@ -14,8 +15,8 @@
             <div class="aa-catg-head-banner-content">
                 <h2>Cart Page</h2>
                 <ol class="breadcrumb">
-                    <li><a href="{% url 'main:home' %}">Home</a></li>
-                    <li class="active">Cart</li>
+                    <li><a href="{% url 'main:home' %}">{% trans "Bosh sahifa" %}</a></li>
+                    <li class="active">{% trans 'Savat' %}</li>
                 </ol>
             </div>
         </div>
@@ -32,15 +33,16 @@
                     <div class="cart-view-table">
                         <div>
                             <div class="table-responsive">
+                                {% if cart %}
                                 <table class="table">
                                     <thead>
                                     <tr>
                                         <th></th>
                                         <th></th>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
+                                        <th>{% trans "Mahsulot" %}</th>
+                                        <th>{% trans 'Narxi' %}</th>
+                                        <th>{% trans 'Miqdori' %}</th>
+                                        <th>{% trans "Jami narxi" %}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -67,19 +69,17 @@
                                     <tr>
                                         <td colspan="6" class="aa-cart-view-bottom">
                                             <div class="aa-cart-coupon">
-                                                <h1>Subtotal</h1>
+                                                <h1>{% trans "Barcha mahsulot narxi" %}</h1>
                                                 <p><strong>{{ cart.get_total_cost }} uzs</strong></p>
                                             </div>
-                                            <a href="{% url 'main:chekout' %}" class="aa-cart-view-btn">Proced to Checkout</a>
+                                            <a href="{% url 'main:chekout' %}" class="aa-cart-view-btn">{% trans "Toʻlov uchun mahsulot" %}</a>
                                         </td>
                                     </tr>
                                     </tbody>
-<!--                                {% if my_data %}-->
-<!--                                <p>My data: {{ my_data }}</p>-->
-<!--                                {% else %}-->
-<!--                                <p>No data in session</p>-->
-<!--                                {% endif %}-->
                                 </table>
+                                {% else %}
+                                <p>{% trans "Savatda maʼlumot yoʻq" %}</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 import environ
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -19,12 +20,10 @@ env = environ.Env(
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 environ.Env.read_env(os.path.join(BASE_DIR, '.envconfig'))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -40,7 +39,6 @@ ALLOWED_HOSTS = ["*"]
 ACCESS_TOKEN = env('ACCESS_TOKEN')
 X_TOKEN = env("X_TOKEN")
 
-
 CART_SESSION_ID = "cart"
 SESSION_COOKIE_AGE = 86400
 
@@ -54,11 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rosetta',
     'corsheaders',
-    'clickuz',
+    'pyclick',
     'rest_framework',
     'django_crontab',
-    'crontab',
     'parler',
     'crispy_forms',
     'account',
@@ -103,7 +101,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -113,7 +110,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -133,16 +129,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = 'uz-UZ'
 
-LANGUAGES = [
-    ('uz', "UZ"),
-    ('ru', "RU"),
-]
+LANGUAGES = (
+    ('uz', _('Uzbek')),
+    ('ru', _('Russian')),
+)
 
 TIME_ZONE = 'Asia/Tashkent'
 
@@ -150,14 +145,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/assets/static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR / 'static',)
+    os.path.join(BASE_DIR / 'static', )
 ]
 
 AUTH_USER_MODEL = 'account.User'
@@ -179,11 +173,9 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale')
 ]
 
-
 CRONJOBS = [
     ('*/1 * * * *', 'main.cron.cron_job')
 ]
-
 
 PARLER_LANGUAGES = {
     None: (
@@ -197,7 +189,6 @@ PARLER_LANGUAGES = {
 }
 
 PARLER_ENABLE_CACHING = False
-
 
 JAZZMIN_UI_TWEAKS = {
     "navbar_small_text": False,
@@ -287,10 +278,8 @@ JAZZMIN_SETTINGS = {
         {"model": "main.Order"},
         {"model": "contact.Blog"},
 
-
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "books"},
-
 
     ],
 
@@ -416,8 +405,7 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
-
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:2000",
-    "https://0e10-84-54-74-20.in.ngrok.io",
+    " https://b901-84-54-74-20.in.ngrok.io/",
 ]

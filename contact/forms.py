@@ -1,6 +1,6 @@
 from django import forms
 from .models import Requestforhelp
-
+from django.utils.translation import gettext_lazy as _
 
 
 class RequestforhelpForm(forms.ModelForm):
@@ -13,12 +13,12 @@ class RequestforhelpForm(forms.ModelForm):
             'full_name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'text',
-                'placeholder': 'F.I.O'
+                'placeholder': _('F.I.O')
             }),
             'email': forms.EmailInput(attrs={
                 'class': 'form-control',
                 'type': 'email',
-                'placeholder': 'Email'
+                'placeholder': _('Email')
             }),
             'phone': forms.TextInput(attrs={
                 'class': 'form-control',
@@ -28,12 +28,12 @@ class RequestforhelpForm(forms.ModelForm):
             'company': forms.TextInput(attrs={
                 'class': 'form-control',
                 'type': 'text',
-                'placeholder': 'Company'
+                'placeholder': _('Kompaniya')
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
                 'type': 'text',
                 'rows': '3',
-                'placeholder': 'Message'
+                'placeholder': _('Xabar')
             })
         }
