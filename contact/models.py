@@ -17,6 +17,7 @@ class Contact(TranslatableModel):
     location = models.CharField(max_length=1000, verbose_name=_("Joylashuv"))
     address = models.CharField(max_length=400, verbose_name=_("Manzil"))
     phone = models.CharField(max_length=20, verbose_name=_("Telefon raqam"))
+    phone1 = models.CharField(max_length=20, blank=True, null=True, verbose_name=_("Telefon raqam"))
     email = models.CharField(max_length=100, verbose_name=_('Elektron manzil'))
     def __str__(self):
         return f"{self.safe_translation_getter('name')}"

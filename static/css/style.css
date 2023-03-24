@@ -2722,7 +2722,17 @@ img {
   width: 100%;
   float: left;
   margin-bottom: 20px;
+
 }
+
+#aa-blog-archive .aa-blog-archive-area .aa-blog-content .aa-blog-content-single .baa-blog-img {
+  position: relative;
+  width: 40%;
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 50px;
+}
+
 #aa-blog-archive .aa-blog-archive-area .aa-blog-content .aa-blog-content-single .aa-blog-img:hover img {
   opacity: 12;
 }

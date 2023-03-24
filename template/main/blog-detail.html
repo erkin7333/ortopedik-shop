@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Blog" %}{% endblock %}
+
+
+{% block content %}
+
+<section id="aa-blog-archive">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-blog-archive-area">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Blog details -->
+                            <div class="aa-blog-content aa-blog-details">
+                                <div class="aa-blog-comment-threat">
+                                    <div class="comments">
+                                        <article class="aa-blog-content-single">
+                                            <div class="aa-article-bottom">
+                                                <div class="aa-post-date">
+                                                    {{ d_blog.created_at | date:"d-m-Y H:i:s" }}
+                                                </div>
+                                            </div>
+                                            <figure class="baa-blog-img">
+                                                <a href="#"><img src="{{ d_blog.image.url }}"
+                                                                 alt="fashion img" style="width: 100%;"></a>
+                                            </figure>
+                                            <p> {{ d_blog.subject }}</p>
+                                            <br/>
+                                            <ul>
+                                                <li>  {{ d_blog.description }}</li>
+                                            </ul>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

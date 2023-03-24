@@ -7,5 +7,7 @@ app_name = "contact"
 urlpatterns = [
     path('contact/', contact, name='contact'),
 
-    path('blog/', blogpage, name='blog')
+    path('blog/', blogpage, name='blog'),
+
+    path('blogdetail/<int:pk>/', blogdetail, name='blogdetail')
 ]

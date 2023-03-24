@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-23 11:48+0500\n"
-"PO-Revision-Date: 2023-03-23 12:42+0500\n"
+"POT-Creation-Date: 2023-03-24 13:31+0500\n"
+"PO-Revision-Date: 2023-03-24 13:34+0500\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -24,8 +24,8 @@ msgstr ""
 msgid "Foydalanuvchi nomi"
 msgstr "Имя пользователя"
 
-#: account/forms.py:14 account/forms.py:15 contact/models.py:18
-#: contact/models.py:31
+#: account/forms.py:14 account/forms.py:15 contact/models.py:19
+#: contact/models.py:20 contact/models.py:33
 msgid "Telefon raqam"
 msgstr "Номер телефона"
 
@@ -54,11 +54,11 @@ msgstr "Зарегистрирован с этим номером телефон
 msgid "Iltimos parollar bir xilligini tekshiring"
 msgstr "Пожалуйста, убедитесь, что пароли совпадают"
 
-#: config/settings.py:138
+#: config/settings.py:140
 msgid "Uzbek"
 msgstr "Uzbek"
 
-#: config/settings.py:139
+#: config/settings.py:141
 msgid "Russian"
 msgstr "Russian"
 
@@ -68,7 +68,7 @@ msgid ""
 msgstr ""
 "Введенное значение не является номером телефона, проверьте и введите еще раз"
 
-#: contact/forms.py:16 contact/models.py:30
+#: contact/forms.py:16 contact/models.py:32
 msgid "F.I.O"
 msgstr "Ф.И.О."
 
@@ -84,43 +84,44 @@ msgstr "Компания"
 msgid "Xabar"
 msgstr "Сообщение"
 
-#: contact/models.py:13
+#: contact/models.py:14
 msgid "Sayt nomi"
 msgstr "Название сайта"
 
-#: contact/models.py:14
+#: contact/models.py:15
 msgid "Qisqacha malumot"
 msgstr "Краткая информация"
 
-#: contact/models.py:16
+#: contact/models.py:17
 msgid "Joylashuv"
 msgstr "Расположение"
 
-#: contact/models.py:17
+#: contact/models.py:18
 msgid "Manzil"
 msgstr "Адрес"
 
-#: contact/models.py:19 contact/models.py:32
+#: contact/models.py:21 contact/models.py:34
 msgid "Elektron manzil"
 msgstr "Адрес электронной почты"
 
-#: contact/models.py:24
+#: contact/models.py:26
 msgid "Contact"
 msgstr "Контакт"
 
-#: contact/models.py:33 main/forms.py:32
+#: contact/models.py:35 main/forms.py:32
 msgid "Kompaniya nomi"
 msgstr "Название компании"
 
-#: contact/models.py:40
+#: contact/models.py:42
 msgid "Requestforhelp"
 msgstr "Запрос помощи"
 
-#: contact/models.py:47
+#: contact/models.py:54
 msgid "Subject"
 msgstr "Предмет"
 
-#: contact/models.py:55 template/base.html:179
+#: contact/models.py:64 template/base.html:183
+#: template/main/blog-detail.html:5 template/main/blog.html:5
 msgid "Blog"
 msgstr "Блог"
 
@@ -190,12 +191,13 @@ msgstr "ЗаказатьЭлемент"
 
 #: template/account/login.html:3 template/account/login.html:15
 #: template/account/login.html:35 template/account/login.html:39
-#: template/base.html:186
+#: template/base.html:189
 msgid "Tizimga kirish"
 msgstr "Авторизоваться"
 
 #: template/account/login.html:17 template/account/register.html:17
-#: template/base.html:177 template/main/cart.html:18
+#: template/base.html:181 template/main/blog.html:17
+#: template/main/cart.html:18 template/main/category-product.html:14
 #: template/main/checkout.html:16 template/main/click.html:16
 #: template/main/contact.html:16 template/main/detaile.html:16
 #: template/main/payment.html:16 template/main/product.html:16
@@ -207,7 +209,7 @@ msgid "Hisob"
 msgstr "Счет"
 
 #: template/account/register.html:3 template/account/register.html:15
-#: template/base.html:185
+#: template/base.html:188
 msgid "Ro'yxatdan o'tish"
 msgstr "Зарегистрироваться"
 
@@ -215,53 +217,57 @@ msgstr "Зарегистрироваться"
 msgid "Roʻyxatdan oʻtish"
 msgstr "Зарегистрироваться"
 
-#: template/base.html:139
+#: template/base.html:143
 msgid "XARID SAVATI"
 msgstr "КОРЗИНА"
 
-#: template/base.html:178 template/main/product.html:4
+#: template/base.html:182 template/main/product.html:4
 msgid "Mahsulotlar"
 msgstr "Продукты"
 
-#: template/base.html:180 template/main/contact.html:4
+#: template/base.html:184 template/main/contact.html:4
 #: template/main/contact.html:14 template/main/contact.html:17
 msgid "Aloqa"
 msgstr "Контакт"
 
-#: template/base.html:183
+#: template/base.html:186
 msgid "Chiqish"
 msgstr "Выход"
 
-#: template/base.html:207
+#: template/base.html:210
 msgid "Asosiy menyu"
 msgstr "Главное меню"
 
-#: template/base.html:209
+#: template/base.html:212
 msgid "Uy"
 msgstr "Дом"
 
-#: template/base.html:210
+#: template/base.html:213
 msgid "Mahsulotlarimiz"
 msgstr "Наши продукты"
 
-#: template/base.html:212 template/base.html:233
+#: template/base.html:215 template/base.html:236
 msgid "Biz bilan bog'lanish"
 msgstr "связаться с нами"
 
-#: template/base.html:219
+#: template/base.html:222
 msgid "Kategoriyalar"
 msgstr "Категории"
 
-#: template/base.html:261
+#: template/base.html:264
 msgid "Tomonidan ishlab chiqilgan"
 msgstr "Разработан"
+
+#: template/main/blog.html:49
+msgid "Ko'rish"
+msgstr "Видеть"
 
 #: template/main/cart.html:5 template/main/cart.html:19
 msgid "Savat"
 msgstr "Корзина"
 
-#: template/main/cart.html:42 template/main/checkout.html:98
-#: template/main/product.html:17
+#: template/main/cart.html:42 template/main/category-product.html:15
+#: template/main/checkout.html:98 template/main/product.html:17
 msgid "Mahsulot"
 msgstr "Продукт"
 
@@ -288,6 +294,11 @@ msgstr "Продукт для оплаты"
 #: template/main/cart.html:81
 msgid "Savatda maʼlumot yoʻq"
 msgstr "В корзине нет товаров"
+
+#: template/main/category-product.html:4
+#| msgid "Kategoriyalar"
+msgid "Kategoriya"
+msgstr "Категории"
 
 #: template/main/checkout.html:4 template/main/checkout.html:14
 msgid "Mahsulotni tekshirish"
@@ -378,8 +389,9 @@ msgid "Tavsifi"
 msgstr "Описание"
 
 #: template/main/index.html:21
-msgid "HOZIR SOTISH"
-msgstr "ПРОДАЖА СЕЙЧАС"
+#| msgid "HOZIR SOTISH"
+msgid "HOZIR KO'RISH"
+msgstr "СМОТРИ СЕЙЧАС"
 
 #: template/main/index.html:48
 msgid "YETKAZIB BERISH BEPUL"

@@ -9,6 +9,7 @@
     <title>{% block title %}MAKON MIRZO{% endblock %}</title>
 
     <link rel="shortcut icon" href="{% static 'img/логотип.png' %}" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
     <!-- Font awesome -->
@@ -94,17 +95,20 @@
                             <!-- / language -->
                             <!-- start cellphone -->
                             <div class="cellphone hidden-xs">
-                                <p><span class="fa fa-phone"></span>+99897 700-00-00</p>
+                                <p><span class="fa fa-phone"></span>{{ sphone }}</p>
+                            </div>
+                             <div class="cellphone hidden-xs">
+                                <p><span class="fa fa-phone"></span>{{ sphone1 }}</p>
                             </div>
                             <!-- / cellphone -->
                         </div>
                         <!-- / header top left -->
                         <div class="aa-header-top-right">
                             <ul class="aa-head-top-nav-right">
-                                <li><a href="https://www.facebook.com/"><span class="fa fa-facebook"></span></a></li>
-                                <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span></a></li>
-                                <li><a href="https://www.google.com/"><span class="fa fa-google-plus"></span></a></li>
-                                <li><a href="https://www.youtube.com/"><span class="fa fa-youtube"></span></a></li>
+                                <li><a href="https://telegram.org/"><i class="fa fa-telegram"></i></a></li>
+                                <li><a href="https://www.instagram.com/makonmirzo.uz/"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.facebook.com/makonmirzo.uz/"><span class="fa fa-facebook"></span></a></li>
+                                <li><a href="https://www.youtube.com/@makonmirzo5994"><span class="fa fa-youtube"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -137,7 +141,7 @@
                             <a class="aa-cart-link" href="{% url 'main:addtocart' %}">
                                 <span class="fa fa-shopping-basket"></span>
                                 <span class="aa-cart-title">{% trans 'XARID SAVATI' %}</span>
-                                <span class="aa-cart-notify">2</span>
+                                <span class="aa-cart-notify">{{ scount }}</span>
                             </a>
                         </div>
                         <!-- / cart box -->
@@ -178,7 +182,6 @@
                         <li><a href="{% url 'main:product' %}">{% trans 'Mahsulotlar' %}</a></li>
                         <li><a href="{% url 'contact:blog' %}">{% trans 'Blog' %}</a></li>
                         <li><a href="{% url 'contact:contact' %}">{% trans 'Aloqa' %}</a></li>
-                        <li><a href="{% url 'click:uzclick' %}">To'lov</a></li>
                         {% if request.user.is_authenticated %}
                         <li><a href="{% url 'account:logout' %}">{% trans 'Chiqish' %}</a></li>
                         {% else %}
@@ -220,7 +223,7 @@
                                         <ul class="aa-footer-nav">
                                             {% for cat in categories %}
                                             <li>
-                                                <a href="#">{{ cat.name }}</a>
+                                                <a href="{% url 'main:category_product' cat.pk%}">{{ cat.name }}</a>
                                             </li>
                                             {% endfor %}
                                         </ul>
@@ -233,15 +236,15 @@
                                         <h3>{% trans "Biz bilan bog'lanish" %}</h3>
                                         <address>
                                             <p>Toshkent shaxar</p>
-                                            <p><span class="fa fa-phone"></span>+99888 700-00-00</p>
-                                            <p><span class="fa fa-envelope"></span>makonmirzo@gmail.com</p>
+                                            <p><span class="fa fa-phone"></span>{{ sphone }}</p>
+                                            <p><span class="fa fa-phone"></span>{{ sphone1 }}</p>
+                                            <p><span class="fa fa-envelope"></span>makonmirzo@mail.ru</p>
                                         </address>
                                         <div class="aa-footer-social">
-                                            <a href="https://www.facebook.com/"><span class="fa fa-facebook"></span></a>
-                                            <a href="https://twitter.com/"><span class="fa fa-twitter"></span></a>
-                                            <a href="https://www.google.com/"><span
-                                                    class="fa fa-google-plus"></span></a>
-                                            <a href="https://www.youtube.com/"><span class="fa fa-youtube"></span></a>
+                                            <a href="https://www.facebook.com/makonmirzo.uz"><span class="fa fa-facebook"></span></a>
+                                            <a href="https://telegram.org/"><i class="fa fa-telegram"></i></a>
+                                            <a href="https://www.instagram.com/makonmirzo.uz/"><i class="fa fa-instagram"></i></a>
+                                            <a href="https://www.youtube.com/@makonmirzo5994"><span class="fa fa-youtube"></span></a>
                                         </div>
                                     </div>
                                 </div>

@@ -26,6 +26,17 @@ class NewProduct(ListView):
         return Products.objects.filter(p_quantity__gt=0).order_by('-id')
 
 
+class CategoryProductListView(ListView):
+    """Mahsulotlarni kategoriya bo'yicha filter qilish """
+
+    template_name = "main/category-product.html"
+    model = Products
+    context_object_name = 'posts'
+    paginate_by = 3
+    def get_queryset(self):
+        return Products.objects.filter(p_quantity__gt=0, categories_id=self.kwargs['pk'])
+
+
 class ProductListView(ListView):
     """Peoductlarni ko'rish uchun Class based views"""
 
@@ -211,7 +222,7 @@ def checkout(request):
                 return redirect('payment:payme')
             else:
                 print("CCCCCCCCCCCCCCCCCCCCCCCC", order.payment_type.payme_code)
-                return redirect("click:click_p")
+                return redirect("click:uzclick")
 
     else:
         form = OrderModelForm()

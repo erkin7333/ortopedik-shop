@@ -560,6 +560,14 @@
 .fa-facebook-square:before {
   content: "\f082";
 }
+.fa-telegram-square:before {
+  content: "\f082";
+}
+
+.fa-telegram: before {
+  content: "\f167";
+}
+
 .fa-camera-retro:before {
   content: "\f083";
 }

@@ -40,13 +40,13 @@
                                                 <div class="media">
                                                     <div class="media-left">
                                                         <img class="media-object news-img"
-                                                             src="{% static 'img/testimonial-img-3.jpg' %}"
+                                                             src="{{ b.image.url }}"
                                                              alt="img">
                                                     </div>
                                                     <div class="media-body">
                                                         <span class="comments-date">{{ b.created_at | date:"d-m-Y H:i:s" }}</span>
                                                         <p>{{ b.subject|linebreaks|truncatewords:15 }}</p>
-                                                        <a href="#" class="reply-btn">Reply</a>
+                                                        <a href="{% url 'contact:blogdetail' b.pk %}" class="reply-btn">{% trans "Ko'rish" %}</a>
                                                     </div>
                                                 </div>
                                             </li>
@@ -66,60 +66,3 @@
 
 {% endblock %}
 
-
-<!--<article class="aa-blog-content-single">-->
-<!--    <h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
-<!--        Exercitationem, praesentium?</a></h2>-->
-<!--    <div class="aa-article-bottom">-->
-<!--        <div class="aa-post-author">-->
-<!--            Posted By <a href="#">Jackson</a>-->
-<!--        </div>-->
-<!--        <div class="aa-post-date">-->
-<!--            March 26th 2016-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <figure class="aa-blog-img">-->
-<!--        <a href="#"><img src="{% static 'img/fashion/3.jpg' %}" alt="fashion img"></a>-->
-<!--    </figure>-->
-<!--    <p class="aa-blog-img">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates voluptatum-->
-<!--        accusamus dolorum ipsam adipisci laudantium laborum ipsa excepturi soluta,-->
-<!--        dolore similique, velit id, rerum repudiandae enim modi! Quo, debitis, in.</p>-->
-<!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, laudantium-->
-<!--        error nisi, fuga odio sint dignissimos similique maiores nihil amet, impedit-->
-<!--        atque saepe distinctio, in repudiandae quia. Hic numquam laborum, aliquam-->
-<!--        eligendi quo inventore aperiam quae error commodi voluptatum dolorum tempore,-->
-<!--        atque, ratione molestiae, nostrum perferendis. Similique voluptatum error-->
-<!--        quaerat?</p>-->
-<!--    <blockquote>-->
-<!--        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum facere tempora-->
-<!--        rerum qui illum, repellat adipisci ad suscipit, quis accusamus commodi nemo-->
-<!--        deserunt optio nobis fugit cumque, delectus repellendus quo.-->
-<!--    </blockquote>-->
-<!--    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor omnis ipsam, nisi-->
-<!--        voluptate reprehenderit consectetur, illum possimus asperiores. Sed ad natus-->
-<!--        saepe, distinctio veniam? Error natus, dolore rem beatae, dolorum, aliquid-->
-<!--        sapiente ipsa voluptatum impedit vel maiores nobis totam! Ad dicta obcaecati-->
-<!--        dolore natus deleniti qui, hic animi, nobis cumque fuga non sapiente neque-->
-<!--        voluptatum nisi perspiciatis, molestiae vero distinctio officia, laboriosam.-->
-<!--        Veritatis assumenda nam est fuga rem asperiores repellat veniam magnam,-->
-<!--        molestias iusto quas facilis, et eaque. Est magni voluptas quibusdam saepe quis-->
-<!--        laudantium atque maxime itaque optio ipsam qui voluptates beatae, perspiciatis-->
-<!--        fugiat tempora maiores, odio, sed non!</p>-->
-<!--    <ul>-->
-<!--        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum deserunt-->
-<!--            earum qui nobis veritatis! Reprehenderit.-->
-<!--        </li>-->
-<!--        <li>Rerum nesciunt laboriosam, excepturi, officiis, delectus cum facere aperiam-->
-<!--            aliquam numquam, modi amet asperiores repudiandae!-->
-<!--        </li>-->
-<!--        <li>Dicta recusandae eveniet ducimus rerum, maxime provident suscipit cupiditate-->
-<!--            natus at necessitatibus, consequuntur iste magnam.-->
-<!--        </li>-->
-<!--        <li>Voluptate sunt tempora culpa et veritatis ex quo non tenetur similique-->
-<!--            blanditiis! Debitis, assumenda, provident.-->
-<!--        </li>-->
-<!--        <li>Eligendi sunt ratione praesentium, tempore esse, iure ut dolor consequuntur-->
-<!--            eum ducimus commodi sequi beatae.-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</article>-->
