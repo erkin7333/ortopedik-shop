@@ -411,5 +411,5 @@ CORS_ALLOW_HEADERS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:2000",
-    " https://b901-84-54-74-20.in.ngrok.io/",
+    "https://b901-84-54-74-20.in.ngrok.io/",
 ]

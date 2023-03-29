@@ -86,7 +86,11 @@
                                         {% for language in languages %}
                                         <option class="text-white" value="{{ language.code }}"
                                                 {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                                            {{ language.name_local }}
+                                           {% if language.code == 'uz' %}
+                                                <h5 style="font-size: 50px;">🇺🇿</h5>
+                                            {% elif language.code == 'ru' %}
+                                                <h5 style="font-size: 50px;">🇷🇺</h5>
+                                            {% endif %}
                                         </option>
                                         {% endfor %}
                                     </select>
@@ -102,63 +106,17 @@
                             </div>
                             <!-- / cellphone -->
                         </div>
-                        <!-- / header top left -->
-                        <div class="aa-header-top-right">
-                            <ul class="aa-head-top-nav-right">
-                                <li><a href="https://telegram.org/"><i class="fa fa-telegram"></i></a></li>
-                                <li><a href="https://www.instagram.com/makonmirzo.uz/"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="https://www.facebook.com/makonmirzo.uz/"><span class="fa fa-facebook"></span></a></li>
-                                <li><a href="https://www.youtube.com/@makonmirzo5994"><span class="fa fa-youtube"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- / header top  -->
-
-    <!-- start header bottom  -->
-    <div class="aa-header-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="aa-header-bottom-area">
-                        <!-- logo  -->
-                        <div class="aa-logo">
-                            <!-- Text based logo -->
-                            <a href="{% url 'main:home' %}">
-                                <span class="fa fa-shopping-cart"></span>
-                                <p><img src="{% static 'img/логотип.png' %}" style="height: 60px; width: 120px;" alt="">
-                                </p>
-                            </a>
-                            <!-- img based logo -->
-                            <!-- <a href="index.html"><img src="img/logo.jpg" alt="logo img"></a> -->
-                        </div>
-                        <!-- / logo  -->
-                        <!-- cart box -->
-                        <div class="aa-cartbox">
-                            <a class="aa-cart-link" href="{% url 'main:addtocart' %}">
-                                <span class="fa fa-shopping-basket"></span>
-                                <span class="aa-cart-title">{% trans 'XARID SAVATI' %}</span>
-                                <span class="aa-cart-notify">{{ scount }}</span>
-                            </a>
-                        </div>
-                        <!-- / cart box -->
-                        <!-- search box -->
                         <div class="aa-search-box">
-                            <form class="aa-erkin" action="{% url 'main:search' %}" method="get">
+                            <form action="{% url 'main:search' %}" method="get">
                                 <input type="text" name="query" placeholder="Search">
                                 <button type="submit"><span class="fa fa-search"></span></button>
                             </form>
                         </div>
-                        <!-- / search box -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- / header bottom  -->
 </header>
 <!-- / header section -->
 <!-- menu -->
@@ -178,18 +136,44 @@
                 <div class="navbar-collapse collapse">
                     <!-- Left nav -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{% url 'main:home' %}">{% trans 'Bosh sahifa' %}</a></li>
-                        <li><a href="{% url 'main:product' %}">{% trans 'Mahsulotlar' %}</a></li>
-                        <li><a href="{% url 'contact:blog' %}">{% trans 'Blog' %}</a></li>
-                        <li><a href="{% url 'contact:contact' %}">{% trans 'Aloqa' %}</a></li>
+                        <li>
+                            <img src="{% static 'img/логотип.png' %}" style="height: 50px; width: 100px;" alt="">
+                        </li>
+                        <li>
+                            <a class="aa-nav-nav" href="{% url 'main:home' %}">{% trans 'Bosh sahifa' %}</a>
+                        </li>
+                        <li>
+                            <a class="aa-nav-nav" href="{% url 'main:product' %}">{% trans 'Mahsulotlar' %}</a>
+                        </li>
+                        <li>
+                            <a class="aa-nav-nav" href="{% url 'contact:blog' %}">{% trans 'Blog' %}</a>
+                        </li>
+                        <li class="ml-auto">
+                            <a class="aa-nav-nav" href="{% url 'contact:contact' %}">{% trans 'Aloqa' %}</a>
+                        </li>
                         {% if request.user.is_authenticated %}
-                        <li><a href="{% url 'account:logout' %}">{% trans 'Chiqish' %}</a></li>
+                        <li class="ml-auto">
+                            <a class="aa-nav-nav" href="{% url 'account:logout' %}">{% trans 'Chiqish' %}</a>
+                        </li>
+                        <li class="my-basket-nav">
+                            <a class="aa-cartbox" href="#">
+                                <h class="aa-cart-link">
+                                    {% if scount == 0 %}
+                                    {% else %}
+                                    <span class="aa-cart-notify">{{ scount }}</span>
+                                    {% endif %}
+                                    <span class="fa fa-shopping-cart"></span>
+
+                                </h>
+                            </a>
+                        </li>
                         {% else %}
-                        <li><a href="{% url 'account:register' %}">{% trans "Ro'yxatdan o'tish" %}</a></li>
-                        <li><a href="{% url 'account:login' %}">{% trans 'Tizimga kirish' %}</a></li>
+                        <li><a class="aa-nav-nav" href="{% url 'account:register' %}">{% trans "Ro'yxatdan o'tish" %}</a></li>
+                        <li><a class="aa-nav-nav" href="{% url 'account:login' %}">{% trans 'Tizimga kirish' %}</a></li>
                         {% endif %}
                     </ul>
-                </div><!--/.nav-collapse -->
+                </div>
+                <!--/.nav-collapse -->
             </div>
         </div>
     </div>

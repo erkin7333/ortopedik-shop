@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-24 13:31+0500\n"
-"PO-Revision-Date: 2023-03-24 13:34+0500\n"
+"POT-Creation-Date: 2023-03-28 14:29+0500\n"
+"PO-Revision-Date: 2023-03-28 14:29+0500\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -120,7 +120,7 @@ msgstr "Запрос помощи"
 msgid "Subject"
 msgstr "Предмет"
 
-#: contact/models.py:64 template/base.html:183
+#: contact/models.py:64 template/base.html:185
 #: template/main/blog-detail.html:5 template/main/blog.html:5
 msgid "Blog"
 msgstr "Блог"
@@ -191,12 +191,12 @@ msgstr "ЗаказатьЭлемент"
 
 #: template/account/login.html:3 template/account/login.html:15
 #: template/account/login.html:35 template/account/login.html:39
-#: template/base.html:189
+#: template/base.html:208
 msgid "Tizimga kirish"
 msgstr "Авторизоваться"
 
 #: template/account/login.html:17 template/account/register.html:17
-#: template/base.html:181 template/main/blog.html:17
+#: template/base.html:179 template/main/blog.html:17
 #: template/main/cart.html:18 template/main/category-product.html:14
 #: template/main/checkout.html:16 template/main/click.html:16
 #: template/main/contact.html:16 template/main/detaile.html:16
@@ -209,7 +209,7 @@ msgid "Hisob"
 msgstr "Счет"
 
 #: template/account/register.html:3 template/account/register.html:15
-#: template/base.html:188
+#: template/base.html:207
 msgid "Ro'yxatdan o'tish"
 msgstr "Зарегистрироваться"
 
@@ -217,7 +217,7 @@ msgstr "Зарегистрироваться"
 msgid "Roʻyxatdan oʻtish"
 msgstr "Зарегистрироваться"
 
-#: template/base.html:143
+#: template/base.html:137
 msgid "XARID SAVATI"
 msgstr "КОРЗИНА"
 
@@ -225,36 +225,36 @@ msgstr "КОРЗИНА"
 msgid "Mahsulotlar"
 msgstr "Продукты"
 
-#: template/base.html:184 template/main/contact.html:4
+#: template/base.html:188 template/main/contact.html:4
 #: template/main/contact.html:14 template/main/contact.html:17
 msgid "Aloqa"
 msgstr "Контакт"
 
-#: template/base.html:186
+#: template/base.html:192
 msgid "Chiqish"
 msgstr "Выход"
 
-#: template/base.html:210
+#: template/base.html:230
 msgid "Asosiy menyu"
 msgstr "Главное меню"
 
-#: template/base.html:212
+#: template/base.html:232
 msgid "Uy"
 msgstr "Дом"
 
-#: template/base.html:213
+#: template/base.html:233
 msgid "Mahsulotlarimiz"
 msgstr "Наши продукты"
 
-#: template/base.html:215 template/base.html:236
+#: template/base.html:235 template/base.html:256
 msgid "Biz bilan bog'lanish"
 msgstr "связаться с нами"
 
-#: template/base.html:222
+#: template/base.html:242
 msgid "Kategoriyalar"
 msgstr "Категории"
 
-#: template/base.html:264
+#: template/base.html:284
 msgid "Tomonidan ishlab chiqilgan"
 msgstr "Разработан"
 
@@ -296,7 +296,6 @@ msgid "Savatda maʼlumot yoʻq"
 msgstr "В корзине нет товаров"
 
 #: template/main/category-product.html:4
-#| msgid "Kategoriyalar"
 msgid "Kategoriya"
 msgstr "Категории"
 
@@ -389,7 +388,6 @@ msgid "Tavsifi"
 msgstr "Описание"
 
 #: template/main/index.html:21
-#| msgid "HOZIR SOTISH"
 msgid "HOZIR KO'RISH"
 msgstr "СМОТРИ СЕЙЧАС"
 
@@ -416,3 +414,9 @@ msgstr "Поиск"
 #: template/main/search.html:36
 msgid "Kechirasiz siz izlagan malumot topilmadi"
 msgstr "Извините, информация, которую вы искали, не найдена"
+
+#~ msgid "🇺🇿"
+#~ msgstr "🇺🇿"
+
+#~ msgid "🇷🇺"
+#~ msgstr "🇷🇺"

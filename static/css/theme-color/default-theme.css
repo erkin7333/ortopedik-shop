@@ -42,8 +42,8 @@ h2 {
 #aa-header .aa-header-bottom .aa-header-bottom-area .aa-logo a strong {
   color: hsl(207deg 77% 40%);
 }
-#aa-header .aa-header-bottom .aa-header-bottom-area .aa-search-box button {
-  background-color: hsl(207deg 77% 40%);
+#aa-header .aa-header-top .aa-header-top-area .aa-search-box button {
+  background-color: #4698db;
 }
 #aa-header .aa-header-bottom .aa-cartbox .aa-cart-link {
   color: hsl(207deg 77% 40%);
@@ -59,7 +59,7 @@ h2 {
   border-color: #ff6666;
 }
 #menu {
-  background-color: hsl(207deg 77% 40%);
+  background-color: #4698db;
 }
 #menu .menu-area .navbar-default .navbar-nav .open a {
   color: #ff6666;
@@ -252,7 +252,7 @@ h2 {
   background-color: #b54592;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-archive-pagination .pagination .active a {
-  background-color: #176eb5;
+  background-color: #4698db;
 }
 .aa-blog-details h2 a:hover, .aa-blog-details h2 a:focus {
   color: #ff6666;
