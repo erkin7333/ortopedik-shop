@@ -9,7 +9,7 @@ admin.site.register(ProductSize)
 
 
 class CategoryAdmin(TranslatableAdmin):
-    list_display = ('id', 'name', 'image')
+    list_display = ('id', 'name', 'image_uz', 'image_ru')
     list_display_links = ('name',)
 
 admin.site.register(Category, CategoryAdmin)

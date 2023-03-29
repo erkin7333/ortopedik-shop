@@ -11,7 +11,8 @@ class Category(TranslatableModel):
     translations = TranslatedFields(
         name=models.CharField(_("Name"), max_length=100, db_index=True)
     )
-    image = models.ImageField(upload_to='category/', blank=True, null=True)
+    image_uz = models.ImageField(upload_to='category/', blank=True, null=True)
+    image_ru = models.ImageField(upload_to='category/', blank=True, null=True)
 
     def __str__(self):
         return f"{self.safe_translation_getter('name')}"

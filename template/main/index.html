@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
 {% load static %}
 
 
@@ -13,8 +15,13 @@
                 <ul class="seq-canvas">
                     {% for carusel in categories %}
                     <li>
+
                         <div class="seq-model">
-                            <img data-seq src="{{ carusel.image.url }}"/>
+                            {% if LANGUAGE_CODE == 'uz' %}
+                                <img data-seq src="{{ carusel.image_uz.url }}"/>
+                            {% elif LANGUAGE_CODE == 'ru' %}
+                                <img data-seq src="{{ carusel.image_ru.url }}"/>
+                            {% endif %}
                         </div>
                         <div class="seq-title">
                             <h2 data-seq>{{ carusel.name }}</h2>
