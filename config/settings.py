@@ -153,10 +153,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/assets/static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR / 'static', )
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR / 'static', )
+# ]
 
 AUTH_USER_MODEL = 'account.User'
 
@@ -311,7 +311,7 @@ JAZZMIN_SETTINGS = {
     "hide_apps": [],
 
     # Hide these models when generating side menu (e.g auth.user)
-    "hide_models": ["main.Category", "contact.Blog", "main:Order", "main:Products"],
+    "hide_models": ["main.Category", "contact.Blog", "main.Order", "main.Products"],
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
     "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
@@ -332,9 +332,11 @@ JAZZMIN_SETTINGS = {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users",
+        "admin.LogEntry": "fas fa-file",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
+    # "default_icon_children": "fas fa-arrow-circle-right",
     "default_icon_children": "fas fa-circle",
 
     #################

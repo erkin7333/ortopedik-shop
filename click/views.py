@@ -9,7 +9,7 @@ class CreateClickOrderView(CreateAPIView):
 
     def get(self, request, *args, **kwargs):
         order = ClickOrder.objects.filter(user=request.user).last()
-        return_url = 'http://127.0.0.1:8000/'
+        return_url = 'https://makonmirzo.uz/'
         url = PyClick.generate_url(order_id=order.id, amount=str(order.amount), return_url=return_url)
         print("CLICK===============", url)
         return redirect(url)

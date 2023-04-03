@@ -51,7 +51,3 @@ def cron_job():
                 product.number = data_number[i]
                 product.p_quantity = qtyOnHand_list[i]
                 product.save()
-
-
-# path('django_crontab/', include('crontab.urls'))
-

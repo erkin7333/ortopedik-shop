@@ -653,7 +653,6 @@ img {
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-  font-weight: 700;
 }
 
 #menu .menu-area .navbar-default .aa-nav-nav {
@@ -2144,23 +2143,7 @@ img {
   padding: 5px 10px;
   transition: all 0.5s ease 0s;
 }
-#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity {
-  margin-top: 10px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity form {
-  display: inline-block;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity form select {
-  height: 25px;
-  width: 40px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity .aa-prod-category {
-  display: inline-block;
-  margin-left: 15px;
-}
-#aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-quantity .aa-prod-category a {
-  font-size: 20px;
-}
+
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-prod-view-bottom {
   border-top: 1px solid #ddd;
   margin-top: 10px;
@@ -2171,10 +2154,16 @@ img {
 }
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-color-tag a  {
   display: inline-block;
-  height: 20px;
-  width: 30px;
+  height: 30px;
+  width: 40px;
   align-items: center;
 }
+
+@media (max-width: 322px) {
+        #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-color-tag {
+            padding-left: 110px !important;
+        }
+    }
 
 
 #aa-product-details .aa-product-details-area .aa-product-details-content .aa-product-view-content .aa-color-tag .aa-color-green {
@@ -2729,6 +2718,7 @@ img {
   width: 100%;
   float: left;
   margin-bottom: 20px;
+  margin-left: 20px;
 
 }
 
@@ -2758,6 +2748,7 @@ img {
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-content .aa-blog-content-single .aa-article-bottom .aa-post-author {
   font-size: 25px;
+  margin-left: 20px;
 }
 #aa-blog-archive .aa-blog-archive-area .aa-blog-content .aa-blog-content-single .aa-article-bottom .aa-post-date {
   font-size: 12px;
