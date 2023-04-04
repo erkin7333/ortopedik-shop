@@ -15,7 +15,10 @@ urlpatterns = i18n_patterns(
 
     # path('django_crontab/', include('crontab.urls'))
 
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
         path('rosetta/', include('rosetta.urls'))
