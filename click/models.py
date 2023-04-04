@@ -16,7 +16,6 @@ class TRANSACTIONSTATUS(models.TextChoices):
 class ClickOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(decimal_places=2, max_digits=12)
-    transaction_external_id = models.CharField(max_length=30, blank=True, null=True)
     is_verified = models.BooleanField(default=False)
     is_paid = models.BooleanField(default=False)
     is_canceled = models.BooleanField(default=False)

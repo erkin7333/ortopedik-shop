@@ -16,7 +16,6 @@ urlpatterns = i18n_patterns(
     # path('django_crontab/', include('crontab.urls'))
 
 )
-
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
         path('rosetta/', include('rosetta.urls'))
