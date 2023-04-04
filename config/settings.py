@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rosetta',
     'corsheaders',
-    'pyclick',
+    'clickuz',
     'rest_framework',
     'django_crontab',
     'parler',
@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'click',
     'crispy_bootstrap4'
 ]
+
+CLICK_PRICE_HELPER = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -154,6 +156,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 AUTH_USER_MODEL = 'account.User'
 
