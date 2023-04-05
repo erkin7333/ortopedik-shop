@@ -1,10 +1,15 @@
 from rest_framework import serializers
 
-from .models import TRANSACTIONTYPECHOICES
 
-
-class InitializePaymentSerializer(serializers.Serializer):
-    transaction_type = serializers.ChoiceField(
-        choices=TRANSACTIONTYPECHOICES.choices,
-    )
-    price = serializers.DecimalField(max_digits=20, decimal_places=2)
+class ClickTransactionSerializer(serializers.Serializer):
+    click_trans_id = serializers.CharField(allow_blank=True)
+    service_id = serializers.CharField(allow_blank=True)
+    merchant_trans_id = serializers.CharField(allow_blank=True)
+    merchant_prepare_id = serializers.CharField(allow_blank=True, required=False, allow_null=True)
+    amount = serializers.CharField(allow_blank=True)
+    action = serializers.CharField(allow_blank=True)
+    error = serializers.CharField(allow_blank=True)
+    error_note = serializers.CharField(allow_blank=True)
+    sign_time = serializers.CharField()
+    sign_string = serializers.CharField(allow_blank=True)
+    click_paydoc_id = serializers.CharField(allow_blank=True)

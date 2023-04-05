@@ -222,7 +222,7 @@ def checkout(request):
                 return redirect('payment:payme')
             else:
                 print("CCCCCCCCCCCCCCCCCCCCCCCC", order.payment_type.payme_code)
-                return redirect("click:initialize_payment")
+                return redirect("click:clicktransaction")
 
     else:
         form = OrderModelForm()

@@ -1,47 +1,42 @@
 from django.db import models
 from account.models import User
-
-
-class TRANSACTIONTYPECHOICES(models.TextChoices):
-    CLICK = "click"
-
-
-class TRANSACTIONSTATUS(models.TextChoices):
-    NEW = "new"
-    VERIFIED = "verified"
-    PAID = "paid"
-    CANCELED = "canceled"
+from django.utils.translation import gettext_lazy as _
 
 
 class ClickOrder(models.Model):
+    """ Класс ClickTransaction """
+    PROCESSING = 'processing'
+    WAITING = "waiting"
+    CONFIRMED = 'confirmed'
+    CANCELED = 'canceled'
+    ERROR = 'error'
+
+    STATUS = (
+        (WAITING, WAITING),
+        (PROCESSING, PROCESSING),
+        (CONFIRMED, CONFIRMED),
+        (CANCELED, CANCELED),
+        (ERROR, ERROR)
+    )
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    amount = models.DecimalField(decimal_places=2, max_digits=12)
-    is_verified = models.BooleanField(default=False)
-    is_paid = models.BooleanField(default=False)
-    is_canceled = models.BooleanField(default=False)
-    transaction_type = models.CharField(max_length=10, choices=TRANSACTIONTYPECHOICES.choices,)
-    status = models.CharField(max_length=10, choices=TRANSACTIONSTATUS.choices, default=TRANSACTIONSTATUS.NEW)
-    comment = models.TextField(blank=True)
+    amount = models.DecimalField(verbose_name=_("To'lov miqdori (so'mda)"), max_digits=9, decimal_places=2,
+                                 default="0.0")
+    click_paydoc_id = models.CharField(verbose_name=_("CLICK tizimidagi to'lov raqami"), max_length=255, blank=True)
+    action = models.CharField(verbose_name=_("Qabul qilinadigan chora"), max_length=255, blank=True, null=True)
+    status = models.CharField(verbose_name=_("Holat"), max_length=25, choices=STATUS, default=WAITING)
     created_at = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    extra_data = models.TextField(blank=True, default="")
+    message = models.TextField(blank=True, default="")
 
     def __str__(self):
-        return str(self.amount)
-    class Meta:
-        verbose_name = "ClickOrder"
-        verbose_name_plural = "ClickOrders"
+        return self.click_paydoc_id
 
-    def verify(self):
-        self.status = TRANSACTIONSTATUS.VERIFIED
-        self.is_verified = True
-        self.save()
-
-    def make_payment(self):
-        self.status = TRANSACTIONSTATUS.PAID
-        self.is_paid = True
-        self.save()
-
-    def cancel(self):
-        self.status = TRANSACTIONSTATUS.CANCELED
-        self.is_canceled = True
-        self.is_paid = False
-        self.save()
+    def change_status(self, status: str, message=""):
+        """
+        To'lov holatini yangilaydi
+        """
+        self.status = status
+        self.message = message
+        self.save(update_fields=["status", "message"])
