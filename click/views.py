@@ -1,49 +1,43 @@
-from django.http import JsonResponse
-from django.shortcuts import redirect
-from rest_framework.generics import CreateAPIView
+from rest_framework import status
+from rest_framework.response import Response
 from rest_framework.views import APIView
+from clickuz.views import ClickUzMerchantAPIView
+from clickuz import ClickUz
+from django.conf import settings
+from .helper import CheckClickTransaction
+from .service import initialize_transaction
+from .models import TRANSACTIONTYPECHOICES
 from . import serializers
-from .methods_merchant_api import Services
-from .models import ClickOrder
-from .status import (ORDER_FOUND, INVALID_AMOUNT, ORDER_NOT_FOUND)
-from .utils import PyClickMerchantAPIView
+from rest_framework import permissions
+
+converter_amount_click = settings.CLICK_PRICE_HELPER
 
 
-class CreateClickTransactionView(CreateAPIView):
+class InitializePaymentAPIView(APIView):
+    serializer_class = serializers.InitializePaymentSerializer
+    permissions = [permissions.AllowAny]
 
-    def get(self, request, *args, **kwargs):
-        order = ClickOrder.objects.filter(user=request.user).last()
-        return_url = 'https://makonmirzo.uz/'
-        url = PyClickMerchantAPIView.generate_url(order_id=order.id, amount=str(order.amount), return_url=return_url)
-        print("CLICK===============", url)
-        return redirect(url)
+    def post(self, request):
+        data = self.serializer_class(data=request.data)
+        data.is_valid(raise_exception=True)
 
+        transaction_type = data.validated_data.get("transaction_type")
+        amount = data.validated_data.get("amount")
 
-class TransactionCheck(PyClickMerchantAPIView):
-    @classmethod
-    def check_order(cls, order_id: str, amount: str):
-        if order_id:
-            try:
-                order = ClickOrder.objects.get(id=order_id)
-                if int(amount) == order.amount:
-                    return ORDER_FOUND
-                else:
-                    return INVALID_AMOUNT
-            except ClickOrder.DoesNotExist:
-                return ORDER_NOT_FOUND
-
-    @classmethod
-    def successfully_payment(cls, transaction: ClickOrder):
-        """ Эта функция вызывается после успешной оплаты """
-        pass
+        transaction_type = initialize_transaction(request.user, amount, transaction_type)
+        generated_link = ""
+        if transaction_type == TRANSACTIONTYPECHOICES.CLICK:
+            amount = amount * converter_amount_click
+            generated_link = ClickUz.generate_url(order_id=transaction_type, amount=amount)
+        return Response(status=status.HTTP_200_OK,  data={"generated_link": generated_link})
 
 
-class ClickTransactionTestView(PyClickMerchantAPIView):
-    VALIDATE_CLASS = TransactionCheck
+initialize_payment_api_view = InitializePaymentAPIView.as_view()
 
 
-class ClickMerchantServiceView(APIView):
-    def post(self, request, service_type, *args, **kwargs):
-        service = Services(request.POST, service_type)
-        response = service.api()
-        return JsonResponse(response)
+class AcceptClickRequestsView(ClickUzMerchantAPIView):
+    VALIDATE_CLASS = CheckClickTransaction
+
+
+accept_click_request_view = AcceptClickRequestsView.as_view()
+

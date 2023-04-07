@@ -4,7 +4,6 @@ from .views import *
 app_name = "click"
 
 urlpatterns = [
-    path('process/click/transaction/create/', CreateClickTransactionView.as_view(), name="clicktransaction"),
-    path('process/click/transaction/', ClickTransactionTestView.as_view()),
-    path('process/click/service/<service_type>', ClickMerchantServiceView.as_view())
+    path('initialize_payment/', initialize_payment_api_view, name='initialize_payment'), # Complete URL (Адрес результата) ga qo'yasiz.
+    path('integration_with_click/', accept_click_request_view, name='integration_with_click') # Prepare URL (Адрес проверки) ga qo'yasiz.
 ]

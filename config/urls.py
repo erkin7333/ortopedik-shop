@@ -12,7 +12,6 @@ urlpatterns = i18n_patterns(
     path('contact', include('contact.urls')),
     path('payment/', include('payment.urls')),
     path('click/', include('click.urls')),
-    path('payments/', include('payments.urls'))
 
     # path('django_crontab/', include('crontab.urls'))
 

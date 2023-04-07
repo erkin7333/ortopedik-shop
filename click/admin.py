@@ -2,10 +2,13 @@ from django.contrib import admin
 from .models import ClickOrder
 
 
-@admin.register(ClickOrder)
-class ClickTransactionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'click_paydoc_id', 'amount', 'status',)
-    list_display_links = ('id', 'amount')
-    list_filter = ('status',)
-    search_fields = ['status', 'id', 'click_paydoc_id']
-    save_on_top = True
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = ("id", "user", "transaction_type", "status",
+                    "is_paid", "is_verified", "is_canceled")
+    list_display_links = ("id",)
+    list_filter = ("user", "status", "transaction_type", "is_paid", "is_verified", "is_canceled")
+    search_fields = ["user__first_name", ]
+    list_editable = ("is_paid", "transaction_type", "status")
+
+
+admin.site.register(ClickOrder, TransactionAdmin)
