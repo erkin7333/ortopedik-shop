@@ -15,7 +15,7 @@ converter_amount_click = settings.CLICK_PRICE_HELPER
 
 class InitializePaymentAPIView(APIView):
     serializer_class = serializers.InitializePaymentSerializer
-    permissions = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         data = self.serializer_class(data=request.data)
@@ -24,12 +24,22 @@ class InitializePaymentAPIView(APIView):
         transaction_type = data.validated_data.get("transaction_type")
         amount = data.validated_data.get("amount")
 
-        transaction_type = initialize_transaction(request.user, amount, transaction_type)
+        transaction_id = initialize_transaction(
+            request.user,
+            amount,
+            transaction_type,
+        )
         generated_link = ""
         if transaction_type == TRANSACTIONTYPECHOICES.CLICK:
-            amount = amount * converter_amount_click
-            generated_link = ClickUz.generate_url(order_id=transaction_type, amount=amount)
-        return Response(status=status.HTTP_200_OK,  data={"generated_link": generated_link})
+            price = amount * converter_amount_click
+            generated_link = ClickUz.generate_url(
+                order_id=transaction_id,
+                amount=price
+            )
+        return Response(
+            status=status.HTTP_200_OK,
+            data={"generated_link": generated_link},
+        )
 
 
 initialize_payment_api_view = InitializePaymentAPIView.as_view()
@@ -40,4 +50,3 @@ class AcceptClickRequestsView(ClickUzMerchantAPIView):
 
 
 accept_click_request_view = AcceptClickRequestsView.as_view()
-
