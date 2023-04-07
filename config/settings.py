@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'clickuz',
     'rest_framework',
-    'payments',
+
     'django_crontab',
     'parler',
     'crispy_forms',
@@ -157,10 +157,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/assets/static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR / 'static', )
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 AUTH_USER_MODEL = 'account.User'
 

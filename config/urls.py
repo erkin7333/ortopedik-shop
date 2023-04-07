@@ -12,12 +12,10 @@ urlpatterns = i18n_patterns(
     path('contact', include('contact.urls')),
     path('payment/', include('payment.urls')),
     path('click/', include('click.urls')),
-    path('payments/', include('payments.urls'))
 
     # path('django_crontab/', include('crontab.urls'))
 
-) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,
-                                                                             document_root=settings.MEDIA_ROOT)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [
