@@ -22,16 +22,16 @@ class InitializePaymentAPIView(APIView):
         data.is_valid(raise_exception=True)
 
         transaction_type = data.validated_data.get("transaction_type")
-        amount = data.validated_data.get("amount")
+        price = data.validated_data.get("price")
 
         transaction_id = initialize_transaction(
             request.user,
-            amount,
+            price,
             transaction_type,
         )
         generated_link = ""
         if transaction_type == TRANSACTIONTYPECHOICES.CLICK:
-            price = amount * converter_amount_click
+            price = price * converter_amount_click
             generated_link = ClickUz.generate_url(
                 order_id=transaction_id,
                 amount=price

@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'clickuz',
     'rest_framework',
-
     'django_crontab',
     'parler',
     'crispy_forms',

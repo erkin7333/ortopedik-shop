@@ -14,12 +14,11 @@ class CheckClickTransaction(ClickUz):
             transaction.verify()
         except ClickOrder.DoesNotExist:
             return self.ORDER_NOT_FOUND
+        return self.ORDER_FOUND
 
     def successfully_payment(self, order_id: str, transaction: object):
         try:
             transaction = ClickOrder.objects.get(id=int(order_id))
             transaction.make_payment()
-            transaction.is_paid = True
-            transaction.save()
         except ClickOrder.DoesNotExist:
             return
