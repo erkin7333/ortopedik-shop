@@ -15,7 +15,7 @@ converter_amount_click = settings.CLICK_PRICE_HELPER
 
 class InitializePaymentAPIView(APIView):
     serializer_class = serializers.InitializePaymentSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     def post(self, request):
         data = self.serializer_class(data=request.data)
