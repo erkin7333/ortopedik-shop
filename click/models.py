@@ -4,7 +4,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 
-
 class TRANSACTIONTYPECHOICES(models.TextChoices):
     CLICK = "click"
 
@@ -15,7 +14,7 @@ class TRANSACTIONSTATUS(models.TextChoices):
     PAID = "paid"
     CANCELED = "canceled"
 
-class ClickOrder(models.Model):
+class ClickOrders(models.Model):
     """ Класс ClickTransaction """
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -26,7 +25,8 @@ class ClickOrder(models.Model):
     is_paid = models.BooleanField(default=False)
     is_canceled = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    transaction_type = models.CharField(max_length=10, choices=TRANSACTIONTYPECHOICES.choices)
+    transaction_type = models.CharField(max_length=10, choices=TRANSACTIONTYPECHOICES.choices,
+                                        default=TRANSACTIONTYPECHOICES.CLICK)
     status = models.CharField(max_length=10, choices=TRANSACTIONSTATUS.choices, default=TRANSACTIONSTATUS.NEW)
     comment = models.TextField(blank=True)
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ClickOrder
+from .models import ClickOrders
 
 
 class TransactionAdmin(admin.ModelAdmin):
@@ -11,4 +11,4 @@ class TransactionAdmin(admin.ModelAdmin):
     list_editable = ("is_paid", "transaction_type", "status")
 
 
-admin.site.register(ClickOrder, TransactionAdmin)
+admin.site.register(ClickOrders, TransactionAdmin)

@@ -29,7 +29,8 @@
             <div class="col-md-12">
                 <div class="cart-view-area">
                     <div class="cart-view-table aa-wishlist-table">
-                        <form action="{{ url }}" method="get">
+                        <form method="post">
+                            {% csrf_token %}
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -43,7 +44,9 @@
                                     <tr>
                                         <td>{{ click_p.id }}</td>
                                         <td>{{ click_p.user }}</td>
-                                        <td>{{ click_p.amount}}</td>
+                                        <td>{{ click_p.paid_amount }}</td>
+                                        <input type="hidden" name="transaction_type[]" value="CLICK" />
+                                        <input type="hidden" name="amount[]" value="{{ click_p.paid_amount }}" />
                                     </tr>
                                     </tbody>
                                 </table>

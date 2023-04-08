@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from main.cart import Cart
 from .models import Products, OrderItem, Order
 from .forms import AddProductForm, OrderModelForm
-from click.models import ClickOrder
+from click.models import ClickOrders
 from payment.models import PaymentOrder
 import requests
 from config import settings
@@ -159,11 +159,6 @@ def checkout(request):
             order = form.save(commit=False)
             order.user = request.user
             order.save()
-            if order.payment_type.payme_code == 253:
-                ClickOrder.objects.create(user=order.user, amount=order.paid_amount)
-            else:
-                PaymentOrder.objects.create(user=order.user, amount=order.paid_amount)
-            print("CliclOrder=============", ClickOrder)
             OrderItem.objects.bulk_create(order_items)
             cart.clear()
 
@@ -222,7 +217,7 @@ def checkout(request):
                 return redirect('payment:payme')
             else:
                 print("CCCCCCCCCCCCCCCCCCCCCCCC", order.payment_type.payme_code)
-                return redirect("click:clicktransaction")
+                return redirect("click:getclick")
 
     else:
         form = OrderModelForm()
