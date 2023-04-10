@@ -39,7 +39,9 @@
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
                                                     <a data-toggle="collapse" data-parent="#accordion"
-                                                           href="#collapseFour">{% trans "Yetkazib berish manzili" %}</a>
+                                                       href="#collapseFour">
+                                                        Yetkazib berish manzili
+                                                    </a>
                                                 </h4>
                                             </div>
                                             <div id="collapseFour" class="panel-collapse collapse">
@@ -47,38 +49,75 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="aa-checkout-single-bill">
-                                                                {{ form.first_name }}
+                                                                <input type="text" placeholder="Ism">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="aa-checkout-single-bill">
-                                                                {{ form.last_name }}
+                                                                <input type="text" placeholder="Familya">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="aa-checkout-single-bill">
+                                                                <input type="tel" placeholder="+998 90 123-45-67">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="aa-checkout-single-bill">
+                                                                <input type="tel" placeholder="+998 90 123-45-67">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="aa-checkout-single-bill">
-                                                                {{ form.company_name }}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="aa-checkout-single-bill">
-                                                                {{ form.email }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="aa-checkout-single-bill">
-                                                                {{ form.phone }}
+                                                                <select>
+                                                                    <option value="Andijon viloyati">Andijon viloyati
+                                                                    </option>
+                                                                    <option value="Buxoro viloyati">Buxoro viloyati
+                                                                    </option>
+                                                                    <option value="Fargʻona viloyati">Fargʻona
+                                                                        viloyati
+                                                                    </option>
+                                                                    <option value="Jizzax viloyati">Jizzax viloyati
+                                                                    </option>
+                                                                    <option value="Xorazm viloyati">Xorazm viloyati
+                                                                    </option>
+                                                                    <option value="Namangan viloyati">Namangan
+                                                                        viloyati
+                                                                    </option>
+                                                                    <option value="Navoiy viloyati">Navoiy viloyati
+                                                                    </option>
+                                                                    <option value="Qashqadaryo viloyati">Qashqadaryo
+                                                                        viloyati
+                                                                    </option>
+                                                                    <option value="Qoraqalpogʻiston Respublikasi">
+                                                                        Qoraqalpogʻiston Respublikasi
+                                                                    </option>
+                                                                    <option value="Samarqand viloyati">Samarqand
+                                                                        viloyati
+                                                                    </option>
+                                                                    <option value="Sirdaryo viloyati">Sirdaryo
+                                                                        viloyati
+                                                                    </option>
+                                                                    <option value="Surxondaryo viloyati">Surxondaryo
+                                                                        viloyati
+                                                                    </option>
+                                                                    <option value="Toshkent shahar">Toshkent shahar
+                                                                    </option>
+                                                                    <option value="Toshkent viloyati">Toshkent
+                                                                        viloyati
+                                                                    </option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="aa-checkout-single-bill">
-                                                                {{ form.full_address }}
+                                                                <textarea cols="8" rows="3">Toliq manzil</textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -101,10 +140,14 @@
                                             </thead>
                                             <tbody>
                                             {% for checkout in cart %}
-                                            <tr>
-                                                <td>{{ checkout.product.name }} <strong> x {{ checkout.quantity }}</strong></td>
-                                                <td>{{ checkout.total_price }} uzs</td>
-                                            </tr>
+                                                <tr>
+                                                    <td>{{ checkout.product.name }} <strong> x {{ checkout.quantity }}</strong></td>
+                                                    <td>{{ checkout.total_price }} uzs</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dastafka narxi</td>
+                                                    <td>2000 uzs</td>
+                                                </tr>
                                             {% endfor %}
                                             </tbody>
                                             <tfoot>
@@ -115,12 +158,13 @@
                                             </tfoot>
                                         </table>
                                     </div>
-                                    <h4>{% trans "To'lov usuli" %}</h4>
+                                     <h4>{% trans "To'lov usuli" %}</h4>
                                     <div class="aa-payment-method">
                                         {{ form.payment_type }}
                                         <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"
                                              border="0" alt="PayPal Acceptance Mark">
-                                        <input type="submit" value="{% trans 'Buyurtma berish' %}" class="aa-browse-btn">
+                                        <input type="submit" value="{% trans 'Buyurtma berish' %}"
+                                               class="aa-browse-btn">
                                     </div>
                                 </div>
                             </div>
@@ -133,3 +177,93 @@
 </section>
 <!-- / Cart view section -->
 {% endblock %}
+
+<!--<div class="checkout-right">-->
+<!--    <h4></h4>-->
+<!--    <div class="aa-order-summary-area">-->
+<!--        <table class="table table-responsive">-->
+<!--            <thead>-->
+<!--            <tr>-->
+
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            {% for checkout in cart %}-->
+<!--            <tr>-->
+<!--                <td>{{ checkout.product.name }} <strong> x {{ checkout.quantity-->
+<!--                    }}</strong></td>-->
+<!--                <td>{{ checkout.total_price }} uzs</td>-->
+<!--            </tr>-->
+<!--            {% endfor %}-->
+<!--            </tbody>-->
+<!--            <tfoot>-->
+<!--            <tr>-->
+<!--                <th>Dastafka narxi</th>-->
+<!--                <td>2000 uzs</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th>Umumiy narxi</th>-->
+<!--                <td>8000 uzs</td>-->
+<!--            </tr>-->
+<!--            </tfoot>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    <h4>{% trans "To'lov usuli" %}</h4>-->
+<!--    <div class="aa-payment-method">-->
+<!--        {{ form.payment_type }}-->
+<!--        <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg"-->
+<!--             border="0" alt="PayPal Acceptance Mark">-->
+<!--        <input type="submit" value="{% trans 'Buyurtma berish' %}"-->
+<!--               class="aa-browse-btn">-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<div class="panel-heading">-->
+<!--<h4 class="panel-title">-->
+<!--<a data-toggle="collapse" data-parent="#accordion"-->
+<!--href="#collapseFour">{% trans "Yetkazib berish manzili" %}</a>-->
+<!--</h4>-->
+<!--</div>-->
+<!--<div id="collapseFour" class="panel-collapse collapse">-->
+<!--                                                <div class="panel-body">-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col-md-6">-->
+<!--                                                            <div class="aa-checkout-single-bill">-->
+<!--                                                                {{ form.first_name }}-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="col-md-6">-->
+<!--                                                            <div class="aa-checkout-single-bill">-->
+<!--                                                                {{ form.last_name }}-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col-md-12">-->
+<!--                                                            <div class="aa-checkout-single-bill">-->
+<!--                                                                {{ form.company_name }}-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col-md-6">-->
+<!--                                                            <div class="aa-checkout-single-bill">-->
+<!--                                                                {{ form.email }}-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="col-md-6">-->
+<!--                                                            <div class="aa-checkout-single-bill">-->
+<!--                                                                {{ form.phone }}-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="row">-->
+<!--                                                        <div class="col-md-12">-->
+<!--                                                            <div class="aa-checkout-single-bill">-->
+<!--                                                                {{ form.full_address }}-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
