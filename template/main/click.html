@@ -38,6 +38,8 @@
                                         <th>{% trans "Buyurtma identifikatori" %}</th>
                                         <th>{% trans "Foydalanuvchi" %}</th>
                                         <th>{% trans "To'lov miqdori" %}</th>
+                                        <th>{% trans "Yetkaziberish narxi" %}</th>
+                                        <th>{% trans "Jami narx" %}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -45,8 +47,10 @@
                                         <td>{{ click_p.id }}</td>
                                         <td>{{ click_p.user }}</td>
                                         <td>{{ click_p.paid_amount }}</td>
+                                        <td>{{ click_p.type_of_delivery.price }}</td>
+                                        <td>{{ click_p.is_paid }}</td>
                                         <input type="hidden" name="transaction_type[]" value="CLICK" />
-                                        <input type="hidden" name="amount[]" value="{{ click_p.paid_amount }}" />
+                                        <input type="hidden" name="amount[]" value="{{ click_p.is_paid }}" />
                                     </tr>
                                     </tbody>
                                 </table>

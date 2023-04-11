@@ -13,8 +13,8 @@ class OrderModelForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        fields = ('first_name', 'last_name', 'payment_type',
-                  'company_name', 'email', 'phone', 'full_address')
+        fields = ('first_name', 'last_name', 'payment_type', 'phone', 'type_of_delivery', 'province',
+                  'phone1', 'full_address')
         widgets = {
             'first_name': forms.TextInput(attrs={
                 'class': 'aa-checkout-single-bill',
@@ -26,15 +26,10 @@ class OrderModelForm(forms.ModelForm):
                 'type': 'text',
                 'placeholder': _("Familiya")
             }),
-            'company_name': forms.TextInput(attrs={
+            'phone1': forms.EmailInput(attrs={
                 'class': 'aa-checkout-single-bill',
-                'type': 'text',
-                'placeholder': _("Kompaniya nomi")
-            }),
-            'email': forms.EmailInput(attrs={
-                'class': 'aa-checkout-single-bill',
-                'type': 'email',
-                'placeholder': _("E-pochta manzili")
+                'type': 'tel',
+                'placeholder': "+998 00-000-00-00"
             }),
             'phone': forms.TextInput(attrs={
                 'class': 'aa-checkout-single-bill',
@@ -51,6 +46,12 @@ class OrderModelForm(forms.ModelForm):
             'payment_type': forms.RadioSelect(attrs={
                 'class': 'aa-payment-method',
                 'type': 'radio'
+            }),
+            "type_of_delivery": forms.Select(attrs={
+                "class": "aa-checkout-single-bill",
+            }),
+            "province": forms.Select(attrs={
+                "class": "aa-checkout-single-bill",
             })
         }
 

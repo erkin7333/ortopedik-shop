@@ -1,16 +1,16 @@
 from django.contrib import admin
-from .models import Category, Products, Color, ProductSize, Payment, Order, OrderItem
+from .models import Category, Products, Color, ProductSize, Payment, Order, OrderItem, Delivery, Province
 from parler.admin import TranslatableAdmin
-
-
 
 admin.site.register(Color)
 admin.site.register(ProductSize)
+admin.site.register(Province)
 
 
 class CategoryAdmin(TranslatableAdmin):
     list_display = ('id', 'name', 'image_uz', 'image_ru')
     list_display_links = ('name',)
+
 
 admin.site.register(Category, CategoryAdmin)
 
@@ -21,14 +21,24 @@ class ProductAdmin(TranslatableAdmin):
     list_per_page = 687
     search_fields = ['number', 'k_id']
 
+
 admin.site.register(Products, ProductAdmin)
+
+
+class DeliveryAdmin(TranslatableAdmin):
+    list_display = ('id', 'name', 'price')
+    list_display_links = ('id', 'name')
+
+
+admin.site.register(Delivery, DeliveryAdmin)
+
 
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'payme_code')
     list_display_links = ('id', 'name')
 
-admin.site.register(Payment, PaymentAdmin)
 
+admin.site.register(Payment, PaymentAdmin)
 
 
 class OrderItemIneLineAdmin(admin.TabularInline):
@@ -38,6 +48,5 @@ class OrderItemIneLineAdmin(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemIneLineAdmin]
 
+
 admin.site.register(Order, OrderAdmin)
-
-

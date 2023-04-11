@@ -78,16 +78,38 @@ class Payment(models.Model):
         verbose_name = _("Payment")
 
 
+class Province(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True, verbose_name=_("Viloyat nomi"))
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("Province")
+
+
+class Delivery(TranslatableModel):
+    translations = TranslatedFields(
+        name=models.CharField(_("Name"), max_length=100, db_index=True)
+    )
+    price = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.safe_translation_getter('name')}"
+
+
+
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     payment_type = models.ForeignKey(Payment, on_delete=models.RESTRICT)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    company_name = models.CharField(max_length=255)
-    email = models.CharField(max_length=100)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=18)
+    phone1 = models.CharField(max_length=18)
+    province = models.ForeignKey(Province, on_delete=models.CASCADE, blank=True, null=True)
+    type_of_delivery = models.ForeignKey(Delivery, on_delete=models.CASCADE, verbose_name=_("Yetkazib berish turi"))
     full_address = models.TextField()
-    paid_amount = models.FloatField(blank=True, null=True)
+    paid_amount = models.FloatField(blank=True, null=True, verbose_name=_("Umumiy maxsulot narxi"))
+    is_paid = models.FloatField(blank=True, null=True, verbose_name=_("Jami narx"))
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.first_name

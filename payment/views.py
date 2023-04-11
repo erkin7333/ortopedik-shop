@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from payment.models import PaymentOrder
+from main.models import Order
 
 
 def payment_method(request):
-    payment_p = PaymentOrder.objects.filter(user=request.user).last()
+    payment_p = Order.objects.filter(user=request.user).last()
     context = {
         'payment_p': payment_p
     }

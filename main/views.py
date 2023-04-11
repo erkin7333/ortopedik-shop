@@ -3,10 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from main.cart import Cart
-from .models import Products, OrderItem, Order
+from .models import Products, OrderItem, Order, Delivery
 from .forms import AddProductForm, OrderModelForm
-from click.models import ClickOrders
-from payment.models import PaymentOrder
 import requests
 from config import settings
 from django.db.models import Q
@@ -127,9 +125,11 @@ def checkout(request):
     """Hisob-kitob bo'limi uchun funksiya"""
 
     cart = Cart(request)
+    deliveriy = Delivery.objects.all()
     if request.method == 'POST':
         form = OrderModelForm(request.POST)
         if form.is_valid():
+            print("???????????????????????????????/=====", form.errors)
             total_price = 0
             order_items = []
             for item in cart:
@@ -137,8 +137,11 @@ def checkout(request):
                 quantity = item['quantity']
                 total_price += product.price * quantity
             order = form.save(commit=False)
+            deliver = form.cleaned_data["type_of_delivery"]
+            print("NIMADUR XULLAS====", deliver.price)
             order.user = request.user
             order.paid_amount = total_price
+            order.is_paid = total_price + deliver.price
             order.save()
             for item in cart:
                 product = item['product']
@@ -221,8 +224,10 @@ def checkout(request):
 
     else:
         form = OrderModelForm()
+        print("XATOLAR======", form.errors)
     context = {
         'cart': cart,
+        "deliveriy": deliveriy,
         'form': form
     }
     return render(request, 'main/checkout.html', context=context)
