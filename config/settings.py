@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'rosetta',
     'corsheaders',
     'clickuz',
+    'paycomuz',
     'rest_framework',
     'django_crontab',
     'parler',
@@ -143,8 +144,6 @@ LANGUAGES = [
     ('uz', _('Uzbek')),
     ('ru', _('Russian')),
 ]
-
-
 
 TIME_ZONE = 'Asia/Tashkent'
 
@@ -380,6 +379,17 @@ CLICK_SETTINGS = {
     'merchant_id': env('MERCHANT_ID'),
     'secret_key': env('SECRET_KEY'),
     'merchant_user_id': env('MERCHANT_USER_ID'),
+}
+
+# Payme uchun sozlamalar
+
+PAYCOM_SETTINGS = {
+    "TOKEN": env("PAYME_KASSA_ID"),  # TOKEN =>  bu sizga payme tomonidan beriladigan kassa ID.
+    "KASSA_ID": env("PAYME_KASSA_ID"),  # KASSA_ID =>  bu sizga payme tomonidan beriladigan kassa ID.
+    "SECRET_KEY": env("PAYME_TEST_KEY"),  # SECRET_KEY =>  bu sizga payme tomonidan beriladigan SECRET_KEY.
+    "ACCOUNTS": {
+        "KEY": "order_id"  # KEY_1 =>  Order ID uchun.
+    }
 }
 
 CORS_ORIGIN_ALLOW_ALL = True

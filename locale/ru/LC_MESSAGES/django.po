@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-28 14:29+0500\n"
-"PO-Revision-Date: 2023-03-28 14:29+0500\n"
+"POT-Creation-Date: 2023-04-11 14:33+0500\n"
+"PO-Revision-Date: 2023-04-11 14:35+0500\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -54,11 +54,16 @@ msgstr "Зарегистрирован с этим номером телефон
 msgid "Iltimos parollar bir xilligini tekshiring"
 msgstr "Пожалуйста, убедитесь, что пароли совпадают"
 
-#: config/settings.py:140
+#: click/models.py:21
+#| msgid "To'lov miqdori"
+msgid "To'lov miqdori (so'mda)"
+msgstr "К оплате"
+
+#: config/settings.py:143
 msgid "Uzbek"
 msgstr "Uzbek"
 
-#: config/settings.py:141
+#: config/settings.py:144
 msgid "Russian"
 msgstr "Russian"
 
@@ -108,7 +113,7 @@ msgstr "Адрес электронной почты"
 msgid "Contact"
 msgstr "Контакт"
 
-#: contact/models.py:35 main/forms.py:32
+#: contact/models.py:35
 msgid "Kompaniya nomi"
 msgstr "Название компании"
 
@@ -120,7 +125,7 @@ msgstr "Запрос помощи"
 msgid "Subject"
 msgstr "Предмет"
 
-#: contact/models.py:64 template/base.html:185
+#: contact/models.py:64 template/base.html:138
 #: template/main/blog-detail.html:5 template/main/blog.html:5
 msgid "Blog"
 msgstr "Блог"
@@ -133,70 +138,90 @@ msgstr "Имя"
 msgid "Familiya"
 msgstr "Фамилия"
 
-#: main/forms.py:37
-msgid "E-pochta manzili"
-msgstr "Адрес электронной почты"
-
-#: main/forms.py:49
+#: main/forms.py:44
 msgid "To'liq manzil"
 msgstr "Полный адрес"
 
-#: main/models.py:12 main/models.py:28
+#: main/models.py:12 main/models.py:29 main/models.py:92
 msgid "Name"
 msgstr "Имя"
 
-#: main/models.py:20
+#: main/models.py:21
 msgid "Category"
 msgstr "Категория"
 
-#: main/models.py:29
+#: main/models.py:30
 msgid "Title"
 msgstr "Заголовок"
 
-#: main/models.py:38
+#: main/models.py:39
 msgid "Shotuv kodi"
 msgstr "Код Шотува"
 
-#: main/models.py:52
+#: main/models.py:53
 msgid "Product"
 msgstr "Продукт"
 
-#: main/models.py:56
+#: main/models.py:57
 msgid "Color name"
 msgstr "Название цвета"
 
-#: main/models.py:61
+#: main/models.py:62
 msgid "Color"
 msgstr "Цвет"
 
-#: main/models.py:64
+#: main/models.py:65
 msgid "Size"
 msgstr "Размер"
 
-#: main/models.py:68
+#: main/models.py:69
 msgid "ProductSize"
 msgstr "Размер товара"
 
-#: main/models.py:77
+#: main/models.py:78
 msgid "Payment"
 msgstr "Оплата"
 
-#: main/models.py:95
+#: main/models.py:82
+#| msgid "Sayt nomi"
+msgid "Viloyat nomi"
+msgstr "Название сайта"
+
+#: main/models.py:87
+msgid "Province"
+msgstr "Viloyat"
+
+#: main/models.py:109
+#| msgid "Yetkazib berish manzili"
+msgid "Yetkazib berish turi"
+msgstr "Адрес доставки"
+
+#: main/models.py:111
+#| msgid "Umumiy narx"
+msgid "Umumiy maxsulot narxi"
+msgstr "Итоговая цена"
+
+#: main/models.py:112 template/main/click.html:42
+#| msgid "Jami narxi"
+msgid "Jami narx"
+msgstr "Общая стоимость"
+
+#: main/models.py:118
 msgid "Order"
 msgstr "Заказ"
 
-#: main/models.py:114
+#: main/models.py:137
 msgid "OrderItem"
 msgstr "ЗаказатьЭлемент"
 
 #: template/account/login.html:3 template/account/login.html:15
 #: template/account/login.html:35 template/account/login.html:39
-#: template/base.html:208
+#: template/base.html:161
 msgid "Tizimga kirish"
 msgstr "Авторизоваться"
 
 #: template/account/login.html:17 template/account/register.html:17
-#: template/base.html:179 template/main/blog.html:17
+#: template/base.html:132 template/main/blog.html:17
 #: template/main/cart.html:18 template/main/category-product.html:14
 #: template/main/checkout.html:16 template/main/click.html:16
 #: template/main/contact.html:16 template/main/detaile.html:16
@@ -209,7 +234,7 @@ msgid "Hisob"
 msgstr "Счет"
 
 #: template/account/register.html:3 template/account/register.html:15
-#: template/base.html:207
+#: template/base.html:160
 msgid "Ro'yxatdan o'tish"
 msgstr "Зарегистрироваться"
 
@@ -217,44 +242,40 @@ msgstr "Зарегистрироваться"
 msgid "Roʻyxatdan oʻtish"
 msgstr "Зарегистрироваться"
 
-#: template/base.html:137
-msgid "XARID SAVATI"
-msgstr "КОРЗИНА"
-
-#: template/base.html:182 template/main/product.html:4
+#: template/base.html:135 template/main/product.html:4
 msgid "Mahsulotlar"
 msgstr "Продукты"
 
-#: template/base.html:188 template/main/contact.html:4
+#: template/base.html:141 template/main/contact.html:4
 #: template/main/contact.html:14 template/main/contact.html:17
 msgid "Aloqa"
 msgstr "Контакт"
 
-#: template/base.html:192
+#: template/base.html:145
 msgid "Chiqish"
 msgstr "Выход"
 
-#: template/base.html:230
+#: template/base.html:183
 msgid "Asosiy menyu"
 msgstr "Главное меню"
 
-#: template/base.html:232
+#: template/base.html:185
 msgid "Uy"
 msgstr "Дом"
 
-#: template/base.html:233
+#: template/base.html:186
 msgid "Mahsulotlarimiz"
 msgstr "Наши продукты"
 
-#: template/base.html:235 template/base.html:256
+#: template/base.html:188 template/base.html:209
 msgid "Biz bilan bog'lanish"
 msgstr "связаться с нами"
 
-#: template/base.html:242
+#: template/base.html:195
 msgid "Kategoriyalar"
 msgstr "Категории"
 
-#: template/base.html:284
+#: template/base.html:237
 msgid "Tomonidan ishlab chiqilgan"
 msgstr "Разработан"
 
@@ -267,7 +288,7 @@ msgid "Savat"
 msgstr "Корзина"
 
 #: template/main/cart.html:42 template/main/category-product.html:15
-#: template/main/checkout.html:98 template/main/product.html:17
+#: template/main/checkout.html:105 template/main/product.html:17
 msgid "Mahsulot"
 msgstr "Продукт"
 
@@ -279,7 +300,7 @@ msgstr "Расходы"
 msgid "Miqdori"
 msgstr "Количество"
 
-#: template/main/cart.html:45 template/main/checkout.html:99
+#: template/main/cart.html:45 template/main/checkout.html:106
 msgid "Jami narxi"
 msgstr "Общая стоимость"
 
@@ -307,43 +328,48 @@ msgstr "Проверка продукта"
 msgid "Tekshiruv"
 msgstr "Oсмотр"
 
-#: template/main/checkout.html:42
-msgid "Yetkazib berish manzili"
-msgstr "Адрес доставки"
-
-#: template/main/checkout.html:93
+#: template/main/checkout.html:100
 msgid "Buyurtma xulosasi"
 msgstr "Итог заказа"
 
-#: template/main/checkout.html:112
+#: template/main/checkout.html:121
 msgid "Umumiy narx"
 msgstr "Итоговая цена"
 
-#: template/main/checkout.html:118
+#: template/main/checkout.html:127 template/main/checkout.html:177
 msgid "To'lov usuli"
 msgstr "Способ оплаты"
 
-#: template/main/checkout.html:123
+#: template/main/checkout.html:132 template/main/checkout.html:182
 msgid "Buyurtma berish"
 msgstr "Разместить заказ"
+
+#: template/main/checkout.html:191
+msgid "Yetkazib berish manzili"
+msgstr "Адрес доставки"
 
 #: template/main/click.html:14
 msgid "Click sahifa"
 msgstr "Click на страницу"
 
-#: template/main/click.html:37 template/main/payment.html:38
+#: template/main/click.html:38 template/main/payment.html:38
 msgid "Buyurtma identifikatori"
 msgstr "номер заказа"
 
-#: template/main/click.html:38 template/main/payment.html:39
+#: template/main/click.html:39 template/main/payment.html:39
 msgid "Foydalanuvchi"
 msgstr "Пользователь"
 
-#: template/main/click.html:39 template/main/payment.html:40
+#: template/main/click.html:40 template/main/payment.html:40
 msgid "To'lov miqdori"
 msgstr "К оплате"
 
-#: template/main/click.html:51 template/main/payment.html:52
+#: template/main/click.html:41
+#| msgid "Yetkazib berish manzili"
+msgid "Yetkaziberish narxi"
+msgstr "Адрес доставки"
+
+#: template/main/click.html:58 template/main/payment.html:52
 msgid "To'lov"
 msgstr "Толов"
 
@@ -387,19 +413,19 @@ msgstr "добавить в корзину"
 msgid "Tavsifi"
 msgstr "Описание"
 
-#: template/main/index.html:21
+#: template/main/index.html:28
 msgid "HOZIR KO'RISH"
 msgstr "СМОТРИ СЕЙЧАС"
 
-#: template/main/index.html:48
+#: template/main/index.html:55
 msgid "YETKAZIB BERISH BEPUL"
 msgstr "БЕСПЛАТНАЯ ДОСТАВКА"
 
-#: template/main/index.html:56
+#: template/main/index.html:63
 msgid "30 KUN PUL QAYTARISH"
 msgstr "ВОЗВРАТ ДЕНЕГ В 30 ДНЕЙ"
 
-#: template/main/index.html:64
+#: template/main/index.html:71
 msgid "24/7 QO'LLAB-QUVVATLASH"
 msgstr "24/7 ПОДДЕРЖКА"
 
@@ -414,6 +440,12 @@ msgstr "Поиск"
 #: template/main/search.html:36
 msgid "Kechirasiz siz izlagan malumot topilmadi"
 msgstr "Извините, информация, которую вы искали, не найдена"
+
+#~ msgid "E-pochta manzili"
+#~ msgstr "Адрес электронной почты"
+
+#~ msgid "XARID SAVATI"
+#~ msgstr "КОРЗИНА"
 
 #~ msgid "🇺🇿"
 #~ msgstr "🇺🇿"

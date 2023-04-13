@@ -413,6 +413,7 @@ img {
 #aa-header .aa-header-top .aa-header-top-area .aa-search-box form {
     display: flex;
     font-size: 26px;
+    margin-left: 211px;
 }
 
 #aa-header .aa-header-top .aa-header-top-area .aa-search-box input[type="text"] {
@@ -422,13 +423,11 @@ img {
   font-family: "Raleway", sans-serif;
   height: 40px;
   padding: 10px 55px 10px 10px;
-  width: 100%;
+  width: 77%;
 }
 #aa-header .aa-header-top .aa-header-top-area .aa-search-box button {
   border: medium none;
   color: #fff;
-
-  position: absolute;
   right: 0;
   top: 0;
   width: 50px;
