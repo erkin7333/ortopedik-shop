@@ -9,6 +9,7 @@ urlpatterns = [
     path('detail/<str:pk>/', OrderDetailAPIView.as_view()),
     path('pay/', PaymentView.as_view()), # EndPointUrl ga shu manzilni kiritng, agar local da foydalanmoqchi bolsez, ngrok ishlating.
     path('checkout/', checkout_view),
+    path('getstatement/', GetStatementView.as_view())
 
     # path('', payment_method, name="payme"),
 ]

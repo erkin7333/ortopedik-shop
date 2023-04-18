@@ -12,3 +12,4 @@ class User(AbstractUser):
 
     class Meta:
         verbose_name = "User"
+

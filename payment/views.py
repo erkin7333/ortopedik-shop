@@ -5,11 +5,11 @@ from rest_framework.generics import CreateAPIView, RetrieveAPIView
 from .models import Order
 from .serializers import OrderSerializer
 from paycomuz.views import MerchantAPIView
+from paycomuz.models import Transaction
 from paycomuz import Paycom
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from decimal import Decimal
-
 
 
 class CheckOrder(Paycom):
@@ -39,6 +39,7 @@ class CheckOrder(Paycom):
         order.is_payed = False
         order.save()
 
+
 @api_view(["POST"])
 def checkout_view(request):
     """Tekshirish uchun """
@@ -55,11 +56,24 @@ def checkout_view(request):
     return Response(data)
 
 
+from django.views import View
+from django.http import JsonResponse
+
+
+class GetStatementView(View):
+    def get(self, request):
+        from_timestamp = request.GET.get("from")
+        to_timestamp = request.GET.get("to")
+        statement = Transaction.objects.filter(created_datetime__range=[from_timestamp, to_timestamp])
+        vaqt = statement.created_datetime
+        print("YANA====", vaqt)
+        print("NIMADUR====", statement)
+        return JsonResponse(statement)
+
+
 class PaymentView(MerchantAPIView):
     """Buyerda Zakazni validate qilamiz"""
     VALIDATE_CLASS = CheckOrder
-
-
 
 
 class OrderCreateAPIView(CreateAPIView):
@@ -70,17 +84,6 @@ class OrderCreateAPIView(CreateAPIView):
 class OrderDetailAPIView(RetrieveAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-
-
-
-
-
-
-
-
-
-
-
 
 # def payment_method(request):
 #     payment_p = Order.objects.filter(user=request.user).last()
