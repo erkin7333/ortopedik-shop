@@ -37,6 +37,7 @@ class BaseProduct(TranslatableModel):
     image2 = models.ImageField(upload_to='product/', blank=True, null=True)
     image3 = models.ImageField(upload_to='product/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    available_sale = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.safe_translation_getter('name')} - {self.vendor_code}"
