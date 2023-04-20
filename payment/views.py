@@ -65,7 +65,7 @@ class GetStatementView(View):
         from_timestamp = request.GET.get("from")
         to_timestamp = request.GET.get("to")
         statement = Transaction.objects.filter(created_datetime__range=[from_timestamp, to_timestamp])
-        vaqt = statement.created_datetime
+        vaqt = statement.cancel_datetime
         print("YANA====", vaqt)
         print("NIMADUR====", statement)
         return JsonResponse(statement)

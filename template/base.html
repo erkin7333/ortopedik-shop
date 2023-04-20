@@ -145,7 +145,7 @@
                             <a class="aa-nav-nav" href="{% url 'account:logout' %}">{% trans 'Chiqish' %}</a>
                         </li>
                         <li class="my-basket-nav">
-                            <a class="aa-cartbox" href="#">
+                            <a class="aa-cartbox" href="{% url 'main:addtocart' %}">
                                 <span class="aa-cart-link">
                                     {% if scount == 0 %}
                                     {% else %}
@@ -248,7 +248,7 @@
     </div>
 </footer>
 <!-- / footer -->
-
+{% block scripts %}{% endblock %}
 <script>
         function ChangeLanguage(element){
           const lang_form = document.getElementById('lang_form');

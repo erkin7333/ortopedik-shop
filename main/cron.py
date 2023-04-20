@@ -31,6 +31,7 @@ def cron_job():
     if isinstance(products, list):
         data_id = [d['id'] for d in products]
         data_number = [d['number'] for d in products]
+        sellingPrice = [d['sellingPrice'] for d in products]
         p_salesAccount = [d['inventoryStockInformation'] for d in products]
         qtyOnHand_list = []
         for i in p_salesAccount:
@@ -43,11 +44,13 @@ def cron_job():
                 k_id=data_id[i],
                 defaults={
                     'number': data_number[i],
+                    'price': sellingPrice[i],
                     'p_quantity': qtyOnHand_list[i],
                     # ... other fields ...
                 }
             )
             if not created:
                 product.number = data_number[i]
+                product.price = sellingPrice[i]
                 product.p_quantity = qtyOnHand_list[i]
                 product.save()

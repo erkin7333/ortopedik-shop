@@ -11,7 +11,6 @@
     <div class="aa-catg-head-banner-area">
         <div class="container">
             <div class="aa-catg-head-banner-content">
-                <h2>MakonMirzo</h2>
                 <ol class="breadcrumb">
                     <li><a href="{% url 'main:home' %}">{% trans "Bosh sahifa" %}</a></li>
                     <li class="active">{% trans "Tafsilot" %}</li>
@@ -30,7 +29,6 @@
                 <div class="col-md-12">
                     <div class="aa-product-details-area">
                         <div class="aa-product-details-content">
-                            {% for detail in details %}
                             <div class="row">
                                 <!-- Modal view slider -->
                                 <div class="col-md-5 col-sm-5 col-xs-12">
@@ -38,33 +36,33 @@
                                         <div id="demo-1" class="simpleLens-gallery-container">
                                             <div class="simpleLens-container">
                                                 <div class="simpleLens-big-image-container"><a
-                                                        data-lens-image="{{ detail.image.url }}"
+                                                        data-lens-image="{{ details.image.url }}"
                                                         class="simpleLens-lens-image"><img
-                                                        src="{{ detail.image.url }}"
+                                                        src="{{ details.image.url }}"
                                                         class="simpleLens-big-image"></a></div>
                                             </div>
                                             <div class="simpleLens-thumbnails-container">
-                                                {% if detail.image1 %}
-                                                <a data-big-image="{{ detail.image1.url }}"
-                                                   data-lens-image="{{ detail.image1.url }}"
+                                                {% if details.image1 %}
+                                                <a data-big-image="{{ details.image1.url }}"
+                                                   data-lens-image="{{ details.image1.url }}"
                                                    class="simpleLens-thumbnail-wrapper" href="#">
-                                                    <img src="{{ detail.image1.url }}"
+                                                    <img src="{{ details.image1.url }}"
                                                          style="height: 80px; width: 80px;">
                                                 </a>
                                                 {% endif %}
-                                                {% if detail.image2 %}
-                                                <a data-big-image="{{ detail.image2.url }}"
-                                                   data-lens-image="{{ detail.image2.url }}"
+                                                {% if details.image2 %}
+                                                <a data-big-image="{{ details.image2.url }}"
+                                                   data-lens-image="{{ details.image2.url }}"
                                                    class="simpleLens-thumbnail-wrapper" href="#">
-                                                    <img src="{{ detail.image2.url }}"
+                                                    <img src="{{ details.image2.url }}"
                                                          style="height: 80px; width: 80px;">
                                                 </a>
                                                 {% endif %}
-                                                {% if detail.image3 %}
-                                                <a data-big-image="{{ detail.image3.url }}"
-                                                   data-lens-image="{{ detail.image3.url }}"
+                                                {% if details.image3 %}
+                                                <a data-big-image="{{ details.image3.url }}"
+                                                   data-lens-image="{{ details.image3.url }}"
                                                    class="simpleLens-thumbnail-wrapper" href="#">
-                                                    <img src="{{ detail.image3.url }}"
+                                                    <img src="{{ details.image3.url }}"
                                                          style="height: 80px; width: 80px;">
                                                 </a>
                                                 {% endif %}
@@ -75,40 +73,57 @@
                                 <!-- Modal view content -->
                                 <div class="col-md-7 col-sm-7 col-xs-12">
                                     <div class="aa-product-view-content">
-                                        <h3>{{ detail.name }}</h3>
+                                        <h3>{{ details.name }}</h3>
                                         <div class="aa-price-block">
-                                            <span class="aa-product-view-price">{{ detail.price }}.uzs</span>
-                                            <p class="aa-product-avilability">{% trans "Mavjudligi" %}: <span>{{ detail.p_quantity }}</span>
+                                            <span class="aa-product-view-price">{{ details.price }}.uzs</span>
+                                            <p class="aa-product-avilability">{% trans "Sotuv kodi" %}:<span>{{ details.vendor_code }}</span>
                                             </p>
-                                            <p class="aa-product-avilability">{% trans "Sotuv kodi" %}:<span>{{ detail.number }}</span></p>
+                                            <p class="aa-product-avilability">{% trans "Variant kodi" %}:<span id="number"></span></p>
+                                            <input type="hidden" name="product_number" id="product_number">
                                         </div>
-                                        <h3>{{ detail.title }}!</h3>
-
-                                        <h4>{% trans "Rasmeri" %}</h4>
+                                        <div class="aa-price-block">
+                                            <p class="aa-product-avilability">{% trans "ID" %}:<span id="v_id"></span></p>
+                                            <input type="hidden" name="variant_id" id="variant_id">
+                                            <p class="aa-product-avilability">{% trans "ID" %}:<span id="k_id"></span></p>
+                                            <input type="hidden" name="product_k_id" id="product_k_id">
+                                            <p class="aa-product-avilability">{% trans "Variant narxi" %}:<span id="price"></span>.uzs</p>
+                                            <input type="hidden" name="product_price" id="product_price">
+                                            <p class="aa-product-avilability">{% trans "Mavjudligi" %}: <span id="quantity"></span></p>
+                                            <input type="hidden" name="product_quantity" id="product_quantity">
+                                        </div>
+                                        <h4>{% trans "Razmer tanlang" %}</h4>
                                         <div class="aa-prod-view-size">
-                                            <div class="form-checkbox">
-                                                {% for d in detail.size.all %}
-                                                <label for="{{ sd.id }}"><a href="#">{{ d.size }}</a></label>
-                                                <input type="radio" id="{{ d.id }}" name="size" value="{{ d.size }}">
+                                            <div class="form-checkbox" id="variants">
+                                                {% for variation in variants %}
+                                                <label for="variation-{{ variation.id }}"><a href="#">{{ variation.size }}</a></label>
+                                                <input type="radio" name="variation" id="variation-{{ variation.id }}"
+                                                       value="{{ variation.id }}"
+                                                       data-color="{{ variation.color }}"
+                                                       data-size="{{ variation.size }}"
+                                                       data-price="{{ variation.price }}"
+                                                       data-number="{{ variation.number }}"
+                                                       data-quantity="{{ variation.p_quantity }}"
+                                                       data-k_id="{{ variation.k_id }}"
+                                                       data-variant_id="{{ variation.id }}">
                                                 {% endfor %}
+                                                <input type="hidden" name="product_size" id="product_size">
+
                                             </div>
                                         </div>
                                         <h4>{% trans "Rangi" %}</h4>
                                         <div class="aa-color-tag">
                                             <div class="form-checkbox" style="display: flex; gap: 2px;">
-                                                {% for sd in detail.color.all %}
-                                                <a href="#" class="aa-color-{{ sd.name }}"></a>
-                                                <label for="{{ sd.id }}"></label>
-                                                <input type="radio" id="{{ sd.id }}" name="color" value="{{ sd.name }}">
-                                                {% endfor %}
+                                                <a href="#" class="aa-color-{{color}}"></a>
+                                                <input type="hidden" name="product_color" id="product_color">
                                             </div>
                                         </div>
                                         <div class="aa-prod-quantity">
-                                            <p class="aa-prod-category">{% trans "Turkumi" %}:<a href="#">{{ detail.categories.name }}</a>
+                                            <p class="aa-prod-category">{% trans "Turkumi" %}:<a href="#">{{ details.categories.name }}</a>
                                             </p>
                                         </div>
                                         <div class="aa-prod-view-bottom">
-                                            <button type="submit" class="btn btn-primary">{% trans "Savatchaga qo'shish" %}</button>
+                                            <button type="submit" class="btn btn-primary">{% trans "Savatchaga qo'shish" %}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -122,17 +137,134 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="description">
-                                    <p>{{ detail.description }}</p>
+                                    <p>{{ details.description }}</p>
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </section>
+<script>
+    const radioButtons = document.querySelectorAll('input[name="variation"]');
 
+// Listen for changes in the radio button inputs
+radioButtons.forEach(button => {
+    button.addEventListener('change', () => {
+        const selectedColor = button.dataset.color;
+        const selectedSize = button.dataset.size;
+        const selectedPrice = button.dataset.price;
+        const selectedNumber = button.dataset.number;
+        const selectedQuantity = button.dataset.quantity;
+        const selectedK_id = button.dataset.k_id;
+        const selectedV_id = button.dataset.v_id;
+
+        // Variant ID
+        const v_idElement = document.getElementById('v_id');
+        v_idElement.textContent = selectedV_id;
+
+
+        // KPI idnii olish uchun
+        const k_idElement = document.getElementById('k_id');
+        k_idElement.textContent = selectedK_id;
+
+
+        // Update the displayed price
+        const priceElement = document.getElementById('price');
+        priceElement.textContent = selectedPrice;
+
+
+        // Update the displayed number
+        const numberElement = document.getElementById('number');
+        numberElement.textContent = selectedNumber;
+
+
+        // Update the displayed quantity
+        const quantityElement = document.getElementById('quantity');
+        quantityElement.textContent = selectedQuantity;
+
+
+        // Update the displayed color
+        const colorElement = document.getElementById('color');
+        colorElement.textContent = selectedColor;
+
+    });
+});
+
+    // get all the radio buttons with name "variation"
+    const variationRadios = document.querySelectorAll('input[name="variation"]');
+
+// add a change event listener to each radio button
+variationRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        // get the selected color from the data-color attribute of the selected radio button
+        const selectedColor = radio.dataset.color;
+
+        // get the color element with class "aa-color-{{color}}"
+        const colorElement = document.querySelector('.aa-color-{{color}}');
+
+        // set the background color of the color element to the selected color
+        colorElement.style.backgroundColor = selectedColor;
+    });
+});
+
+// get the variants div
+const variantsDiv = document.querySelector('#variants');
+
+// add a change event listener to the variants div
+variantsDiv.addEventListener('change', () => {
+    // get the selected variant data
+    const selectedVariant = document.querySelector('input[name="variation"]:checked');
+    const color = selectedVariant.dataset.color;
+    const size = selectedVariant.dataset.size;
+    const price = selectedVariant.dataset.price;
+    const number = selectedVariant.dataset.number;
+    const quantity = selectedVariant.dataset.quantity;
+    const k_id = selectedVariant.dataset.k_id;
+    const v_id = selectedVariant.dataset.v_id;
+
+    // set the input element values dynamically
+    const colorInput = document.querySelector('#product_color');
+    const sizeInput = document.querySelector('#product_size');
+    const priceInput = document.querySelector('#product_price');
+    const numberInput = document.querySelector('#product_number');
+    const quantityInput = document.querySelector('#product_quantity');
+    const k_idInput = document.querySelector('#product_k_id');
+    const v_idInput = document.querySelector('#variant_id');
+
+    colorInput.value = color;
+    sizeInput.value = size;
+    priceInput.value = price;
+    numberInput.value = number;
+    quantityInput.value = quantity;
+    k_idInput.value = k_id;
+    v_idInput.value = v_id;
+});
+
+    var radios = document.querySelectorAll('input[name="variation"]');
+    var hiddenInput = document.getElementById('product_size');
+
+    radios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            hiddenInput.value = this.getAttribute('data-size');
+        });
+    });
+
+const variants = document.getElementsByName('variation');
+let selectedVariantId;
+for (let i = 0; i < variants.length; i++) {
+    if (variants[i].checked) {
+        selectedVariantId = variants[i].getAttribute('data-variant_id');
+
+        break;
+    }
+}
+console.log(selectedVariantId);
+
+
+
+</script>
 
 {% endblock %}

@@ -15,11 +15,11 @@ class RegistrationForm(forms.Form):
                             widget=forms.TextInput(attrs={'placeholder': _('Telefon raqam')}))
     password = forms.CharField(max_length=20, label=_("Parol"),
                                widget=forms.PasswordInput(attrs={'placeholder': _('Parol')}), required=True,
-                               validators=[MinLengthValidator(3), MaxLengthValidator(10)])
+                               validators=[MinLengthValidator(3), MaxLengthValidator(15)])
     confirm = forms.CharField(max_length=20, label=_("Parolni qayta kiriting"),
                               widget=forms.PasswordInput(attrs={'placeholder': _("Parolni tasdiqlang")}),
                                required=True,
-                               validators=[MinLengthValidator(3), MaxLengthValidator(10)])
+                               validators=[MinLengthValidator(3), MaxLengthValidator(15)])
 
     def clean_username(self):
         if User.objects.filter(username=self.cleaned_data.get('username')).exists():

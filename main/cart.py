@@ -22,9 +22,7 @@ class Cart(object):
             item['total_price'] = int(product.price * item['quantity'])
             item['number'] = str(product.number)
             item['price'] = str(product.price)
-            item['warehouse'] = str(product.warehouse)
-            item['color'] = str(item['color'])
-            item['size'] = str(item['size'])
+            item['size'] = str(product.size)
             # item['size'] = ', '.join(size for size in product.size.values_list(str('size'), flat=True))
             # item['name'] = str(product.name)
             # item['created_at'] = str(product.created_at)
@@ -41,14 +39,15 @@ class Cart(object):
         self.session.modified = True
 
 
-    def add(self, product_id, quantity=1, update_quantity=False, color=None, size=None, number=None, price=None, warehouse=None):
+    def add(self, product_id, quantity=1, update_quantity=False, size=None, number=None, price=None, warehouse=None):
         product_id = str(product_id)
 
         if product_id not in self.cart:
+            print(product_id, 'cart_prod')
             self.cart[product_id] = {'quantity': int(quantity), 'id': product_id,
-                                     'color': color, 'size': size,
-                                     "price": price, 'number': number, "warehouse": warehouse}
+                                     'size': size, "price": price, 'number': number, "warehouse": warehouse}
             self.save()
+            print("SAVE")
         if update_quantity:
             self.cart[product_id]['quantity'] += int(quantity)
 

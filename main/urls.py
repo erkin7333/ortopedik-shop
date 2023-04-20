@@ -11,7 +11,7 @@ urlpatterns = [
 
     path('category-product/<int:pk>/', CategoryProductListView.as_view(), name="category_product"),
 
-    path('p-detail/<int:product_id>/', productdetails, name='p_detail'),
+    path('b-detail/<int:product_id>/', detailbase, name="detailbase"),
 
     path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
 

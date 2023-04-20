@@ -70,7 +70,7 @@ INSTALLED_APPS = [
 
 CLICK_PRICE_HELPER = 1
 
-PAYMENT_HOST = '<27.0.0.0.1:8000'
+PAYMENT_HOST = '127.0.0.0.1:8000'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -277,6 +277,7 @@ JAZZMIN_SETTINGS = {
         {"model": "auth.User"},
 
         {"model": "main.Category"},
+        {"model": "main.BaseProduct"},
         {"model": "main.Products"},
         {"model": "main.Order"},
         {"model": "contact.Blog"},
@@ -310,7 +311,7 @@ JAZZMIN_SETTINGS = {
     "hide_apps": [],
 
     # Hide these models when generating side menu (e.g auth.user)
-    "hide_models": ["main.Category", "contact.Blog", "main.Order", "main.Products"],
+    "hide_models": ["main.Category", "contact.Blog", "main.Order", "main.Products", "main.BaseProduct"],
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
     "order_with_respect_to": ["auth", "books", "books.author", "books.book"],

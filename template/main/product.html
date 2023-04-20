@@ -11,7 +11,6 @@
     <div class="aa-catg-head-banner-area">
         <div class="container">
             <div class="aa-catg-head-banner-content">
-                <h2>MakonMirzo</h2>
                 <ol class="breadcrumb">
                     <li><a href="{% url 'main:home' %}">{% trans "Bosh sahifa" %}</a></li>
                     <li class="active">{% trans "Mahsulot" %}</li>
@@ -31,7 +30,7 @@
                         <div class="col-md-4 col-sm-4">
                             <article class="aa-blog-content-single">
                                 <figure class="aa-blog-img">
-                                    <a href="{% url 'main:p_detail' product.pk %}">
+                                    <a href="{% url 'main:detailbase' product.pk %}">
                                         {% if product.image %}
                                         <img src="{{ product.image.url }}" style="height: 350px; width: 300px;" alt="fashion img">
                                         {% endif %}
@@ -39,9 +38,9 @@
                                 </figure>
                                 <div class="aa-article-bottom">
                                     <div class="aa-post-author">
-                                        <a href="{% url 'main:p_detail' product.pk %}">{{ product.name }}</a>
+                                        <a href="{% url 'main:detailbase' product.pk %}">{{ product.name }}</a>
                                         <br>
-                                        <span>{{ product.price }} sum</span>
+                                        <span>{{ product.price }} .uzs</span>
                                     </div>
                                 </div>
                             </article>

@@ -1,9 +1,7 @@
 from django.contrib import admin
-from .models import Category, Products, Color, ProductSize, Payment, Order, OrderItem, Delivery, Province
+from .models import Category, Products, Payment, Order, OrderItem, Delivery, Province, BaseProduct
 from parler.admin import TranslatableAdmin
 
-admin.site.register(Color)
-admin.site.register(ProductSize)
 admin.site.register(Province)
 
 
@@ -15,9 +13,19 @@ class CategoryAdmin(TranslatableAdmin):
 admin.site.register(Category, CategoryAdmin)
 
 
+class BaseProductAdmin(TranslatableAdmin):
+    list_display = ("id", "k_id", "name")
+    list_display_links = ("id", "k_id", "name")
+    list_per_page = 687
+    search_fields = ['vendor_code', 'k_id']
+
+
+admin.site.register(BaseProduct, BaseProductAdmin)
+
+
 class ProductAdmin(TranslatableAdmin):
-    list_display = ('id', 'k_id', 'categories', 'name', 'price', 'p_quantity', 'number', 'created_at')
-    list_display_links = ('name', 'k_id')
+    list_display = ('id', 'k_id', 'name', 'price', 'p_quantity', 'number', 'created_at')
+    list_display_links = ('name', 'number', 'k_id')
     list_per_page = 687
     search_fields = ['number', 'k_id']
 
