@@ -51,7 +51,7 @@ class Products(TranslatableModel):
     translations = TranslatedFields(
         name=models.CharField(_('Name'), max_length=100, blank=True, null=True),
     )
-    image = models.ImageField(upload_to="variant/product/", blank=True, null=True)
+    image = models.ImageField(upload_to="variant/", blank=True, null=True)
     baseproduct = models.ForeignKey(BaseProduct, on_delete=models.CASCADE, blank=True, null=True)
     warehouse = models.IntegerField(blank=True, null=True)
     color = models.CharField(max_length=50, verbose_name=_("Color name"))
