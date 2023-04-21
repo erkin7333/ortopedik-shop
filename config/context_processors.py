@@ -17,11 +17,12 @@ def getphone(request):
         contact = Contact.objects.first()
         sphone = contact.phone
         sphone1 = contact.phone1
-        ctx = {'sphone': sphone, 'sphone1': sphone1}
-        return ctx
-    except Contact.DoesNotExist:
-        ctx = {'sphone': default_phone}
-        return ctx
+    except AttributeError:
+        sphone = default_phone
+        sphone1 = default_phone
+    ctx = {'sphone': sphone, 'sphone1': sphone1}
+    return ctx
+
 
 def getcartcount(request):
     default_count = "0"
