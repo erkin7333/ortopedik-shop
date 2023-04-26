@@ -104,8 +104,7 @@
                                                        data-price="{{ variation.price }}"
                                                        data-number="{{ variation.number }}"
                                                        data-quantity="{{ variation.p_quantity }}"
-                                                       data-k_id="{{ variation.k_id }}"
-                                                       data-variant_id="{{ variation.id }}">
+                                                       data-k_id="{{ variation.k_id }}">
                                                 {% endfor %}
                                                 <input type="hidden" name="product_size" id="product_size">
 
@@ -158,11 +157,6 @@ radioButtons.forEach(button => {
         const selectedNumber = button.dataset.number;
         const selectedQuantity = button.dataset.quantity;
         const selectedK_id = button.dataset.k_id;
-        const selectedV_id = button.dataset.v_id;
-
-        // Variant ID
-        const v_idElement = document.getElementById('v_id');
-        v_idElement.textContent = selectedV_id;
 
 
         // KPI idnii olish uchun
@@ -222,7 +216,7 @@ variantsDiv.addEventListener('change', () => {
     const number = selectedVariant.dataset.number;
     const quantity = selectedVariant.dataset.quantity;
     const k_id = selectedVariant.dataset.k_id;
-    const v_id = selectedVariant.dataset.v_id;
+
 
     // set the input element values dynamically
     const colorInput = document.querySelector('#product_color');
@@ -231,7 +225,6 @@ variantsDiv.addEventListener('change', () => {
     const numberInput = document.querySelector('#product_number');
     const quantityInput = document.querySelector('#product_quantity');
     const k_idInput = document.querySelector('#product_k_id');
-    const v_idInput = document.querySelector('#variant_id');
 
     colorInput.value = color;
     sizeInput.value = size;
@@ -239,28 +232,9 @@ variantsDiv.addEventListener('change', () => {
     numberInput.value = number;
     quantityInput.value = quantity;
     k_idInput.value = k_id;
-    v_idInput.value = v_id;
 });
 
-    var radios = document.querySelectorAll('input[name="variation"]');
-    var hiddenInput = document.getElementById('product_size');
 
-    radios.forEach(function(radio) {
-        radio.addEventListener('change', function() {
-            hiddenInput.value = this.getAttribute('data-size');
-        });
-    });
-
-const variants = document.getElementsByName('variation');
-let selectedVariantId;
-for (let i = 0; i < variants.length; i++) {
-    if (variants[i].checked) {
-        selectedVariantId = variants[i].getAttribute('data-variant_id');
-
-        break;
-    }
-}
-console.log(selectedVariantId);
 
 
 
