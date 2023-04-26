@@ -166,8 +166,12 @@ h2 {
   color: #ff6666;
 }
 #aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content .breadcrumb .active {
-  color: #FFFFFF;
+  color: #b54592;
 }
+#aa-catg-head-banner .aa-catg-head-banner-area .aa-catg-head-banner-content .breadcrumb .active1 .erik {
+  color: #b54592;
+}
+
 #aa-product-category .aa-sidebar .aa-sidebar-widget h3 {
   color: #ff6666;
   border-bottom: 1px solid #ff6666;

@@ -7,18 +7,23 @@
 {% block content %}
 <!-- catg header banner section -->
 <section id="aa-catg-head-banner">
-    <img src="{% static 'img/fashion/fashion-header-bg-8.jpg' %}" alt="fashion img">
-    <div class="aa-catg-head-banner-area">
-        <div class="container">
-            <div class="aa-catg-head-banner-content">
-                <ol class="breadcrumb">
-                    <li><a href="{% url 'main:home' %}">{% trans "Bosh sahifa" %}</a></li>
-                    <li class="active">{% trans "Aloqa" %}</li>
-                </ol>
+    <img src="{% static 'img/fashion/v3.png' %}" alt="fashion img" style="width: 100%; height: 100%; object-fit: contain;">
+</section>
+
+<section id="aa-client-brand">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="erkin">
+                    <ul class="erkin1">
+                        <li class="active1">{% trans "Aloqa" %}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
 <!-- / catg header banner section -->
 
 <section id="aa-contact">
@@ -28,7 +33,7 @@
                 <div class="aa-contact-area">
                     <div class="aa-contact-top">
                         <h2>{% trans "Sizga yordam berishni kutamiz" %}..</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, quos.</p>
+                        <p>{% trans "Biz bilan bog'laning sizga yordam berishdan mamnumiz. Biz doim qo'llab quvatlaymiz" %}</p>
                     </div>
                     <!-- contact map -->
                     <div class="aa-contact-map">

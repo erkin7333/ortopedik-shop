@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-11 14:33+0500\n"
-"PO-Revision-Date: 2023-04-11 14:35+0500\n"
+"POT-Creation-Date: 2023-04-26 11:45+0500\n"
+"PO-Revision-Date: 2023-04-26 11:53+0500\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -55,15 +55,14 @@ msgid "Iltimos parollar bir xilligini tekshiring"
 msgstr "Пожалуйста, убедитесь, что пароли совпадают"
 
 #: click/models.py:21
-#| msgid "To'lov miqdori"
 msgid "To'lov miqdori (so'mda)"
 msgstr "К оплате"
 
-#: config/settings.py:143
+#: config/settings.py:144
 msgid "Uzbek"
 msgstr "Uzbek"
 
-#: config/settings.py:144
+#: config/settings.py:145
 msgid "Russian"
 msgstr "Russian"
 
@@ -127,6 +126,7 @@ msgstr "Предмет"
 
 #: contact/models.py:64 template/base.html:138
 #: template/main/blog-detail.html:5 template/main/blog.html:5
+#: template/main/blog.html:19
 msgid "Blog"
 msgstr "Блог"
 
@@ -142,112 +142,97 @@ msgstr "Фамилия"
 msgid "To'liq manzil"
 msgstr "Полный адрес"
 
-#: main/models.py:12 main/models.py:29 main/models.py:92
+#: main/models.py:11 main/models.py:27 main/models.py:52 main/models.py:103
 msgid "Name"
 msgstr "Имя"
 
-#: main/models.py:21
+#: main/models.py:20
 msgid "Category"
 msgstr "Категория"
 
-#: main/models.py:30
+#: main/models.py:28
 msgid "Title"
 msgstr "Заголовок"
 
-#: main/models.py:39
-msgid "Shotuv kodi"
-msgstr "Код Шотува"
-
-#: main/models.py:53
-msgid "Product"
-msgstr "Продукт"
+#: main/models.py:45
+#| msgid "Product"
+msgid "BaseProduct"
+msgstr "Главный продукт"
 
 #: main/models.py:57
 msgid "Color name"
 msgstr "Название цвета"
 
-#: main/models.py:62
-msgid "Color"
-msgstr "Цвет"
-
-#: main/models.py:65
+#: main/models.py:58
 msgid "Size"
 msgstr "Размер"
 
-#: main/models.py:69
-msgid "ProductSize"
-msgstr "Размер товара"
+#: main/models.py:61
+msgid "Shotuv kodi"
+msgstr "Код продажи"
 
-#: main/models.py:78
+#: main/models.py:72
+msgid "Product"
+msgstr "Продукт"
+
+#: main/models.py:84
 msgid "Payment"
 msgstr "Оплата"
 
-#: main/models.py:82
-#| msgid "Sayt nomi"
+#: main/models.py:90
 msgid "Viloyat nomi"
-msgstr "Название сайта"
+msgstr "Название провинции"
 
-#: main/models.py:87
+#: main/models.py:96
 msgid "Province"
-msgstr "Viloyat"
+msgstr "Провинция"
 
-#: main/models.py:109
-#| msgid "Yetkazib berish manzili"
+#: main/models.py:121
 msgid "Yetkazib berish turi"
 msgstr "Адрес доставки"
 
-#: main/models.py:111
-#| msgid "Umumiy narx"
+#: main/models.py:123
 msgid "Umumiy maxsulot narxi"
 msgstr "Итоговая цена"
 
-#: main/models.py:112 template/main/click.html:42
-#| msgid "Jami narxi"
+#: main/models.py:124 template/main/click.html:44
 msgid "Jami narx"
 msgstr "Общая стоимость"
 
-#: main/models.py:118
+#: main/models.py:131
 msgid "Order"
 msgstr "Заказ"
 
-#: main/models.py:137
+#: main/models.py:149
 msgid "OrderItem"
 msgstr "ЗаказатьЭлемент"
 
-#: template/account/login.html:3 template/account/login.html:15
-#: template/account/login.html:35 template/account/login.html:39
+#: template/account/login.html:3 template/account/login.html:20
+#: template/account/login.html:39 template/account/login.html:43
 #: template/base.html:161
 msgid "Tizimga kirish"
 msgstr "Авторизоваться"
 
-#: template/account/login.html:17 template/account/register.html:17
-#: template/base.html:132 template/main/blog.html:17
-#: template/main/cart.html:18 template/main/category-product.html:14
-#: template/main/checkout.html:16 template/main/click.html:16
-#: template/main/contact.html:16 template/main/detaile.html:16
-#: template/main/payment.html:16 template/main/product.html:16
-msgid "Bosh sahifa"
-msgstr "Домашняя страница"
-
-#: template/account/login.html:18 template/account/register.html:18
-msgid "Hisob"
-msgstr "Счет"
-
-#: template/account/register.html:3 template/account/register.html:15
+#: template/account/register.html:3 template/account/register.html:20
 #: template/base.html:160
 msgid "Ro'yxatdan o'tish"
 msgstr "Зарегистрироваться"
 
-#: template/account/register.html:35 template/account/register.html:39
+#: template/account/register.html:39 template/account/register.html:43
 msgid "Roʻyxatdan oʻtish"
 msgstr "Зарегистрироваться"
+
+#: template/base.html:132 template/main/cart.html:18
+#: template/main/payment.html:16
+msgid "Bosh sahifa"
+msgstr "Домашняя страница"
 
 #: template/base.html:135 template/main/product.html:4
 msgid "Mahsulotlar"
 msgstr "Продукты"
 
 #: template/base.html:141 template/main/contact.html:4
-#: template/main/contact.html:14 template/main/contact.html:17
+#: template/main/contact.html:19
 msgid "Aloqa"
 msgstr "Контакт"
 
@@ -279,7 +264,7 @@ msgstr "Категории"
 msgid "Tomonidan ishlab chiqilgan"
 msgstr "Разработан"
 
-#: template/main/blog.html:49
+#: template/main/blog.html:51
 msgid "Ko'rish"
 msgstr "Видеть"
 
@@ -287,32 +272,32 @@ msgstr "Видеть"
 msgid "Savat"
 msgstr "Корзина"
 
-#: template/main/cart.html:42 template/main/category-product.html:15
-#: template/main/checkout.html:105 template/main/product.html:17
+#: template/main/cart.html:43 template/main/category-product.html:16
+#: template/main/checkout.html:108 template/main/product.html:18
 msgid "Mahsulot"
 msgstr "Продукт"
 
-#: template/main/cart.html:43
+#: template/main/cart.html:44
 msgid "Narxi"
 msgstr "Расходы"
 
-#: template/main/cart.html:44
+#: template/main/cart.html:45
 msgid "Miqdori"
 msgstr "Количество"
 
-#: template/main/cart.html:45 template/main/checkout.html:106
+#: template/main/cart.html:46 template/main/checkout.html:109
 msgid "Jami narxi"
 msgstr "Общая стоимость"
 
-#: template/main/cart.html:72
+#: template/main/cart.html:73
 msgid "Barcha mahsulot narxi"
 msgstr "Все цены на товары"
 
-#: template/main/cart.html:75
+#: template/main/cart.html:76
 msgid "Toʻlov uchun mahsulot"
 msgstr "Продукт для оплаты"
 
-#: template/main/cart.html:81
+#: template/main/cart.html:82
 msgid "Savatda maʼlumot yoʻq"
 msgstr "В корзине нет товаров"
 
@@ -320,96 +305,106 @@ msgstr "В корзине нет товаров"
 msgid "Kategoriya"
 msgstr "Категории"
 
-#: template/main/checkout.html:4 template/main/checkout.html:14
+#: template/main/checkout.html:4 template/main/checkout.html:19
 msgid "Mahsulotni tekshirish"
 msgstr "Проверка продукта"
 
-#: template/main/checkout.html:17
-msgid "Tekshiruv"
-msgstr "Oсмотр"
-
-#: template/main/checkout.html:100
+#: template/main/checkout.html:103
 msgid "Buyurtma xulosasi"
 msgstr "Итог заказа"
 
-#: template/main/checkout.html:121
+#: template/main/checkout.html:124
 msgid "Umumiy narx"
 msgstr "Итоговая цена"
 
-#: template/main/checkout.html:127 template/main/checkout.html:177
+#: template/main/checkout.html:130 template/main/checkout.html:180
 msgid "To'lov usuli"
 msgstr "Способ оплаты"
 
-#: template/main/checkout.html:132 template/main/checkout.html:182
+#: template/main/checkout.html:135 template/main/checkout.html:185
 msgid "Buyurtma berish"
 msgstr "Разместить заказ"
 
-#: template/main/checkout.html:191
+#: template/main/checkout.html:194
 msgid "Yetkazib berish manzili"
 msgstr "Адрес доставки"
 
-#: template/main/click.html:14
+#: template/main/click.html:19
 msgid "Click sahifa"
 msgstr "Click на страницу"
 
-#: template/main/click.html:38 template/main/payment.html:38
+#: template/main/click.html:40 template/main/payment.html:38
 msgid "Buyurtma identifikatori"
 msgstr "номер заказа"
 
-#: template/main/click.html:39 template/main/payment.html:39
+#: template/main/click.html:41 template/main/payment.html:39
 msgid "Foydalanuvchi"
 msgstr "Пользователь"
 
-#: template/main/click.html:40 template/main/payment.html:40
+#: template/main/click.html:42 template/main/payment.html:40
 msgid "To'lov miqdori"
 msgstr "К оплате"
 
-#: template/main/click.html:41
-#| msgid "Yetkazib berish manzili"
+#: template/main/click.html:43
 msgid "Yetkaziberish narxi"
 msgstr "Адрес доставки"
 
-#: template/main/click.html:58 template/main/payment.html:52
+#: template/main/click.html:60 template/main/payment.html:52
 msgid "To'lov"
 msgstr "Толов"
 
-#: template/main/contact.html:31
+#: template/main/contact.html:35
 msgid "Sizga yordam berishni kutamiz"
 msgstr "Мы с нетерпением ждем, чтобы помочь вам"
+
+#: template/main/contact.html:36 template/main/index.html:73
+msgid ""
+"Biz bilan bog'laning sizga yordam berishdan mamnumiz. Biz doim qo'llab "
+"quvatlaymiz"
+msgstr "Свяжитесь с нами, мы будем рады помочь вам. Мы всегда поддерживаем"
 
 #: template/main/detaile.html:4
 msgid "Mahsulot | Tafsiloti"
 msgstr "Продукт | Деталь"
 
-#: template/main/detaile.html:17
+#: template/main/detaile.html:18
 msgid "Tafsilot"
 msgstr "Деталь"
 
-#: template/main/detaile.html:81
-msgid "Mavjudligi"
-msgstr "Доступность"
-
-#: template/main/detaile.html:83
+#: template/main/detaile.html:82
 msgid "Sotuv kodi"
 msgstr "Код продажи"
 
-#: template/main/detaile.html:87
-msgid "Rasmeri"
-msgstr "объем"
+#: template/main/detaile.html:84
+msgid "Variant kodi"
+msgstr "Код варианта"
 
-#: template/main/detaile.html:96
+#: template/main/detaile.html:88
+msgid "ID"
+msgstr "ID"
+
+#: template/main/detaile.html:90
+#| msgid "Jami narxi"
+msgid "Variant narxi"
+msgstr "Цена опциона"
+
+#: template/main/detaile.html:92
+msgid "Mavjudligi"
+msgstr "Доступность"
+
+#: template/main/detaile.html:95
+msgid "Razmer tanlang"
+msgstr "Выберите размер"
+
+#: template/main/detaile.html:114
 msgid "Rangi"
 msgstr "Цвет"
 
-#: template/main/detaile.html:107
-msgid "Turkumi"
-msgstr "Turkumi"
-
-#: template/main/detaile.html:111
+#: template/main/detaile.html:124
 msgid "Savatchaga qo'shish"
 msgstr "добавить в корзину"
 
-#: template/main/detaile.html:119
+#: template/main/detaile.html:133
 msgid "Tavsifi"
 msgstr "Описание"
 
@@ -418,14 +413,27 @@ msgid "HOZIR KO'RISH"
 msgstr "СМОТРИ СЕЙЧАС"
 
 #: template/main/index.html:55
-msgid "YETKAZIB BERISH BEPUL"
-msgstr "БЕСПЛАТНАЯ ДОСТАВКА"
+#| msgid "YETKAZIB BERISH BEPUL"
+msgid "QULAY YETKAZIB BERISH XIZMATI"
+msgstr "УДОБНАЯ СЛУЖБА ДОСТАВКИ"
 
-#: template/main/index.html:63
-msgid "30 KUN PUL QAYTARISH"
-msgstr "ВОЗВРАТ ДЕНЕГ В 30 ДНЕЙ"
+#: template/main/index.html:56
+msgid "Mijozning uyigacha yetkazib berish"
+msgstr "Доставка до дома клиента"
 
-#: template/main/index.html:71
+#: template/main/index.html:57
+msgid "Fargo topshirish markazlaridan olib ketish"
+msgstr "Самовывоз из центров доставки Fargo"
+
+#: template/main/index.html:64
+msgid "QULAY VA TEZ TO'LOV"
+msgstr "УДОБНАЯ И БЫСТРАЯ ОПЛАТА"
+
+#: template/main/index.html:65
+msgid "Click to'lov tizimi orqali xaridlaringizni oson va tez amalga oshiring"
+msgstr "Совершайте покупки легко и быстро через платежную систему Click"
+
+#: template/main/index.html:72
 msgid "24/7 QO'LLAB-QUVVATLASH"
 msgstr "24/7 ПОДДЕРЖКА"
 
@@ -440,6 +448,27 @@ msgstr "Поиск"
 #: template/main/search.html:36
 msgid "Kechirasiz siz izlagan malumot topilmadi"
 msgstr "Извините, информация, которую вы искали, не найдена"
+
+#~ msgid "Color"
+#~ msgstr "Цвет"
+
+#~ msgid "ProductSize"
+#~ msgstr "Размер товара"
+
+#~ msgid "Hisob"
+#~ msgstr "Счет"
+
+#~ msgid "Tekshiruv"
+#~ msgstr "Oсмотр"
+
+#~ msgid "Rasmeri"
+#~ msgstr "объем"
+
+#~ msgid "Turkumi"
+#~ msgstr "Turkumi"
+
+#~ msgid "30 KUN PUL QAYTARISH"
+#~ msgstr "ВОЗВРАТ ДЕНЕГ В 30 ДНЕЙ"
 
 #~ msgid "E-pochta manzili"
 #~ msgstr "Адрес электронной почты"

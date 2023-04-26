@@ -14,8 +14,8 @@ admin.site.register(Category, CategoryAdmin)
 
 
 class BaseProductAdmin(TranslatableAdmin):
-    list_display = ("id", "k_id", "name")
-    list_display_links = ("id", "k_id", "name")
+    list_display = ("id", "name")
+    list_display_links = ("id", "name")
     list_per_page = 687
     search_fields = ['vendor_code', 'k_id']
 
