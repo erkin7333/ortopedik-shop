@@ -657,6 +657,9 @@ img {
 #menu .menu-area .navbar-default .aa-nav-nav {
     margin-top: 5px;
 }
+.active-link {
+  border-bottom: 3px solid #b54592;
+}
 
 #menu .menu-area .navbar-default .navbar-nav .open a {
   background-color: #fff;
@@ -1401,7 +1404,7 @@ img {
 ====================*/
 
 #aa-support {
-  background-color: #4698db;
+  background-color: #3d6cb1;
   display: inline;
   float: left;
   width: 100%;
@@ -3341,7 +3344,7 @@ img {
 ====================*/
 
 #aa-footer {
-  background-color: #4698db;
+  background-color: #3d6cb1;
   display: inline;
   float: left;
   width: 100%;

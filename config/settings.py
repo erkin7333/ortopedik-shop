@@ -99,7 +99,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'config.context_processors.menucategory',
                 'config.context_processors.getphone',
-                'config.context_processors.getcartcount'
+                'config.context_processors.getcartcount',
+                'config.globals.title'
             ],
         },
     },
@@ -155,7 +156,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, '/assets/static')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 AUTH_USER_MODEL = 'account.User'
 

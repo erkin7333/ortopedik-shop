@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 11:45+0500\n"
-"PO-Revision-Date: 2023-04-26 11:53+0500\n"
+"POT-Creation-Date: 2023-04-26 17:02+0500\n"
+"PO-Revision-Date: 2023-04-26 19:26+0500\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -155,7 +155,6 @@ msgid "Title"
 msgstr "Заголовок"
 
 #: main/models.py:45
-#| msgid "Product"
 msgid "BaseProduct"
 msgstr "Главный продукт"
 
@@ -173,7 +172,7 @@ msgstr "Код продажи"
 
 #: main/models.py:72
 msgid "Product"
-msgstr "Продукт"
+msgstr "Продукты"
 
 #: main/models.py:84
 msgid "Payment"
@@ -229,7 +228,7 @@ msgstr "Домашняя страница"
 
 #: template/base.html:135 template/main/product.html:4
 msgid "Mahsulotlar"
-msgstr "Продукты"
+msgstr "Продукции"
 
 #: template/base.html:141 template/main/contact.html:4
 #: template/main/contact.html:19
@@ -254,11 +253,17 @@ msgstr "Наши продукты"
 
 #: template/base.html:188 template/base.html:209
 msgid "Biz bilan bog'lanish"
-msgstr "связаться с нами"
+msgstr "Cвязаться с нами"
 
 #: template/base.html:195
 msgid "Kategoriyalar"
 msgstr "Категории"
+
+#: template/base.html:211
+msgid "Andijon viloyati Andijon tumani Jasorat ko'chasi <br> Andijon-farm EIZ"
+msgstr ""
+"Андижанская область, Андижанский район, <br>\n"
+" ул. Жасорат,  СЭЗ \"Андижан-фарм\""
 
 #: template/base.html:237
 msgid "Tomonidan ishlab chiqilgan"
@@ -275,7 +280,7 @@ msgstr "Корзина"
 #: template/main/cart.html:43 template/main/category-product.html:16
 #: template/main/checkout.html:108 template/main/product.html:18
 msgid "Mahsulot"
-msgstr "Продукт"
+msgstr "Продукции"
 
 #: template/main/cart.html:44
 msgid "Narxi"
@@ -384,7 +389,6 @@ msgid "ID"
 msgstr "ID"
 
 #: template/main/detaile.html:90
-#| msgid "Jami narxi"
 msgid "Variant narxi"
 msgstr "Цена опциона"
 
@@ -396,15 +400,15 @@ msgstr "Доступность"
 msgid "Razmer tanlang"
 msgstr "Выберите размер"
 
-#: template/main/detaile.html:114
+#: template/main/detaile.html:113
 msgid "Rangi"
 msgstr "Цвет"
 
-#: template/main/detaile.html:124
+#: template/main/detaile.html:123
 msgid "Savatchaga qo'shish"
 msgstr "добавить в корзину"
 
-#: template/main/detaile.html:133
+#: template/main/detaile.html:132
 msgid "Tavsifi"
 msgstr "Описание"
 
@@ -413,7 +417,6 @@ msgid "HOZIR KO'RISH"
 msgstr "СМОТРИ СЕЙЧАС"
 
 #: template/main/index.html:55
-#| msgid "YETKAZIB BERISH BEPUL"
 msgid "QULAY YETKAZIB BERISH XIZMATI"
 msgstr "УДОБНАЯ СЛУЖБА ДОСТАВКИ"
 

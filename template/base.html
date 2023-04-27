@@ -125,23 +125,23 @@
                 <div class="navbar-collapse collapse">
                     <!-- Left nav -->
                     <ul class="nav navbar-nav">
-                        <li>
+                        <li class="active">
                             <img src="{% static 'img/Logo1.png' %}" style="height: 50px; width: 100px;" alt="">
                         </li>
-                        <li>
+                        <li class="nav-item {% if url_name == 'main:home' %}active-link{% endif %}">
                             <a class="aa-nav-nav" href="{% url 'main:home' %}">{% trans 'Bosh sahifa' %}</a>
                         </li>
-                        <li>
+                        <li class="nav-item {% if url_name == 'main:product' %}active-link{% endif %}">
                             <a class="aa-nav-nav" href="{% url 'main:product' %}">{% trans 'Mahsulotlar' %}</a>
                         </li>
-                        <li>
+                        <li class="nav-item {% if url_name == 'contact:blog' %}active-link{% endif %}">
                             <a class="aa-nav-nav" href="{% url 'contact:blog' %}">{% trans 'Blog' %}</a>
                         </li>
-                        <li class="ml-auto">
+                        <li class="ml-auto {% if url_name == 'contact:contact' %}active-link{% endif %}">
                             <a class="aa-nav-nav" href="{% url 'contact:contact' %}">{% trans 'Aloqa' %}</a>
                         </li>
                         {% if request.user.is_authenticated %}
-                        <li class="ml-auto">
+                        <li class="ml-auto {% if url_name == 'account:logout' %}active-link{% endif %}">
                             <a class="aa-nav-nav" href="{% url 'account:logout' %}">{% trans 'Chiqish' %}</a>
                         </li>
                         <li class="my-basket-nav">
@@ -157,8 +157,12 @@
                             </a>
                         </li>
                         {% else %}
-                        <li><a class="aa-nav-nav" href="{% url 'account:register' %}">{% trans "Ro'yxatdan o'tish" %}</a></li>
-                        <li><a class="aa-nav-nav" href="{% url 'account:login' %}">{% trans 'Tizimga kirish' %}</a></li>
+                        <li class="nav-item {% if url_name == 'account:register' %}active-link{% endif %}">
+                            <a class="aa-nav-nav" href="{% url 'account:register' %}">{% trans "Ro'yxatdan o'tish" %}</a>
+                        </li>
+                        <li class="nav-item {% if url_name == 'account:login' %}active-link{% endif %}">
+                            <a class="aa-nav-nav" href="{% url 'account:login' %}">{% trans 'Tizimga kirish' %}</a>
+                        </li>
                         {% endif %}
                     </ul>
                 </div>
@@ -208,7 +212,7 @@
                                     <div class="aa-footer-widget">
                                         <h3>{% trans "Biz bilan bog'lanish" %}</h3>
                                         <address>
-                                            <p>Toshkent shaxar</p>
+                                            <p>{% trans "Andijon viloyati Andijon tumani Jasorat ko'chasi <br> Andijon-farm EIZ" %}</p>
                                             <p><span class="fa fa-phone"></span>{{ sphone }}</p>
                                             <p><span class="fa fa-phone"></span>{{ sphone1 }}</p>
                                             <p><span class="fa fa-envelope"></span>makonmirzo@mail.ru</p>

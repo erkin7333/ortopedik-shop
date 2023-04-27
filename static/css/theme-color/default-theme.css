@@ -43,7 +43,7 @@ h2 {
   color: hsl(207deg 77% 40%);
 }
 #aa-header .aa-header-top .aa-header-top-area .aa-search-box button {
-  background-color: #4698db;
+  background-color: #3d6cb1;
 }
 #aa-header .aa-header-bottom .aa-cartbox .aa-cart-link {
   color: hsl(207deg 77% 40%);
@@ -59,7 +59,7 @@ h2 {
   border-color: #ff6666;
 }
 #menu {
-  background-color: #4698db;
+  background-color: #3d6cb1;
 }
 #menu .menu-area .navbar-default .navbar-nav .open a {
   color: #ff6666;
@@ -141,7 +141,7 @@ h2 {
   background-color: #ff6666;
 }
 #aa-support .aa-support-area .aa-support-single span {
-  color: #b54592;
+  color: #fff;
 }
 #aa-testimonial .aa-testimonial-area .aa-testimonial-slider li.slick-active {
   background-color: #ff6666;
