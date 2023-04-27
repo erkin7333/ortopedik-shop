@@ -38,7 +38,7 @@ html,
   background-position: 0% 100%;
   background-size: cover;
   /* Dimensions */
-  height: 360px;
+  height: 200px;
   width: 100%;
   /*max-width: 1280px;*/
   max-width: 100%;
@@ -189,7 +189,6 @@ html,
 }
 
 .seq .seq-model {
-  bottom: 15%;
   height: 100%;
   width: 100%;
   /* Don't allow the image to exceed its original height */
@@ -287,7 +286,7 @@ html,
   transform: translate3d(0, 0, 0);
 }
 
-@media only screen and (min-width: 300px) {
+@media only screen and (min-width: 768px) {
   .seq {
     /* Make the container 16:9 but no bigger than 90% of the screen height */
     position: relative;
@@ -413,7 +412,7 @@ html,
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 300px) {
   .seq.seq-active .seq-pagination {
     /* Show navigation and pagination if JS is enabled */
     display: block;
@@ -464,66 +463,6 @@ html,
     transform: translate3d(0, -4px, 0);
   }
 }
-
-@media only screen and (min-width: 860px) {
-  /*.seq .seq-model {
-    margin-left: 10%;
-    width: 27.5%;
-  }
-
-  .seq .seq-title {
-    width: 42.5%;
-    margin-right: 10%;
-  }
-
-  .seq .seq-title br {
-    display: inline-block;
-  }*/
-}
-
-@media only screen and (min-width: 1020px) {
- /* .seq .seq-model {
-    margin-left: 5%;
-    width: 32.5%;
-  }
-
-  .seq .seq-title {
-    width: 47.5%;
-    margin-right: 5%;
-  }*/
-}
-
-@media only screen and (min-width: 1120px) {
- /*.seq .seq-model {
-  height: 100%;
-  margin-left: 0;
-  margin-right: 0;
-  width: 100%;
-}
-
-  .seq .seq-title {
-   left: 38%;
-margin-right: 0;
-position: absolute;
-top: 38%;
-width: 52.5%;
-  }*/
-}
-
-@media (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3 / 2), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
-  .seq {
-    /* Apply Retina (@2x) Images */
-  }
-
-  .seq .seq-next {
-    /*background: url("../images/bt-next@2x.png");*/
-    background-size: 35px 66px;
-  }
-
-  .seq .seq-prev {
-    /*background: url("../images/bt-prev@2x.png");*/
-    background-size: 35px 66px;
-  }
-}
+/* For mobile devices */
 
 /*# sourceMappingURL=sequence-theme.modern-slide-in.css.map */
