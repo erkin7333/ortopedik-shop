@@ -18,7 +18,7 @@ class NewProduct(ListView):
     model = BaseProduct
     template_name = 'main/index.html'
     context_object_name = 'posts'
-    paginate_by = 9
+    paginate_by = 10
 
     def get_queryset(self):
         return BaseProduct.objects.filter().order_by('-id')
@@ -30,7 +30,7 @@ class CategoryProductListView(ListView):
     template_name = "main/category-product.html"
     model = BaseProduct
     context_object_name = 'posts'
-    paginate_by = 9
+    paginate_by = 10
 
     def get_queryset(self):
         return BaseProduct.objects.filter(categories_id=self.kwargs['pk'])
@@ -41,7 +41,7 @@ class ProductListView(ListView):
 
     template_name = "main/product.html"
     context_object_name = 'products'
-    paginate_by = 9
+    paginate_by = 10
 
     def get_queryset(self):
         return BaseProduct.objects.filter().order_by('-id')
