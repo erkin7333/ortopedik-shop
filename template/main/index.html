@@ -23,10 +23,6 @@
                                 <img data-seq src="{{ carusel.image_ru.url }}"/>
                             {% endif %}
                         </div>
-                        <div class="seq-title">
-                            <h2 data-seq>{{ carusel.name }}</h2>
-                            <a data-seq href="{% url 'main:category_product' carusel.pk%}" class="aa-shop-now-btn aa-secondary-btn">{% trans "HOZIR KO'RISH" %}</a>
-                        </div>
                     </li>
                     {% endfor %}
                 </ul>
