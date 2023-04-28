@@ -18,9 +18,9 @@
 
                         <div class="seq-model">
                             {% if LANGUAGE_CODE == 'uz' %}
-                                <img data-seq src="{{ carusel.image_uz.url }}"/>
+                            <img data-seq src="{{ carusel.image_uz.url }}"/>
                             {% elif LANGUAGE_CODE == 'ru' %}
-                                <img data-seq src="{{ carusel.image_ru.url }}"/>
+                            <img data-seq src="{{ carusel.image_ru.url }}"/>
                             {% endif %}
                         </div>
                     </li>
@@ -76,73 +76,77 @@
 </section>
 <!-- / Support section -->
 
-<!-- Products section -->
-
-<section id="aa-blog-archive">
+<section id="aa-product">
     <div class="container">
-        <div class="col-md-12">
-            <div class="aa-blog-archive-area">
-                <div class="aa-blog-content">
-                    <div class="row">
-                        {% for product in posts %}
-                        <div class="col-md-4 col-sm-4">
-                            <article class="aa-blog-content-single">
-                                <figure class="aa-blog-img">
-                                    <a href="{% url 'main:detailbase' product.pk %}">
-                                        {% if product.image %}
-                                        <img src="{{ product.image.url }}" style="height: 380px; width: 300px;" alt="fashion img">
-                                        {% endif %}
-                                    </a>
-                                </figure>
-                                <div class="aa-article-bottom">
-                                    <div class="aa-post-author">
-                                        <a href="{% url 'main:detailbase' product.pk %}">{{ product.name }}</a>
-                                        <br>
-                                        <span>{{ product.price }} .uzs</span>
-                                    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="aa-product-area">
+                        <div class="aa-product-inner">
+                            <hr>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <!-- Start men product category -->
+                                <div class="tab-pane fade in active" id="men">
+                                    <ul class="aa-product-catg">
+                                        {% for product in posts %}
+                                        <!-- start single product item -->
+                                        <li>
+                                            <figure>
+                                                <a class="aa-product-img" href="{% url 'main:detailbase' product.pk %}">
+                                                    <img src="{{ product.image.url }}" alt="polo shirt img"
+                                                    style="width: 290px; height: 350px;"></a>
+                                                <figcaption>
+                                                    <h4 class="aa-product-title">
+                                                        <a href="{% url 'main:detailbase' product.pk %}">{{ product.name }}</a>
+                                                    </h4>
+                                                    <span class="aa-product-price">{{ product.price }} uzs</span>
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
-                            </article>
+                            </div>
+                            <hr>
+                                {% if page_obj.has_other_pages %}
+                                <div class="aa-blog-archive-pagination">
+                                    <nav>
+                                        <ul class="pagination">
+                                            {% if page_obj.has_previous %}
+                                            <li>
+                                                <a aria-label="Previous" href="?page={{ page_obj.previous_page_number  }}">
+                                                    <span aria-hidden="true">«</span>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+                                            {% for p in paginator.page_range %}
+                                            {% if page_obj.number == p %}
+                                            <li class="active"><a href="">{{ p }}</a></li>
+                                            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                                            <li>
+                                                <a href="?page={{ p }}">{{ p }}</a>
+                                            </li>
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% if page_obj.has_next %}
+                                            <li>
+                                                <a aria-label="Next" href="?page={{ page_obj.next_page_number }}">
+                                                    <span aria-hidden="true">»</span>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                    </nav>
+                                </div>
+                                {% endif %}
                         </div>
-                        {% endfor %}
                     </div>
-                    <hr/>
-                    {% if page_obj.has_other_pages %}
-                    <div class="aa-blog-archive-pagination">
-                        <nav>
-                            <ul class="pagination">
-                                {% if page_obj.has_previous %}
-                                <li>
-                                    <a aria-label="Previous" href="?page={{ page_obj.previous_page_number  }}">
-                                        <span aria-hidden="true">«</span>
-                                    </a>
-                                </li>
-                                {% endif %}
-                                {% for p in paginator.page_range %}
-                                {% if page_obj.number == p %}
-                                <li class="active"><a href="">{{ p }}</a></li>
-                                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
-                                <li>
-                                    <a href="?page={{ p }}">{{ p }}</a>
-                                </li>
-                                {% endif %}
-                                {% endfor %}
-                                {% if page_obj.has_next %}
-                                <li>
-                                    <a aria-label="Next" href="?page={{ page_obj.next_page_number }}">
-                                        <span aria-hidden="true">»</span>
-                                    </a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    </div>
-                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- / Products section -->
 
 
 {% endblock %}
