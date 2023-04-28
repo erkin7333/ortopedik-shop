@@ -2658,6 +2658,7 @@ img {
 
 #aa-blog-archive {
   display: inline;
+  float: left;
   width: 100%;
 }
 #aa-blog-archive .aa-blog-archive-area {
