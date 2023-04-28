@@ -14,10 +14,10 @@ admin.site.register(Category, CategoryAdmin)
 
 
 class BaseProductAdmin(TranslatableAdmin):
-    list_display = ("id", "name")
+    list_display = ("id", "name", "vendor_code")
     list_display_links = ("id", "name")
     list_per_page = 687
-    search_fields = ['vendor_code', 'k_id']
+    search_fields = ['vendor_code']
 
 
 admin.site.register(BaseProduct, BaseProductAdmin)
