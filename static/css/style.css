@@ -1119,11 +1119,12 @@ img {
 .aa-product-catg li {
   display: block;
   float: left;
-  height: 380px;
+  height: 400px;
   text-align: center;
   margin: 0 0 20px 55px;
   width: 20.5%;
   position: relative;
+  margin-bottom: 96px;
 }
 
 .aa-product-catg li:hover .aa-product-hvr-content {
@@ -3664,8 +3665,8 @@ img {
   }
 
   .aa-product-catg li {
-    margin: 0 0 40px 20px;
-    width: 46%;
+    margin: 0 0 100px 180px;
+    width: 50%;
   }
 
   .slick-prev {
