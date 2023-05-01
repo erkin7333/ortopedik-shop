@@ -15,7 +15,7 @@
                         <div class="col-md-4 col-sm-4">
                             <article class="aa-blog-content-single">
                                 <figure class="aa-blog-img">
-                                    <a href="{% url 'main:p_detail' search.pk %}">
+                                    <a href="{% url 'main:detailbase' search.pk %}">
                                         {% if search.image %}
                                         <img src="{{ search.image.url }}" style="height: 350px; width: 300px;"
                                              alt="fashion img">
@@ -24,7 +24,7 @@
                                 </figure>
                                 <div class="aa-article-bottom">
                                     <div class="aa-post-author">
-                                        <a href="{% url 'main:p_detail' search.pk %}">{{ search.name }}</a>
+                                        <a href="{% url 'main:detailbase' search.pk %}">{{ search.name }}</a>
                                         <br>
                                         <span>{{ search.price }} sum</span>
                                     </div>
